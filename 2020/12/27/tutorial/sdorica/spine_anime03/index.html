@@ -1,0 +1,70 @@
+<!DOCTYPE html><html lang="en" theme-mode="auto"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Spine动画模型教程-Chibi在线工具使用(三) | Blog Here</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy","copyFinish":"copied","expand":"expand"}}</script><script src="//unpkg.com/mermaid@9.2.2/dist/mermaid.min.js"></script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/brands.min.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/fontawesome.min.css"><link rel="stylesheet" href="/css/arknights.css"><script>if (window.localStorage.getItem('theme-mode') === 'light' || window.matchMedia('(prefers-color-scheme:light)').matches) document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark' || window.matchMedia('(prefers-color-scheme:dark)').matches) document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+@font-face {
+ font-family: 'Font Awesome 6 Brands';
+ src: local('Font Awesome 6 Brands'), url('/lib/fontawesome/fa-brands.woff2') format('woff2');
+}
+@font-face {
+ font-family: 'Font Awesome 6 Free';
+ src: local('Font Awesome 6 Free'), url('/lib/fontawesome/fa-regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+  --light-background: url('/img/bk.jpg');
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><nav><div class="navBtn hide"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">About</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>Spine动画模型教程-Chibi在线工具使用(三)</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2020-12-26T16:00:00.000Z" id="date"> 2020-12-27</time></div></span><br><span>Last Update: <div class="control"><time datetime="2021-03-10T16:00:00.000Z" id="updated"> 2021-03-11</time></div></span></div></div><hr><div id="post-content"><blockquote>
+<p>*<strong>申明：</strong></p>
+<p><strong>在此申明，仅作为非商业用途的学习交流和个人记录用途，请严格遵守游戏用户协定，勿将提取的游戏资源发布到任何第三方平台。</strong></p>
+<p><strong>否则将可能造成游戏公司切实的利益损失，与一些不必要的麻烦甚者需承担相应的法律责任</strong></p>
+<p><strong>本篇不授权并禁止任何目的的分享、转载和引用，望理解</strong></p>
+</blockquote>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>本篇讲解如何使用一个非常nice的网页在线工具</p>
+<p><a target="_blank" rel="noopener" href="https://naganeko.github.io/">官方主页</a> 作者<a target="_blank" rel="noopener" href="https://twitter.com/lazy_schemer">Twitter</a></p>
+<p>可以用于模型的查看，以及导出gif&#x2F;png图片</p>
+<p><img src="/img/spine_anime03_001.png" alt="img"></p>
+<h2 id="制作GIF及帧图"><a href="#制作GIF及帧图" class="headerlink" title="制作GIF及帧图"></a>制作GIF及帧图</h2><h3 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">Chibi-gif<br></code></pre></td></tr></table></figure>
+
+<p>通过导入“新三样”，进行动画选择和缩放等操作，生成序列帧图和生成GIF&#x2F;APNG</p>
+<h3 id="操作流程"><a href="#操作流程" class="headerlink" title="操作流程"></a>操作流程</h3><h4 id="一、导入文件"><a href="#一、导入文件" class="headerlink" title="一、导入文件"></a>一、导入文件</h4><p><img src="/img/spine_anime03_002.png" alt="img"></p>
+<h4 id="二、调整模型"><a href="#二、调整模型" class="headerlink" title="二、调整模型"></a>二、调整模型</h4><p>拖动以调整模型位置，更改模型大小，以及边框宽度</p>
+<p><img src="/img/spine_anime03_003.png" alt="img"></p>
+<h4 id="三、配置动作组"><a href="#三、配置动作组" class="headerlink" title="三、配置动作组"></a>三、配置动作组</h4><p><img src="/img/spine_anime03_004.png" alt="img"></p>
+<h4 id="四、导出动图"><a href="#四、导出动图" class="headerlink" title="四、导出动图"></a>四、导出动图</h4><p><img src="/img/spine_anime03_005.png" alt="img"></p>
+<p><img src="/img/spine_anime03_006.png" alt="img"></p>
+<h2 id="添加装饰部件"><a href="#添加装饰部件" class="headerlink" title="添加装饰部件"></a>添加装饰部件</h2><h3 id="简述-1"><a href="#简述-1" class="headerlink" title="简述"></a>简述</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">Chibi-deco<br></code></pre></td></tr></table></figure>
+
+<p>通过导入“新三样”，添加自定义的Png贴图，绑定骨骼以实现添加装饰部件</p>
+<p>镜像网站暂时不能生成帧图和GIF</p>
+<h3 id="操作流程-1"><a href="#操作流程-1" class="headerlink" title="操作流程"></a>操作流程</h3><h4 id="一、导入文件-1"><a href="#一、导入文件-1" class="headerlink" title="一、导入文件"></a>一、导入文件</h4><p>同上，将老三样导入</p>
+<h4 id="二、导入装饰部件"><a href="#二、导入装饰部件" class="headerlink" title="二、导入装饰部件"></a>二、导入装饰部件</h4><p>将想要添加的自定义贴图拖动到<code>Open Deco files</code>的识别区域</p>
+<p><img src="/img/spine_anime03_007.png" alt="img"></p>
+<h4 id="三、配置装饰部件"><a href="#三、配置装饰部件" class="headerlink" title="三、配置装饰部件"></a>三、配置装饰部件</h4><p><img src="/img/spine_anime03_008.png" alt="img"></p>
+<p><img src="/img/spine_anime03_009.png" alt="img"></p>
+<h4 id="四、导出新三样"><a href="#四、导出新三样" class="headerlink" title="四、导出新三样"></a>四、导出新三样</h4><p><img src="/img/spine_anime03_010.png" alt="img"></p>
+<p>依次点击这四个按钮</p>
+<p>第一个是生成纹理图集，后面三个下载新三样</p>
+<p><strong>注意：下载出来的文件不能直接使用，是因为Atlas文件里的贴图名称会和生成图片的名称不符</strong></p>
+<p>需要将文件名还原，例如：<code>b0037s4_deco.xxx -&gt; b0037s4.xxx</code></p>
+<p>再导入到相关软件使用</p><div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2021/02/08/tutorial/sdorica/gamedata_reverse04/">← Next 从零开始的手游解包教程-角色资源篇(四)</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2020/12/26/tutorial/sdorica/spine_anime02/">Spine动画模型教程-二创教程(二) Prev →</a></div></div></div></div><div class="bottom-btn"><div><a id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧</a><a id="to-index" href="#toc-div" title="To Catalog">≡</a><a id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="Logo"></a><h1 id="Dr"><a href="/">Dr.Syaoran</a></h1><div id="description"><p>科技改变生活<br>Tech changes lives.</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/Syaoran33"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/276567009"><i class="fab fa-bilibili" alt="Bilibili"></i></a><a class="social" target="_blank" rel="noopener" href="https://www.reddit.com/user/Shaoran33"><i class="fab fa-reddit" alt="Reddit"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%B6%E4%BD%9CGIF%E5%8F%8A%E5%B8%A7%E5%9B%BE"><span class="toc-number">2.</span> <span class="toc-text">制作GIF及帧图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E8%BF%B0"><span class="toc-number">2.1.</span> <span class="toc-text">简述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-number">2.2.</span> <span class="toc-text">操作流程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%AF%BC%E5%85%A5%E6%96%87%E4%BB%B6"><span class="toc-number">2.2.1.</span> <span class="toc-text">一、导入文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E8%B0%83%E6%95%B4%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.2.2.</span> <span class="toc-text">二、调整模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E9%85%8D%E7%BD%AE%E5%8A%A8%E4%BD%9C%E7%BB%84"><span class="toc-number">2.2.3.</span> <span class="toc-text">三、配置动作组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%AF%BC%E5%87%BA%E5%8A%A8%E5%9B%BE"><span class="toc-number">2.2.4.</span> <span class="toc-text">四、导出动图</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E8%A3%85%E9%A5%B0%E9%83%A8%E4%BB%B6"><span class="toc-number">3.</span> <span class="toc-text">添加装饰部件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E8%BF%B0-1"><span class="toc-number">3.1.</span> <span class="toc-text">简述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E6%B5%81%E7%A8%8B-1"><span class="toc-number">3.2.</span> <span class="toc-text">操作流程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%AF%BC%E5%85%A5%E6%96%87%E4%BB%B6-1"><span class="toc-number">3.2.1.</span> <span class="toc-text">一、导入文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AF%BC%E5%85%A5%E8%A3%85%E9%A5%B0%E9%83%A8%E4%BB%B6"><span class="toc-number">3.2.2.</span> <span class="toc-text">二、导入装饰部件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E9%85%8D%E7%BD%AE%E8%A3%85%E9%A5%B0%E9%83%A8%E4%BB%B6"><span class="toc-number">3.2.3.</span> <span class="toc-text">三、配置装饰部件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%AF%BC%E5%87%BA%E6%96%B0%E4%B8%89%E6%A0%B7"><span class="toc-number">3.2.4.</span> <span class="toc-text">四、导出新三样</span></a></li></ol></li></ol></li></ol></div></div><footer><nobr><span class="text-title">©</span><span class="text-content">Syaoran 2020-Present</span></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr>by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {code.findCode();
+document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>
