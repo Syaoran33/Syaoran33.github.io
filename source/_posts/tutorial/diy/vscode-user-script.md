@@ -3,6 +3,10 @@ title: 实用教程-VSCode设置用户代码片段
 author: Syaoran
 date: 2022-8-21
 updated: 2022-8-21
+categories: 
+  - Tutorials
+tags: 
+  - DIY
 ---
 
 配置模板，通过键入命令自动生成代码片段，提高写代码效率

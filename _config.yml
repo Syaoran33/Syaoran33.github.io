@@ -104,5 +104,5 @@ theme: arknights
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: 'git'
-  repo: 'https://github.com/Syaoran33/Syaoran33.github.io.git'
+  repo: 'git@github.com:Syaoran33/Syaoran33.github.io.git'
   branch: main
