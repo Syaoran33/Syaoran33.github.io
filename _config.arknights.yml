@@ -20,9 +20,9 @@ background_image:
 # 导航栏
 menu:
   Home: ""
-  About: about/
-  # Contact: contact/
   Archives: archives/
+  About: about/
+  Music: music/
 
 # 侧边栏
 aside:
@@ -31,7 +31,8 @@ aside:
   dr: / # 侧边栏 Dr. 链接
   icp: # ICP 备案号，与版权声明相同，但会链接到 https://beian.miit.gov.cn/
   copyright: 
-    ©: Syaoran 2020-Present 
+    🧑🏻‍💻:  小狼  Syaoran 
+    🌐: 2020-Present
   # 版权声明、备案号等，可自定义键值，不想显示则留空
 
 # 社交链接

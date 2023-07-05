@@ -106,3 +106,9 @@ deploy:
   type: 'git'
   repo: 'git@github.com:Syaoran33/Syaoran33.github.io.git'
   branch: main
+
+# Music
+aplayer:
+  meting: true
+  asset_inject: true
+  
