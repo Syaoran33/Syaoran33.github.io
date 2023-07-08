@@ -27,7 +27,7 @@ menu:
 # 侧边栏
 aside:
   in_left: true # 侧边栏在左 true / false
-  logo: https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png #图片链接，建议 1:1 比例
+  logo: img/index/logo.png #图片链接，建议 1:1 比例
   dr: / # 侧边栏 Dr. 链接
   icp: # ICP 备案号，与版权声明相同，但会链接到 https://beian.miit.gov.cn/
   copyright: 

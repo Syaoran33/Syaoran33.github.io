@@ -1,10 +1,11 @@
 ---
 title: Index 导航
+top: 1
+date: 9999-09-09
 categories: 
   - Notes
 tags:
   - Small talk
-top: 1
 ---
 
 欢迎来到我的博客
@@ -14,8 +15,10 @@ Awesome begin~
 
 <!-- more -->
 
-
 ## Python文档
+
+相关速查
+
 ### 官方
 [Python](https://docs.python.org/zh-cn/3/index.html): python官方文档
 [difflib](https://docs.python.org/zh-cn/3/library/difflib.html): 计算差异的辅助工具

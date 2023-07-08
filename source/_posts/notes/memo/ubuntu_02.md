@@ -1,8 +1,8 @@
 ---
 title: Ubuntu系统-应用安装篇
 author: Syaoran
-date: 2023-06-25
-updated: 2023-06-25
+date: 2023-06-23
+updated: 2023-06-23
 categories: 
 
   - Notes
@@ -13,6 +13,12 @@ tags:
 ---
 
 
+
+
+
+常用Ubuntu应用的部署方式备忘录，方便以后初始查阅
+
+<!-- more -->
 
 # Ubuntu系统-应用安装篇
 
