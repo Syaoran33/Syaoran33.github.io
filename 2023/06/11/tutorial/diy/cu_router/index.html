@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang="en" theme-mode="auto"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>实用教程-联通光猫桥接路由 | Blog Here</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy","copyFinish":"copied","expand":"expand"}}</script><script src="//unpkg.com/mermaid@9.2.2/dist/mermaid.min.js"></script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/brands.min.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/fontawesome.min.css"><link rel="stylesheet" href="/css/arknights.css"><script>if (window.localStorage.getItem('theme-mode') === 'light' || window.matchMedia('(prefers-color-scheme:light)').matches) document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark' || window.matchMedia('(prefers-color-scheme:dark)').matches) document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+@font-face {
+ font-family: 'Font Awesome 6 Brands';
+ src: local('Font Awesome 6 Brands'), url('/lib/fontawesome/fa-brands.woff2') format('woff2');
+}
+@font-face {
+ font-family: 'Font Awesome 6 Free';
+ src: local('Font Awesome 6 Free'), url('/lib/fontawesome/fa-regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+  --light-background: url('/img/bk.jpg');
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><nav><div class="navBtn hide"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">About</span></a></li><li class="navItem"><a class="navBlock" href="/music/"><span class="navItemTitle">Music</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>实用教程-联通光猫桥接路由</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2023-06-10T16:00:00.000Z" id="date"> 2023-06-11</time></div></span><br><span>Last Update: <div class="control"><time datetime="2023-06-10T16:00:00.000Z" id="updated"> 2023-06-11</time></div></span></div></div><hr><div id="post-content"><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>联通光猫桥接路由器，使用路由器进行拨号上网，解放网速</p>
+<p>光猫型号： <code>HS8346V5</code></p>
+<p>省流：密码是宽带账号后6位</p>
+<h2 id="Web管理端"><a href="#Web管理端" class="headerlink" title="Web管理端"></a>Web管理端</h2><p><strong>管理端:</strong> </p>
+<p>管理端网址：<a target="_blank" rel="noopener" href="http://192.168.1.1/">http://192.168.1.1/</a></p>
+<p>管理员密码：<code>CUAdmin</code></p>
+<p><strong>基本配置：</strong></p>
+<ol start="0">
+<li><p>选择INTERNET配置</p>
+</li>
+<li><p>查看用户名 </p>
+</li>
+<li><p>改为桥接模式</p>
+</li>
+</ol>
+<p><strong>高级配置：</strong></p>
+<p>启用Telnet连接</p>
+<h2 id="Win启用Telnet"><a href="#Win启用Telnet" class="headerlink" title="Win启用Telnet"></a>Win启用Telnet</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs powershell">pkgmgr /iu:”TelnetServer”<br>telnet <span class="hljs-number">192.168</span>.<span class="hljs-number">1.1</span><br><span class="hljs-comment">#认证管理用户</span><br>Login: root<br>password: adminHW<br><span class="hljs-comment">#查看当前配置信息</span><br>display current<span class="hljs-literal">-configuration</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="获取密码-amp-解密"><a href="#获取密码-amp-解密" class="headerlink" title="获取密码&amp;解密"></a>获取密码&amp;解密</h2><p>查询用户名获取密码</p>
+<p><a target="_blank" rel="noopener" href="https://www.luojiasan.com/wp-content/uploads/2022/04/%E5%8D%8E%E4%B8%BA%E9%85%8D%E7%BD%AE%E5%8A%A0%E8%A7%A3%E5%AF%86%E5%B7%A5%E5%85%B7.zip">华为配置加解密工具</a>进行解密</p>
+<h2 id="路由器拨号上网"><a href="#路由器拨号上网" class="headerlink" title="路由器拨号上网"></a>路由器拨号上网</h2><blockquote>
+<p>常用设置-&gt; 上网设置 -&gt; PPPoE</p>
+</blockquote>
+<p>输入账号密码明文并应用</p>
+<h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><p><a target="_blank" rel="noopener" href="https://www.luojiasan.com/category/computer/1237.html">华为<code>HS8346v5</code>光猫超级密码获取教程</a></p><div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2023/06/18/notes/memo/ubuntu_01/">← Next Ubuntu系统-基础配置篇</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2023/05/21/tutorial/nintendo_switch/video_enhance/">Switch串流视频超分补帧教程 Prev →</a></div></div></div></div><div class="bottom-btn"><div><a id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧</a><a id="to-index" href="#toc-div" title="To Catalog">≡</a><a id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="img/index/logo.png" alt="Logo"></a><h1 id="Dr"><a href="/">Dr.Syaoran</a></h1><div id="description"><p>科技改变生活<br>Tech changes lives.</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/Syaoran33"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/276567009"><i class="fab fa-bilibili" alt="Bilibili"></i></a><a class="social" target="_blank" rel="noopener" href="https://www.reddit.com/user/Shaoran33"><i class="fab fa-reddit" alt="Reddit"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Web%E7%AE%A1%E7%90%86%E7%AB%AF"><span class="toc-number">2.</span> <span class="toc-text">Web管理端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Win%E5%90%AF%E7%94%A8Telnet"><span class="toc-number">3.</span> <span class="toc-text">Win启用Telnet</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%AF%86%E7%A0%81-amp-%E8%A7%A3%E5%AF%86"><span class="toc-number">4.</span> <span class="toc-text">获取密码&amp;解密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E5%99%A8%E6%8B%A8%E5%8F%B7%E4%B8%8A%E7%BD%91"><span class="toc-number">5.</span> <span class="toc-text">路由器拨号上网</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%EF%BC%9A"><span class="toc-number">6.</span> <span class="toc-text">参考：</span></a></li></ol></div></div><footer><nobr><span class="text-title">🧑🏻‍💻</span><span class="text-content">小狼  Syaoran</span></nobr><br><nobr><span class="text-title">🌐</span><span class="text-content">2020-Present</span></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr>by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {code.findCode();
+document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>

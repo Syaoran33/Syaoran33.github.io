@@ -1,0 +1,106 @@
+<!DOCTYPE html><html lang="en" theme-mode="auto"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>从零开始的手游解包教程-小人模型篇(三) | Blog Here</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy","copyFinish":"copied","expand":"expand"}}</script><script src="//unpkg.com/mermaid@9.2.2/dist/mermaid.min.js"></script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/brands.min.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/fontawesome.min.css"><link rel="stylesheet" href="/css/arknights.css"><script>if (window.localStorage.getItem('theme-mode') === 'light' || window.matchMedia('(prefers-color-scheme:light)').matches) document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark' || window.matchMedia('(prefers-color-scheme:dark)').matches) document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+@font-face {
+ font-family: 'Font Awesome 6 Brands';
+ src: local('Font Awesome 6 Brands'), url('/lib/fontawesome/fa-brands.woff2') format('woff2');
+}
+@font-face {
+ font-family: 'Font Awesome 6 Free';
+ src: local('Font Awesome 6 Free'), url('/lib/fontawesome/fa-regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+  --light-background: url('/img/bk.jpg');
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><nav><div class="navBtn hide"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">About</span></a></li><li class="navItem"><a class="navBlock" href="/music/"><span class="navItemTitle">Music</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>从零开始的手游解包教程-小人模型篇(三)</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2020-12-23T16:00:00.000Z" id="date"> 2020-12-24</time></div></span><br><span>Last Update: <div class="control"><time datetime="2021-03-09T16:00:00.000Z" id="updated"> 2021-03-10</time></div></span></div></div><hr><div id="post-content"><blockquote>
+<p>*<strong>申明：</strong></p>
+<p><strong>在此申明，仅作为非商业用途的学习交流和个人记录用途，请严格遵守游戏用户协定，勿将提取的游戏资源发布到任何第三方平台。</strong></p>
+<p><strong>否则将可能造成游戏公司切实的利益损失，与一些不必要的麻烦甚者需承担相应的法律责任</strong></p>
+<p><strong>本篇不授权并禁止任何目的的分享、转载和引用，望理解</strong></p>
+</blockquote>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>看了前面两篇文章，相信你已经能很熟练的使用<code>AssetStudio</code>进行资源包的解包</p>
+<p>这次将介绍的是对万象小人模型的拆包和预览</p>
+<p>本篇将直接介绍如何使用工具操作和预览，不需要使用到编程</p>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>*注：本教程所用工具可加群获取</p>
+<p>PC电脑(Win10)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">AssetStudio<br>Sdorica_SFT工具<br></code></pre></td></tr></table></figure>
+
+<h2 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍"></a>简单介绍</h2><p>万象物语角色模型都使用的是Spine骨骼动画制作，以下简称小人模型</p>
+<p>典型的特征就是需要三个文件来装配一个模型</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>文件拓展名</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>配置文件</td>
+<td><code>.skel</code> &#x2F;<code>.skel.bytes</code>&#x2F;<code>.json</code></td>
+<td>小人模型动画的配置文件</td>
+</tr>
+<tr>
+<td>纹理图集</td>
+<td><code>.atlas</code> &#x2F; <code>.atlas.txt</code></td>
+<td>小人模型贴图的配置图集</td>
+</tr>
+<tr>
+<td>贴图</td>
+<td><code>. png</code></td>
+<td>小人模型贴图</td>
+</tr>
+</tbody></table>
+<p>本篇为了区分源文件和处理后的文件使用“老三样”和”新三样“来区分</p>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><h3 id="一、解包模型资源"><a href="#一、解包模型资源" class="headerlink" title="一、解包模型资源"></a>一、解包模型资源</h3><p>使用AS对这两个文件分别解包</p>
+<p><img src="/img/gamedata_reverse03_001.png" alt="img"></p>
+<p>这里我们全部导出，分别得到两个文件夹，我们把他移动到工作目录</p>
+<p><img src="/img/gamedata_reverse03_002.png" alt="img"></p>
+<p>这里我们以<code>h0030s5_a2</code>为例，将这两个文件里的”老三样”移动到一个新的目录</p>
+<p><img src="/img/gamedata_reverse03_003.png" alt="img"></p>
+<h3 id="二、使用Sdorica-SFT工具"><a href="#二、使用Sdorica-SFT工具" class="headerlink" title="二、使用Sdorica_SFT工具"></a>二、使用Sdorica_SFT工具</h3><p>我们得到的源文件是为游戏运行准备的，为了减少占用的内存它们都被处理过</p>
+<p>例如：图片尺寸会被缩小，配置文件采用二进制存储</p>
+<p>这里我们要将它们转换成运行库兼容的格式</p>
+<p>将压缩包解压，双击启动<code>Sdorica_SFT.exe</code></p>
+<p>稍等半分钟加载，然后输入暗号</p>
+<p><img src="/img/gamedata_reverse03_004.png" alt="img"></p>
+<p><img src="/img/gamedata_reverse03_005.png" alt="img"></p>
+<p>按照提示依次将刚才的三个文件拖入到窗口，程序会自动处理</p>
+<p><img src="/img/gamedata_reverse03_006.png" alt="img"></p>
+<p>我们可以看到在源文件的路径下生成了<code>h0030s5_a2.json</code>配置文件和<code>index.html</code>网页(本篇不用)</p>
+<p><img src="/img/gamedata_reverse03_007.png" alt="img"></p>
+<h3 id="三、预览模型"><a href="#三、预览模型" class="headerlink" title="三、预览模型"></a>三、预览模型</h3><p>首先确保你的电脑配置了Java运行环境(JRE 8+)或者Java开发环境(JDK)</p>
+<p><code>Win+R</code>打开运行，输入cmd，新建一个命令行窗口，输入以下命令查看是否安装</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">java --version<br></code></pre></td></tr></table></figure>
+
+<p><img src="/img/gamedata_reverse03_009.png" alt="img"></p>
+<p>如果电脑没有安装环境，你可以到java官网下载</p>
+<p>安装完成后再用上面的方法检测下是否有了环境变量</p>
+<p><img src="/img/gamedata_reverse03_010.png" alt="img"></p>
+<p>我们可以接着刚才没完成的操作，在对话窗口中输入”y”</p>
+<p>就会调用<code>SkeletonViewer</code>播放器查看模型</p>
+<p><img src="/img/gamedata_reverse03_008.png" alt="img"></p>
+<p>如果想下次再用这个播放器,使用CMD在命令行输入以下命令即可</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">java -jar skeletonViewer.jar<br></code></pre></td></tr></table></figure><div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2020/12/25/tutorial/sdorica/spine_anime01/">← Next Spine动画模型教程-工具详解(一)</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2020/12/23/tutorial/sdorica/gamedata_reverse02/">从零开始的手游解包教程-编码解码篇(二) Prev →</a></div></div></div></div><div class="bottom-btn"><div><a id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧</a><a id="to-index" href="#toc-div" title="To Catalog">≡</a><a id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="img/index/logo.png" alt="Logo"></a><h1 id="Dr"><a href="/">Dr.Syaoran</a></h1><div id="description"><p>科技改变生活<br>Tech changes lives.</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/Syaoran33"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/276567009"><i class="fab fa-bilibili" alt="Bilibili"></i></a><a class="social" target="_blank" rel="noopener" href="https://www.reddit.com/user/Shaoran33"><i class="fab fa-reddit" alt="Reddit"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">2.</span> <span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D"><span class="toc-number">3.</span> <span class="toc-text">简单介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text">使用方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E8%A7%A3%E5%8C%85%E6%A8%A1%E5%9E%8B%E8%B5%84%E6%BA%90"><span class="toc-number">4.1.</span> <span class="toc-text">一、解包模型资源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8Sdorica-SFT%E5%B7%A5%E5%85%B7"><span class="toc-number">4.2.</span> <span class="toc-text">二、使用Sdorica_SFT工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E9%A2%84%E8%A7%88%E6%A8%A1%E5%9E%8B"><span class="toc-number">4.3.</span> <span class="toc-text">三、预览模型</span></a></li></ol></li></ol></div></div><footer><nobr><span class="text-title">🧑🏻‍💻</span><span class="text-content">小狼  Syaoran</span></nobr><br><nobr><span class="text-title">🌐</span><span class="text-content">2020-Present</span></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr>by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {code.findCode();
+document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html><html lang="en" theme-mode="auto"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>从零开始的手游解包教程-角色资源篇(四) | Blog Here</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy","copyFinish":"copied","expand":"expand"}}</script><script src="//unpkg.com/mermaid@9.2.2/dist/mermaid.min.js"></script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/brands.min.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/fontawesome.min.css"><link rel="stylesheet" href="/css/arknights.css"><script>if (window.localStorage.getItem('theme-mode') === 'light' || window.matchMedia('(prefers-color-scheme:light)').matches) document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark' || window.matchMedia('(prefers-color-scheme:dark)').matches) document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+@font-face {
+ font-family: 'Font Awesome 6 Brands';
+ src: local('Font Awesome 6 Brands'), url('/lib/fontawesome/fa-brands.woff2') format('woff2');
+}
+@font-face {
+ font-family: 'Font Awesome 6 Free';
+ src: local('Font Awesome 6 Free'), url('/lib/fontawesome/fa-regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+  --light-background: url('/img/bk.jpg');
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><nav><div class="navBtn hide"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">About</span></a></li><li class="navItem"><a class="navBlock" href="/music/"><span class="navItemTitle">Music</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>从零开始的手游解包教程-角色资源篇(四)</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2021-02-07T16:00:00.000Z" id="date"> 2021-02-08</time></div></span><br><span>Last Update: <div class="control"><time datetime="2021-03-09T16:00:00.000Z" id="updated"> 2021-03-10</time></div></span></div></div><hr><div id="post-content"><blockquote>
+<p>*<strong>申明：</strong></p>
+<p><strong>在此申明，仅作为非商业用途的学习交流和个人记录用途，请严格遵守游戏用户协定，勿将提取的游戏资源发布到任何第三方平台。</strong></p>
+<p><strong>否则将可能造成游戏公司切实的利益损失，与一些不必要的麻烦甚者需承担相应的法律责任</strong></p>
+<p><strong>本篇不授权并禁止任何目的的分享、转载和引用，望理解</strong></p>
+</blockquote>
+<p>*注: 本篇所有<code>术语</code>非官方，部分名词术语是根据英文语义进行翻译和实际应用进行总结的<br>相关释义和备注的准确性有待商榷，其功用和大致意思会因本人的习惯比较主观的体现</p>
+<h2 id="资源编号"><a href="#资源编号" class="headerlink" title="资源编号"></a>资源编号</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><code>资源编号(AssetsId)</code>是为了编程为了方便区分角色的一种编号。对于开发者比较友好，可以通过其编号特征对编号索引，快速找到指定某一角色，及其各阶角色、技能书等</p>
+<p>例如：h0030s5(琉 三阶), b0037s4(普吉 二阶)，h0097s5_a3(诺瓦 造型书)</p>
+<h3 id="编号特征"><a href="#编号特征" class="headerlink" title="编号特征"></a>编号特征</h3><p>以诺瓦为例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">h      0097      s      5      _a3<br>种族   序号      所属    阶级   技能书\造型书<br></code></pre></td></tr></table></figure>
+
+<h4 id="种族"><a href="#种族" class="headerlink" title="种族"></a>种族</h4><blockquote>
+<p>*注：雷亚对于种族分类的界定不是特别的严谨，部分角色和其对应的种族存在些许差异</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>缩写</th>
+<th>推测原缩写</th>
+<th>释义</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>h</td>
+<td>human</td>
+<td>人类、亚种人类(亚人)</td>
+<td>希欧、猫眼、琉</td>
+</tr>
+<tr>
+<td>t</td>
+<td>-</td>
+<td>兽人、有尾种族</td>
+<td>庞、洛、杨波</td>
+</tr>
+<tr>
+<td>b</td>
+<td>beast</td>
+<td>野兽</td>
+<td>古鲁瓦德、普吉</td>
+</tr>
+<tr>
+<td>r</td>
+<td>robot</td>
+<td>机械、机巧</td>
+<td>玛莉亚、夏洛克</td>
+</tr>
+<tr>
+<td>e</td>
+<td>-</td>
+<td>-</td>
+<td>荷丝缇雅、蔓朵菈</td>
+</tr>
+<tr>
+<td>m</td>
+<td>monster</td>
+<td>魔物、怪兽</td>
+<td>实验体</td>
+</tr>
+<tr>
+<td>n</td>
+<td>-</td>
+<td>-</td>
+<td>啾啾、猫头鹰号</td>
+</tr>
+</tbody></table>
+<h4 id="所属"><a href="#所属" class="headerlink" title="所属"></a>所属</h4><table>
+<thead>
+<tr>
+<th>缩写</th>
+<th>推测原缩写</th>
+<th>释义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>s</td>
+<td>storybook</td>
+<td>魂册</td>
+</tr>
+<tr>
+<td>c</td>
+<td>common</td>
+<td>通用、剧情</td>
+</tr>
+</tbody></table>
+<h4 id="阶级"><a href="#阶级" class="headerlink" title="阶级"></a>阶级</h4><blockquote>
+<p>*注：部分情况剧情角色不守该阶级限制</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>编号</th>
+<th>对应颜色</th>
+<th>对应阶级</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>s2</td>
+<td>灰色</td>
+<td>-</td>
+</tr>
+<tr>
+<td>s3</td>
+<td>蓝色</td>
+<td>一阶</td>
+</tr>
+<tr>
+<td>s4</td>
+<td>紫色</td>
+<td>二阶</td>
+</tr>
+<tr>
+<td>s5</td>
+<td>金色</td>
+<td>三阶</td>
+</tr>
+</tbody></table>
+<h4 id="技能书-造型书"><a href="#技能书-造型书" class="headerlink" title="技能书\造型书"></a>技能书\造型书</h4><blockquote>
+<p>*注：通常情况下，造型书&#x2F;技能书都是以三阶角色为原型。</p>
+<p>少部分如蒂卡-冬青少女，是以二阶为原型制作，其编号也会因此改变h0010s4_a3</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>编号</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>_a2</td>
+<td>技能书</td>
+</tr>
+<tr>
+<td>_a3</td>
+<td>造型书1</td>
+</tr>
+<tr>
+<td>_a4</td>
+<td>造型书2</td>
+</tr>
+</tbody></table>
+<h2 id="bson文件"><a href="#bson文件" class="headerlink" title="*.bson文件"></a>*.bson文件</h2><p><code>Bson</code>按字面意思就是(Binary Json)，一种二进制的数据格式。</p>
+<p>广泛(并不)用于MongoDB数据库的数据格式，在万象中bson文件也是为了压缩文件和序列化而被使用，例子就是<code>charAssets.bson</code>(老版本,3.2更新以前)</p>
+<h3 id="使用python读写"><a href="#使用python读写" class="headerlink" title="使用python读写"></a>使用python读写</h3><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">pip install bson<br></code></pre></td></tr></table></figure>
+
+<p>如果安装过pymongo库，请先卸载后再安装。否则会库的路径不对导致模块引入报错</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">pip uninstall pymongo<br>pip install bson<br></code></pre></td></tr></table></figure>
+
+<h4 id="读取"><a href="#读取" class="headerlink" title="读取"></a>读取</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">import bson<br><br>f = open(&#x27;metadata.bson&#x27;,&#x27;rb&#x27;)<br><br>data = bson.loads(f)<br></code></pre></td></tr></table></figure>
+
+<h4 id="写入"><a href="#写入" class="headerlink" title="写入"></a>写入</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">import bson<br><br>data = bson.dumps()<br></code></pre></td></tr></table></figure>
+
+<h2 id="charAssets-bson"><a href="#charAssets-bson" class="headerlink" title="charAssets.bson"></a>charAssets.bson</h2><blockquote>
+<p>*注：现版本已经失效</p>
+</blockquote>
+<p>万象物语角色技能组配置文件，包含所有角色的技能、buff等配置</p>
+<p>角色技能的释放都依赖于该文件，理论上对此文件进行修改可直接影响游戏内技能效果和倍率等</p>
+<h3 id="解码方式"><a href="#解码方式" class="headerlink" title="解码方式"></a>解码方式</h3><p>使用python脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">#!/usr/bin/env python<br># -*- encoding: utf-8 -*-<br># Author: Syaoran at Sdorica.dev<br><br>import json<br>import bson<br>import base64<br><br>bson_file = open(&#x27;charAssets.bson&#x27;,&#x27;rb&#x27;)<br>bson_file = base64.b64decode(bson_file.read())<br>bson_data = bson.loads(bson_file)<br><br>def replace():<br>	raw = json.dumps(bson_data) #raw<br>	raw = raw.replace(&#x27;\\&#x27;,&#x27;&#x27;) #replace \<br>	raw = raw.replace(&#x27;&quot;: &quot;&#123;&quot;&#x27;,&#x27;&quot;: &#123;&quot;&#x27;) #replace front &quot;<br>	raw = raw.replace(&#x27;&quot;&#125;&quot;,&#x27;,&#x27;&quot;&#125;,&#x27;) #replace back &quot;<br>	raw = raw.replace(&#x27;&quot;&#125;&quot;&#125;,&#x27;,&#x27;&quot;&#125;&#125;,&#x27;).replace(&#x27;&#125;&quot;&#125;&#125;&#x27;,&#x27;&#125;&#125;&#125;&#x27;) #replace special &quot;<br>	raw = raw.replace(&#x27;&quot;:.&#x27;,&#x27;&quot;:0.&#x27;).replace(&#x27;&quot;:-.&#x27;,&#x27;&quot;:-0.&#x27;) #add 0.<br>	return raw<br><br>raw = replace()<br><br>with open(&#x27;charAssets.json&#x27;,&#x27;w&#x27;) as f:<br>	f.write(raw)<br></code></pre></td></tr></table></figure>
+
+<h2 id="CharAssets-zip"><a href="#CharAssets-zip" class="headerlink" title="CharAssets.zip"></a>CharAssets.zip</h2><p>新版本更新后采用这种方式来存放技能组配置文件。但是相较于之前，更加容易解包</p>
+<h3 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h3><p>首先看后缀就知道是压缩文件格式(.zip)</p>
+<h3 id="分析bson"><a href="#分析bson" class="headerlink" title="分析bson"></a>分析bson</h3><p>起初我以为还是和之前一样是b64编码的bson文件，试了很长时间都没成功。</p>
+<p>后来直接读二进制，发现能看到部分内容，猜想应该是某种序列化。又试了一段时间，还是没有完美还原</p>
+<p>后来看到文件大小突然醒悟，30M的内容变成5M，肯定是采用了压缩格式。所以我就用压缩软件测试，发现果然是压缩文档。随后确定就是<code>gunzip()</code></p>
+<p>综上，只需要使用两次解压即可获取数据，bson完全是糊弄人的</p>
+<h3 id="解包"><a href="#解包" class="headerlink" title="解包"></a>解包</h3><p>压缩完成后即是json数据格式，无需其他处理</p>
+<h3 id="使用python脚本自动化"><a href="#使用python脚本自动化" class="headerlink" title="使用python脚本自动化"></a>使用python脚本自动化</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">#!/usr/bin/env python<br># -*- encoding: utf-8 -*-<br><br>import gzip<br>import zipfile<br>import os<br><br>class zippy:<br><br>    def unzip(self,bundle_path,dir_path):<br>        &quot;&quot;&quot;解压CharAsset.zip\n<br>        :param bundle_path: 压缩包地址\n<br>        :param dir_path: 解压路径文件夹&quot;&quot;&quot;<br>        zip_file = zipfile.ZipFile(bundle_path)<br>        zip_ls = zip_file.namelist()<br>        for f in zip_ls:<br>            zip_file.extract(f, dir_path)<br>        zip_file.close()<br><br>    def bson2json(self,bundle_path,dir_path,dst_path):<br>        &quot;&quot;&quot;批量转换bson文件为json文件\n<br>        :param bundle_path: 压缩包地址\n<br>        :param dir_path: 解压路径文件夹\n<br>        :param dst_path: json文件输出路径文件夹<br>        &quot;&quot;&quot;<br>        if os.path.isfile(os.path.join(dir_path,&#x27;Manifest.bson&#x27;)) != True:<br>            self.unzip(bundle_path,dir_path)<br>        for root,dirs,files in os.walk(dir_path):<br>            for file_name in files:<br>                file_path = os.path.join(root,file_name)<br>                data = gzip.GzipFile(file_path,&#x27;rb&#x27;).read().decode()<br>                if os.path.isdir(dst_path) != True:<br>                    os.mkdir(dst_path)<br>                if os.path.isfile(os.path.join(dst_path,&#x27;Manifest.json&#x27;)) != True:<br>                    with open(os.path.join(dst_path,file_name).replace(&#x27;bson&#x27;,&#x27;json&#x27;),&#x27;w&#x27;,encoding=&#x27;utf8&#x27;) as f:<br>                        f.write(data)<br>                        f.close()<br>        del dirs<br></code></pre></td></tr></table></figure>
+
+<h3 id="更加安全高效"><a href="#更加安全高效" class="headerlink" title="更加安全高效"></a>更加安全高效</h3><p>在后续研究中发现，使用这种方式：</p>
+<ul>
+<li>一是可以降低占用的内存，只有在加载进关卡时才会根据所需角色释放压缩文件</li>
+<li>二是额外添加了Manifest文件作为数据的质检员，对各项文件进行了哈希处理并做了不可逆的加密，较为有效的防止了数据的篡改</li>
+</ul>
+<h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><h3 id="BattleCharacter"><a href="#BattleCharacter" class="headerlink" title="BattleCharacter"></a>BattleCharacter</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">&#123;<br>    &quot;AssetsId&quot;:&#123;<br>        &quot;_power&quot;: 0,<br>        &quot;_armorCapacity&quot;: 0,<br>        &quot;_bloodCapacity&quot;: 0,<br>        &quot;_passiveBuff&quot;: &#123;<br>            &quot;$content&quot;: []<br>        &#125;,<br>        &quot;_levelStartBuff&quot;: &#123;<br>            &quot;$content&quot;: []<br>        &#125;,<br>        &quot;_characterAI&quot;: &#123;<br>            &quot;OrderList&quot;: &#123;<br>                &quot;$content&quot;: []<br>            &#125;,<br>            &quot;$type&quot;: &quot;BattleModel.SequenceEnemyAI&quot;<br>        &#125;,<br>        &quot;_stoneEraseSetting&quot;: &#123;<br>            &quot;$content&quot;: [<br>                &#123;<br>                    &quot;Key&quot;: 0,<br>                    &quot;Value&quot;: &quot;S1&quot;<br>                &#125;,<br>                &#123;<br>                    &quot;Key&quot;: 1,<br>                    &quot;Value&quot;: &quot;S2&quot;<br>                &#125;,<br>                &#123;<br>                    &quot;Key&quot;: 2,<br>                    &quot;Value&quot;: &quot;S3&quot;<br>                &#125;<br>            ]<br>        &#125;,<br>        &quot;_skillsetTable&quot;: &#123;&#125;,<br>        &quot;_skills&quot;: &#123;&#125;,<br>        &quot;_reviveCount&quot;: 0,<br>        &quot;_stoneType&quot;: 0,<br>        &quot;_assistantSkill&quot;: null,<br>        &quot;_initialCoolDown&quot;: 0,<br>        &quot;_defaultCoolDown&quot;: 0,<br>        &quot;_masterRank&quot;: 0,<br>        &quot;_mass&quot;: 1,<br>        &quot;_pose&quot;: &quot;Stand&quot;,<br>        &quot;ReferenceCharacterKeys&quot;: &#123;<br>            &quot;$content&quot;: []<br>        &#125;,<br>        &quot;ReferenceEffectKeys&quot;: &#123;<br>            &quot;$content&quot;: []<br>        &#125;,<br>        &quot;ReferenceBuffKeys&quot;: &#123;<br>            &quot;$content&quot;: []<br>        &#125;,<br>        &quot;ReferenceSFXKeys&quot;: &#123;<br>            &quot;$content&quot;: []<br>        &#125;,<br>        &quot;ReferenceVoiceSFXKeys&quot;: &#123;<br>            &quot;$content&quot;: []<br>        &#125;,<br>        &quot;ReferenceMusicKeys&quot;: &#123;<br>            &quot;$content&quot;: []<br>        &#125;,<br>        &quot;ReferenceEmoIconKeys&quot;: &#123;<br>            &quot;$content&quot;: []<br>        &#125;,<br>        &quot;$type&quot;: &quot;BattleModel.SummonSlot&quot;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="键值参数"><a href="#键值参数" class="headerlink" title="键值参数"></a>键值参数</h3><table>
+<thead>
+<tr>
+<th>键</th>
+<th>释义</th>
+<th>角色备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AssetsId</td>
+<td>资产编号&#x2F;名称</td>
+<td>b0037s5</td>
+</tr>
+<tr>
+<td>_power</td>
+<td>基础攻击力</td>
+<td></td>
+</tr>
+<tr>
+<td>_bloodCapacity</td>
+<td>基础血量</td>
+<td></td>
+</tr>
+<tr>
+<td>_armorCapacity</td>
+<td>基础护盾值</td>
+<td></td>
+</tr>
+<tr>
+<td>_passiveBuff</td>
+<td>被动buff</td>
+<td></td>
+</tr>
+<tr>
+<td>_levelStartBuff</td>
+<td>- (阶段开始效果)</td>
+<td></td>
+</tr>
+<tr>
+<td>_characterAI</td>
+<td>- (角色AI)</td>
+<td></td>
+</tr>
+<tr>
+<td>_characterAI.OrderList</td>
+<td>- (技能顺序)</td>
+<td></td>
+</tr>
+<tr>
+<td>_stoneEraseSetting</td>
+<td>技能魂芯消除设定</td>
+<td></td>
+</tr>
+</tbody></table><div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2021/02/12/notes/happy_new_year_2021/">← Next 2021新年快乐</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2020/12/27/tutorial/sdorica/spine_anime03/">Spine动画模型教程-Chibi在线工具使用(三) Prev →</a></div></div></div></div><div class="bottom-btn"><div><a id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧</a><a id="to-index" href="#toc-div" title="To Catalog">≡</a><a id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="img/index/logo.png" alt="Logo"></a><h1 id="Dr"><a href="/">Dr.Syaoran</a></h1><div id="description"><p>科技改变生活<br>Tech changes lives.</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/Syaoran33"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/276567009"><i class="fab fa-bilibili" alt="Bilibili"></i></a><a class="social" target="_blank" rel="noopener" href="https://www.reddit.com/user/Shaoran33"><i class="fab fa-reddit" alt="Reddit"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B5%84%E6%BA%90%E7%BC%96%E5%8F%B7"><span class="toc-number">1.</span> <span class="toc-text">资源编号</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E5%8F%B7%E7%89%B9%E5%BE%81"><span class="toc-number">1.2.</span> <span class="toc-text">编号特征</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A7%8D%E6%97%8F"><span class="toc-number">1.2.1.</span> <span class="toc-text">种族</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%80%E5%B1%9E"><span class="toc-number">1.2.2.</span> <span class="toc-text">所属</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%B6%E7%BA%A7"><span class="toc-number">1.2.3.</span> <span class="toc-text">阶级</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%80%E8%83%BD%E4%B9%A6-%E9%80%A0%E5%9E%8B%E4%B9%A6"><span class="toc-number">1.2.4.</span> <span class="toc-text">技能书\造型书</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bson%E6%96%87%E4%BB%B6"><span class="toc-number">2.</span> <span class="toc-text">*.bson文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8python%E8%AF%BB%E5%86%99"><span class="toc-number">2.1.</span> <span class="toc-text">使用python读写</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">2.1.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96"><span class="toc-number">2.1.2.</span> <span class="toc-text">读取</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%99%E5%85%A5"><span class="toc-number">2.1.3.</span> <span class="toc-text">写入</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#charAssets-bson"><span class="toc-number">3.</span> <span class="toc-text">charAssets.bson</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E7%A0%81%E6%96%B9%E5%BC%8F"><span class="toc-number">3.1.</span> <span class="toc-text">解码方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CharAssets-zip"><span class="toc-number">4.</span> <span class="toc-text">CharAssets.zip</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%8E%8B"><span class="toc-number">4.1.</span> <span class="toc-text">解压</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90bson"><span class="toc-number">4.2.</span> <span class="toc-text">分析bson</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%8C%85"><span class="toc-number">4.3.</span> <span class="toc-text">解包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8python%E8%84%9A%E6%9C%AC%E8%87%AA%E5%8A%A8%E5%8C%96"><span class="toc-number">4.4.</span> <span class="toc-text">使用python脚本自动化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E5%8A%A0%E5%AE%89%E5%85%A8%E9%AB%98%E6%95%88"><span class="toc-number">4.5.</span> <span class="toc-text">更加安全高效</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E6%9D%BF"><span class="toc-number">5.</span> <span class="toc-text">模板</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#BattleCharacter"><span class="toc-number">5.1.</span> <span class="toc-text">BattleCharacter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%AE%E5%80%BC%E5%8F%82%E6%95%B0"><span class="toc-number">5.2.</span> <span class="toc-text">键值参数</span></a></li></ol></li></ol></div></div><footer><nobr><span class="text-title">🧑🏻‍💻</span><span class="text-content">小狼  Syaoran</span></nobr><br><nobr><span class="text-title">🌐</span><span class="text-content">2020-Present</span></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr>by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {code.findCode();
+document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>

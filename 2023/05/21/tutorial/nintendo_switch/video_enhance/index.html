@@ -1,0 +1,105 @@
+<!DOCTYPE html><html lang="en" theme-mode="auto"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Switch串流视频超分补帧教程 | Blog Here</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy","copyFinish":"copied","expand":"expand"}}</script><script src="//unpkg.com/mermaid@9.2.2/dist/mermaid.min.js"></script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/brands.min.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/fontawesome.min.css"><link rel="stylesheet" href="/css/arknights.css"><script>if (window.localStorage.getItem('theme-mode') === 'light' || window.matchMedia('(prefers-color-scheme:light)').matches) document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark' || window.matchMedia('(prefers-color-scheme:dark)').matches) document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+@font-face {
+ font-family: 'Font Awesome 6 Brands';
+ src: local('Font Awesome 6 Brands'), url('/lib/fontawesome/fa-brands.woff2') format('woff2');
+}
+@font-face {
+ font-family: 'Font Awesome 6 Free';
+ src: local('Font Awesome 6 Free'), url('/lib/fontawesome/fa-regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+  --light-background: url('/img/bk.jpg');
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><nav><div class="navBtn hide"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">About</span></a></li><li class="navItem"><a class="navBlock" href="/music/"><span class="navItemTitle">Music</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>Switch串流视频超分补帧教程</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2023-05-20T16:00:00.000Z" id="date"> 2023-05-21</time></div></span><br><span>Last Update: <div class="control"><time datetime="2023-06-13T16:00:00.000Z" id="updated"> 2023-06-14</time></div></span></div></div><hr><div id="post-content"><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>采集卡将Switch画面串流到PC,使用mpv播放器搭配各项npy滤镜文件</p>
+<p>通过调用独立显卡的高算力，实现视频流的超分补帧</p>
+<h2 id="设备需求"><a href="#设备需求" class="headerlink" title="设备需求"></a>设备需求</h2><ul>
+<li><code>NintendoSwitch</code> 支持底座模式</li>
+<li>视频采集卡</li>
+<li><code>Winodows</code>系统 PC </li>
+<li>独立显卡(补帧推荐<code>Nvidia RTX3060</code>以上)</li>
+</ul>
+<h2 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h2><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Fc411A7iU/">视频演示: 【首发教程】正版Switch超分补帧，4K 60fps只用check it一下!🤘</a></p>
+<p><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/12Kqi2C9C5bM0UqfwtNE3sw?pwd=3045">整合网盘地址</a></p>
+<h3 id="演示设备"><a href="#演示设备" class="headerlink" title="演示设备"></a>演示设备</h3><p>采集卡: 海备思THB03 (MS2131)</p>
+<p>显卡: 移动端 RTX3070</p>
+<h3 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h3><p>此处待后期有时间补充详细图文</p>
+<ol>
+<li>查看采集卡设备信息<br>“.\mpvnet\ffmpeg\bin\ffmpeg.exe -list_devices true -f dshow -i dummy”</li>
+<li>修改run.bat文件中采集卡设备信息</li>
+<li>(可选)添加缓存参数，用法”–demuxer-lavf-o&#x3D;rtbufsize&#x3D;2147480000,thread_queue_size&#x3D;1024,video_size&#x3D;1920x1080,framerate&#x3D;24”</li>
+<li>(可选)低配用户修改输入源分辨率和帧率，例如输入为720p，帧率20&#x2F;24, 用法”–demuxer-lavf-o&#x3D;rtbufsize&#x3D;video_size&#x3D;1280x720,framerate&#x3D;20”</li>
+<li>双击运行，右键打开菜单选择超分补帧文件</li>
+<li>(可选)N卡用户在MPV设置中，视情况分别修改配置为”gpu-next”,”winvk”,”nvdec-copy”</li>
+<li>(可选)高配显卡(推荐40系列)用户可选下载，对应补帧高配选项。网盘&#x2F;可选文件&#x2F;mpv-lazy-20230513-Nvidia.7z，下载解压后覆盖到整合包里<br>如有相关问题，可以评论区留言或私信UP</li>
+</ol>
+<h3 id="相关命令"><a href="#相关命令" class="headerlink" title="相关命令"></a>相关命令</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">ffmpeg/bin/ffmpeg.exe -list_devices true -f dshow -i dummy<br><br>start mpvnet/mpvnet.exe av://dshow:video=&quot;capturecardname&quot; --profile=low-latency --untimed <br><br>start ffmpeg/bin/ffplay -f dshow -i audio=&quot;audioname&quot; -audio_buffer_size 4<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="指令参数"><a href="#指令参数" class="headerlink" title="指令参数"></a>指令参数</h3><p>此处补充参数说明</p>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p>Q：显卡和采集卡要求？延迟如何？</p>
+<p>A：显卡至少独显，推荐N卡中高端(近几年60以上)，支持A卡，但部分超分文件存在兼容性问题；采集卡能连上电脑的就行，推荐1080p30fps的</p>
+<p>中高端显卡无明显延迟，音画同步</p>
+<p>延迟&#x3D;采集卡延迟+超分延迟</p>
+<p>超分延迟↑&#x3D;显卡性能↓+超分配置文件↑</p>
+<p>Q: 如何查看超分补帧状态信息</p>
+<p>A: &#96;键(Esc下面那个键)可以打开控制台；</p>
+<p>i键可以查看视频信息</p>
+<p>Q.”xxx”不是内部或外部命令，也不是可运行的程序</p>
+<p>A 1.检查文件夹名称是否和视频中一样重命名了；2.老版本windows系统路径问题，将斜杠改为反斜杠，例如”ffmpeg&#x2F;bin&#x2F;ffmpeg.exe”改为“.\ffmpeg\bin\ffmpeg.exe”</p>
+<p>Q: 找不到接受实际参数“–profile&#x3D;low-latency”的位置形式参数</p>
+<p>A: 在文件夹地址栏使用CMD命令行打开，不要用右键菜单自带的powershell</p>
+<p>Q: 音频存在延迟，声音比画面慢</p>
+<p>A: “-audio_buffer_size 4” 把这个参数的值调高，例如从4调到100</p>
+<p>Q: 视频播放器闪退，打开闪了一下就关了</p>
+<p>A: 检查下采集卡连接情况，或者是否被其他软件在使用（如OBS,Potplayer)</p>
+<p>Q: 补帧效果不明显</p>
+<p>A: 自带的几个配置文件默认是给动漫使用的，源帧率限制在了32帧，目前还在找比较合适的配置文件，后面会放到整合包的里 </p>
+<h2 id="更新说明"><a href="#更新说明" class="headerlink" title="更新说明"></a>更新说明</h2><h3 id="整合v1-3-230620"><a href="#整合v1-3-230620" class="headerlink" title="整合v1.3_230620"></a>整合v1.3_230620</h3><ol>
+<li>新增多个预设组，为王国之泪专门测试了几个好用的组合</li>
+<li>更新了自动保存配置的插件，下次打开自动使用上次运行配置</li>
+<li>新增着色器滤镜RA_Reduce</li>
+<li>修改超分补帧配置快捷键</li>
+</ol>
+<h3 id="整合v1-2-230617"><a href="#整合v1-2-230617" class="headerlink" title="整合v1.2_230617"></a>整合v1.2_230617</h3><p>v1.2更新内容(归档)</p>
+<ol>
+<li><p>更新超分补帧配置文件,并增量添加到预设中,方便快捷启用<br>滤镜路径：\mpvnet\portable_config\vs<br>着色器路径: \mpvnet\portable_config\shaders<br>更新来源 hooke007&#x2F;MPV_lazy</p>
+</li>
+<li><p>MPV.net程序UI替换为 diana7127&#x2F;mpv.net-DW</p>
+</li>
+<li><p>将ffmpeg移动到mpvnet内</p>
+</li>
+<li><p>优化了启动命令，并对启动文件修改<br>视频：支持限制分辨率和帧率；可自行添加缓存参数<br>音频：修改缓存大小，降低延迟；静默显示</p>
+</li>
+</ol>
+<h2 id="参考-x2F-来源"><a href="#参考-x2F-来源" class="headerlink" title="参考&#x2F;来源"></a>参考&#x2F;来源</h2><h3 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h3><p><a target="_blank" rel="noopener" href="https://github.com/BtbN/FFmpeg-Builds/releases">BtbN&#x2F;FFmpeg</a>: 音视频全功能处理工具<br><a target="_blank" rel="noopener" href="https://github.com/hooke007/MPV_lazy">hooke007&#x2F;MPV_lazy</a>: mpv_lazy懒人整合包<br><a target="_blank" rel="noopener" href="https://github.com/diana7127/mpv.net-DW">diana7127&#x2F;mpv.net-DW</a>: mpv.net定制版</p>
+<p>鸣谢hooke007整合的懒人包，diana7127的定制UI程序</p>
+<h3 id="资料参考"><a href="#资料参考" class="headerlink" title="资料参考"></a>资料参考</h3><p><a target="_blank" rel="noopener" href="https://hooke007.github.io/unofficial/mpv_shaders.html">https://hooke007.github.io/unofficial/mpv_shaders.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.kumo.dev/2022/05/17/nintendo_switch_4k">https://blog.kumo.dev/2022/05/17/nintendo_switch_4k</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.reddit.com/r/ffmpeg/comments/u741n7/remove_delay_on_ffplay_for_capture_device/">https://www.reddit.com/r/ffmpeg/comments/u741n7/remove_delay_on_ffplay_for_capture_device/</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/mpv-player/mpv/issues/7778">https://github.com/mpv-player/mpv/issues/7778</a> </p>
+<h2 id="申明"><a href="#申明" class="headerlink" title="申明"></a>申明</h2><p>所有实现基于以上软件、程序和代码，版权参考开源仓库许可证<br>整合及配置花费大量时间精力,如需转载、分享或演示使用等,请注明作者和出处,望理解和支持</p><div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2023/06/11/tutorial/diy/cu_router/">← Next 实用教程-联通光猫桥接路由</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2022/10/13/tutorial/python_spider/python_spider02/">Python爬虫技巧-异步请求装饰器 Prev →</a></div></div></div></div><div class="bottom-btn"><div><a id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧</a><a id="to-index" href="#toc-div" title="To Catalog">≡</a><a id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="img/index/logo.png" alt="Logo"></a><h1 id="Dr"><a href="/">Dr.Syaoran</a></h1><div id="description"><p>科技改变生活<br>Tech changes lives.</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/Syaoran33"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/276567009"><i class="fab fa-bilibili" alt="Bilibili"></i></a><a class="social" target="_blank" rel="noopener" href="https://www.reddit.com/user/Shaoran33"><i class="fab fa-reddit" alt="Reddit"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E5%A4%87%E9%9C%80%E6%B1%82"><span class="toc-number">2.</span> <span class="toc-text">设备需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E"><span class="toc-number">3.</span> <span class="toc-text">使用说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%94%E7%A4%BA%E8%AE%BE%E5%A4%87"><span class="toc-number">3.1.</span> <span class="toc-text">演示设备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E6%AD%A5%E9%AA%A4"><span class="toc-number">3.2.</span> <span class="toc-text">操作步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4"><span class="toc-number">3.3.</span> <span class="toc-text">相关命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4%E5%8F%82%E6%95%B0"><span class="toc-number">3.4.</span> <span class="toc-text">指令参数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">常见问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E8%AF%B4%E6%98%8E"><span class="toc-number">5.</span> <span class="toc-text">更新说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B4%E5%90%88v1-3-230620"><span class="toc-number">5.1.</span> <span class="toc-text">整合v1.3_230620</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B4%E5%90%88v1-2-230617"><span class="toc-number">5.2.</span> <span class="toc-text">整合v1.2_230617</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83-x2F-%E6%9D%A5%E6%BA%90"><span class="toc-number">6.</span> <span class="toc-text">参考&#x2F;来源</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6"><span class="toc-number">6.1.</span> <span class="toc-text">软件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%84%E6%96%99%E5%8F%82%E8%80%83"><span class="toc-number">6.2.</span> <span class="toc-text">资料参考</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B3%E6%98%8E"><span class="toc-number">7.</span> <span class="toc-text">申明</span></a></li></ol></div></div><footer><nobr><span class="text-title">🧑🏻‍💻</span><span class="text-content">小狼  Syaoran</span></nobr><br><nobr><span class="text-title">🌐</span><span class="text-content">2020-Present</span></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr>by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {code.findCode();
+document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>

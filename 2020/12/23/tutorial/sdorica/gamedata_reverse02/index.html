@@ -1,0 +1,92 @@
+<!DOCTYPE html><html lang="en" theme-mode="auto"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>从零开始的手游解包教程-编码解码篇(二) | Blog Here</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy","copyFinish":"copied","expand":"expand"}}</script><script src="//unpkg.com/mermaid@9.2.2/dist/mermaid.min.js"></script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/brands.min.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/fontawesome.min.css"><link rel="stylesheet" href="/css/arknights.css"><script>if (window.localStorage.getItem('theme-mode') === 'light' || window.matchMedia('(prefers-color-scheme:light)').matches) document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark' || window.matchMedia('(prefers-color-scheme:dark)').matches) document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+@font-face {
+ font-family: 'Font Awesome 6 Brands';
+ src: local('Font Awesome 6 Brands'), url('/lib/fontawesome/fa-brands.woff2') format('woff2');
+}
+@font-face {
+ font-family: 'Font Awesome 6 Free';
+ src: local('Font Awesome 6 Free'), url('/lib/fontawesome/fa-regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+  --light-background: url('/img/bk.jpg');
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><nav><div class="navBtn hide"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">About</span></a></li><li class="navItem"><a class="navBlock" href="/music/"><span class="navItemTitle">Music</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>从零开始的手游解包教程-编码解码篇(二)</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2020-12-22T16:00:00.000Z" id="date"> 2020-12-23</time></div></span><br><span>Last Update: <div class="control"><time datetime="2021-03-09T16:00:00.000Z" id="updated"> 2021-03-10</time></div></span></div></div><hr><div id="post-content"><blockquote>
+<p>*<strong>申明：</strong></p>
+<p><strong>在此申明，仅作为非商业用途的学习交流和个人记录用途，请严格遵守游戏用户协定，勿将提取的游戏资源发布到任何第三方平台。</strong></p>
+<p><strong>否则将可能造成游戏公司切实的利益损失，与一些不必要的麻烦甚者需承担相应的法律责任</strong></p>
+<p><strong>本篇不授权并禁止任何目的的分享、转载和引用，望理解</strong></p>
+</blockquote>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>本篇主要介绍如何将<code>AssetStudio</code>导出的部分数据文件进行解码，将它从”乱码”格式转换成易于阅读的格式</p>
+<p>将从剧情中角色台词文本入手，介绍几种常见的数据类型和编码方式</p>
+<p>难度适中，无需系统的学习过计算机编程但需要你对Python语言有较基础的认知</p>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p><strong>PC电脑</strong>：</p>
+<p>推荐Win10</p>
+<p><strong>语言</strong>：</p>
+<p>Python3.7以上</p>
+<p>自行安装和配置环境变量</p>
+<p><strong>代码编辑器IDE</strong>:</p>
+<p>微软 VSCode (本篇推荐，具体安装方法网上有详细教学)</p>
+<p>当然记事本(硬核老哥)也行</p>
+<h2 id="数据格式及Unicode编码介绍"><a href="#数据格式及Unicode编码介绍" class="headerlink" title="数据格式及Unicode编码介绍"></a>数据格式及Unicode编码介绍</h2><h3 id="Json数据格式"><a href="#Json数据格式" class="headerlink" title="Json数据格式"></a>Json数据格式</h3><p>一种轻量级的数据交换格式，Js对象简谱，类似Python中的字典</p>
+<p>其特征是键值对，并且独立文件不可注释</p>
+<p>可以充当配置文件，可以作为简易数据库，也是最常见的Http数据传输类型</p>
+<p><strong>同时也是万象物语用于存储数据最常用的格式</strong></p>
+<p>形如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">&quot;Sdorica&quot; = &#123;<br>        &quot;键&quot;: &quot;值&quot;,<br>    	&quot;普吉&quot; : &quot;牛角面包&quot;,<br>        .....<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="Unicode编码"><a href="#Unicode编码" class="headerlink" title="Unicode编码"></a>Unicode编码</h3><p>学过计算的朋友都应该了解，俗称”统一码”。最常见的规则便是<code>utf-8</code></p>
+<p>基本上有中文的地方就会出现这种格式，将中文编码成计算机喜欢的<code>utf-8</code>格式也是节约内存的手段</p>
+<p>例如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">\u666e\u5409<br></code></pre></td></tr></table></figure>
+
+<p>就是”普吉“经过编码后的</p>
+<h2 id="实战使用"><a href="#实战使用" class="headerlink" title="实战使用"></a>实战使用</h2><h3 id="一、解包元数据"><a href="#一、解包元数据" class="headerlink" title="一、解包元数据"></a>一、解包元数据</h3><p>我们还是使用<code>AssetStudio</code>进行解包具体方法参考上篇</p>
+<p><img src="/img/gamedata_reverse02_001.png" alt="img"></p>
+<p>预览一下文件</p>
+<p><img src="/img/gamedata_reverse02_002.png" alt="img"></p>
+<p>导出一个作为示例，这里导出了<code>main_001_004_dialog_chinesesimplified</code></p>
+<p><img src="/img/gamedata_reverse02_003.png" alt="img"></p>
+<h3 id="二、编码预览"><a href="#二、编码预览" class="headerlink" title="二、编码预览"></a>二、编码预览</h3><p>我们用编辑器打开预览，复制一段Unicode去解码一下看看</p>
+<p><img src="/img/gamedata_reverse02_004.png" alt="img"></p>
+<p>这里我们使用了常用的在线解码网站<a target="_blank" rel="noopener" href="https://gchq.github.io/CyberChef/">CyberChef</a>进行解码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">\\u4e3a\\u4ec0\\u4e48\\u7a77\\u8ffd\\u4e0d\\u820d\\uff1f\<br></code></pre></td></tr></table></figure>
+
+<p>得到结果(多余的斜杠不影响，是因为需要对<code>&quot;\&quot;</code>等特殊字符转义</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">\为\什\么\穷\追\不\舍\？\<br></code></pre></td></tr></table></figure>
+
+<p><img src="/img/gamedata_reverse02_005.png" alt="img"></p>
+<h3 id="三、使用Python脚本转换"><a href="#三、使用Python脚本转换" class="headerlink" title="三、使用Python脚本转换"></a>三、使用Python脚本转换</h3><p>这里就直接贴出代码，就是对Json库的基本运用，这里就不过多讲解了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">#-*- coding: utf-8 -*-<br># Author: Syaoran<br># ClassName: Sdorica Dialogue Json Beautify<br><br>import json<br>import sys<br><br>file_path = sys.argv[1]<br><br>data = json.load(open(file_path,&#x27;r&#x27;,encoding=&#x27;utf-8&#x27;))<br>name = data.get(&#x27;m_Name&#x27;)<br>meta = data.get(&#x27;_serializedStateValues&#x27;)[0]<br>dialogue = json.loads(meta.replace(&#x27;:.&#x27;,&#x27;:0.&#x27;))<br><br>dialogue_ls = []<br>for item in dialogue[&#x27;$content&#x27;]:<br>    speaker = item.get(&#x27;SpeakerName&#x27;)<br>    text = item.get(&#x27;Text&#x27;)<br>    dialogue_ls.append(speaker+&#x27;\n&#x27;+text)<br><br><br><br>dst_path = name + &#x27;_beautify.txt&#x27;<br>with open(dst_path,&#x27;w&#x27;,encoding=&#x27;utf-8&#x27;) as f:<br>    f.write(name+&#x27;\n\n&#x27;)<br>    f.write(&#x27;\n\n&#x27;.join(dialogue_ls))<br>    f.close()<br></code></pre></td></tr></table></figure>
+
+<p>将代码复制粘贴保存成<code>Sdorica_DJB.py</code>，然后在文件地址栏输入cmd然后回车，进入命令行</p>
+<p><img src="/img/gamedata_reverse02_006.png" alt="img"></p>
+<p>紧接着输入 <code>python Sdorica_DJB.py</code> 然后将<code>main_001_004_dialog_chinesesimplified</code>文件拖入，然后回车即可</p>
+<p>或者直接用 <code>python Sdorica_DJB.py main_001_004_dialog_chinesesimplified.json</code>回车，也是可以的</p>
+<p><img src="/img/gamedata_reverse02_007.png" alt="img"></p>
+<p>成功得到了生成的文本文件，打开查看一下</p>
+<p><img src="/img/gamedata_reverse02_008.png" alt="img"></p>
+<p><img src="/img/gamedata_reverse02_009.png" alt="img"></p><div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2020/12/24/tutorial/sdorica/gamedata_reverse03/">← Next 从零开始的手游解包教程-小人模型篇(三)</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2020/12/22/tutorial/sdorica/gamedata_reverse01/">从零开始的手游解包教程-基础入门篇(一) Prev →</a></div></div></div></div><div class="bottom-btn"><div><a id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧</a><a id="to-index" href="#toc-div" title="To Catalog">≡</a><a id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="img/index/logo.png" alt="Logo"></a><h1 id="Dr"><a href="/">Dr.Syaoran</a></h1><div id="description"><p>科技改变生活<br>Tech changes lives.</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/Syaoran33"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/276567009"><i class="fab fa-bilibili" alt="Bilibili"></i></a><a class="social" target="_blank" rel="noopener" href="https://www.reddit.com/user/Shaoran33"><i class="fab fa-reddit" alt="Reddit"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">2.</span> <span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F%E5%8F%8AUnicode%E7%BC%96%E7%A0%81%E4%BB%8B%E7%BB%8D"><span class="toc-number">3.</span> <span class="toc-text">数据格式及Unicode编码介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Json%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F"><span class="toc-number">3.1.</span> <span class="toc-text">Json数据格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Unicode%E7%BC%96%E7%A0%81"><span class="toc-number">3.2.</span> <span class="toc-text">Unicode编码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E6%88%98%E4%BD%BF%E7%94%A8"><span class="toc-number">4.</span> <span class="toc-text">实战使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E8%A7%A3%E5%8C%85%E5%85%83%E6%95%B0%E6%8D%AE"><span class="toc-number">4.1.</span> <span class="toc-text">一、解包元数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%BC%96%E7%A0%81%E9%A2%84%E8%A7%88"><span class="toc-number">4.2.</span> <span class="toc-text">二、编码预览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E4%BD%BF%E7%94%A8Python%E8%84%9A%E6%9C%AC%E8%BD%AC%E6%8D%A2"><span class="toc-number">4.3.</span> <span class="toc-text">三、使用Python脚本转换</span></a></li></ol></li></ol></div></div><footer><nobr><span class="text-title">🧑🏻‍💻</span><span class="text-content">小狼  Syaoran</span></nobr><br><nobr><span class="text-title">🌐</span><span class="text-content">2020-Present</span></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr>by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {code.findCode();
+document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>

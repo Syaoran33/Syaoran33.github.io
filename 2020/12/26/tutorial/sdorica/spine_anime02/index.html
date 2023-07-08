@@ -1,0 +1,113 @@
+<!DOCTYPE html><html lang="en" theme-mode="auto"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Spine动画模型教程-二创教程(二) | Blog Here</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy","copyFinish":"copied","expand":"expand"}}</script><script src="//unpkg.com/mermaid@9.2.2/dist/mermaid.min.js"></script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/brands.min.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/fontawesome.min.css"><link rel="stylesheet" href="/css/arknights.css"><script>if (window.localStorage.getItem('theme-mode') === 'light' || window.matchMedia('(prefers-color-scheme:light)').matches) document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark' || window.matchMedia('(prefers-color-scheme:dark)').matches) document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+@font-face {
+ font-family: 'Font Awesome 6 Brands';
+ src: local('Font Awesome 6 Brands'), url('/lib/fontawesome/fa-brands.woff2') format('woff2');
+}
+@font-face {
+ font-family: 'Font Awesome 6 Free';
+ src: local('Font Awesome 6 Free'), url('/lib/fontawesome/fa-regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+  --light-background: url('/img/bk.jpg');
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><nav><div class="navBtn hide"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">About</span></a></li><li class="navItem"><a class="navBlock" href="/music/"><span class="navItemTitle">Music</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>Spine动画模型教程-二创教程(二)</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2020-12-25T16:00:00.000Z" id="date"> 2020-12-26</time></div></span><br><span>Last Update: <div class="control"><time datetime="2021-03-10T16:00:00.000Z" id="updated"> 2021-03-11</time></div></span></div></div><hr><div id="post-content"><blockquote>
+<p>*<strong>申明：</strong></p>
+<p><strong>在此申明，仅作为非商业用途的学习交流和个人记录用途，请严格遵守游戏用户协定，勿将提取的游戏资源发布到任何第三方平台。</strong></p>
+<p><strong>否则将可能造成游戏公司切实的利益损失，与一些不必要的麻烦甚者需承担相应的法律责任</strong></p>
+<p><strong>本篇不授权并禁止任何目的的分享、转载和引用，望理解</strong></p>
+</blockquote>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>前面已经详细介绍了模型动画的工具，这次带来的教程是对模型动画的二次创作。</p>
+<p>对游戏角色的部分部位进行修改或添加新部件，以实现一个新模型的创作</p>
+<p>同时希望你看完这篇文章也能加入我们来创造更多有意思的作品</p>
+<p>举个生动直观的例子如下，看完这篇你也能自行实现这种效果</p>
+<p><img src="/img/spine_anime02_001.gif" alt="img"></p>
+<p>面具小德 (By <a target="_blank" rel="noopener" href="https://space.bilibili.com/319482625">龙龍龖龘</a>)</p>
+<h2 id="纹理图处理"><a href="#纹理图处理" class="headerlink" title="纹理图处理"></a>纹理图处理</h2><p>就像上面对面具小德的处理一样，我们需要将面具换成海德脸</p>
+<p>那么就需要将部件取下来单独进行处理，然后再完整的打包成一张纹理贴图</p>
+<p>这里我们可以使用一些工具</p>
+<h3 id="使用Spine"><a href="#使用Spine" class="headerlink" title="使用Spine"></a>使用Spine</h3><p>打开任意版本的Spine，然后选择纹理解包器</p>
+<p><img src="/img/spine_anime02_002.png" alt="img"></p>
+<p>选择你要处理角色的<code>.atlas</code>图集配置文件,请确保有同名的Png角色贴图在同一目录下</p>
+<p>例如：<code>h0164s5.atlas.txt/h0164s5.png</code></p>
+<p><img src="/img/spine_anime02_003.png" alt="img"></p>
+<p>查看解包获得到的拆分图集，我们将<code>mask.png</code>面具拿去P图</p>
+<p><img src="/img/spine_anime02_004.png" alt="img"></p>
+<p>此处跳过P图过程，将海德面具替换原来的<code>mask.png</code></p>
+<p><img src="/img/spine_anime02_005.png" alt="img"></p>
+<p>再次打开Spine,找到纹理打包器</p>
+<p><img src="/img/spine_anime02_006.png" alt="img"></p>
+<p>选定刚才的拆分图的文件夹</p>
+<p><img src="/img/spine_anime02_007.png" alt="img"></p>
+<p>Spine为我们重新打包了画框的两个文件，我们把Sdorica_SFT工具生成的文件也复制到这个目录</p>
+<p><img src="/img/spine_anime02_008.png" alt="img"></p>
+<p>我们双击使用<code>SkeletonViewer</code>查看模型</p>
+<p><img src="/img/spine_anime02_009.png" alt="img"></p>
+<p>值得注意的一点是，我们使用这个方法进行部位修改，可以<strong>无需对图片尺寸修改</strong>。</p>
+<p>因为是重新打包，所以不需要将图片尺寸修改到和原来一样，但是图像的<strong>相对位置要正确</strong></p>
+<h3 id="使用Python脚本"><a href="#使用Python脚本" class="headerlink" title="使用Python脚本"></a>使用Python脚本</h3><p><a target="_blank" rel="noopener" href="https://gitee.com/sdorica/spine_atlas_chef">码仓工具代码</a></p>
+<p>按照使用说明操作，可以代替Spine的解包&#x2F;打包功能</p>
+<p>要注意，因为是对原有图集进行打包，而非重新自建打包</p>
+<p>所以你需要在打包之前使用脚本的功能进行图片尺寸的修正</p>
+<h2 id="导出动图"><a href="#导出动图" class="headerlink" title="导出动图"></a>导出动图</h2><h3 id="Spine"><a href="#Spine" class="headerlink" title="Spine"></a>Spine</h3><p>使用Spine官方提供的导出支持</p>
+<p><img src="/img/spine_anime02_012.png" alt="img"></p>
+<p>你可以选择直接导出gif，也可以选择导出序列帧图</p>
+<p>帧数一般选择25</p>
+<p><img src="/img/spine_anime02_013.png" alt="img"></p>
+<h3 id="naganeko-github-io"><a href="#naganeko-github-io" class="headerlink" title="naganeko.github.io"></a>naganeko.github.io</h3><p><a target="_blank" rel="noopener" href="https://naganeko.github.io/">官方主页</a> 需要代理</p>
+<p>小人模型在线工具</p>
+<p><strong>功能强大</strong></p>
+<ul>
+<li>可以预览模型动画(.JSON)</li>
+<li>生成序列帧图并打包</li>
+<li>生成动态图GIF&#x2F;APNG</li>
+<li>向模型额外添加装饰部件</li>
+</ul>
+<p>后面会专门写一篇适用于万象物语文章介绍详细功能</p>
+<h3 id="SpineViewerWPF"><a href="#SpineViewerWPF" class="headerlink" title="SpineViewerWPF"></a>SpineViewerWPF</h3><p><a target="_blank" rel="noopener" href="https://github.com/kiletw/SpineViewerWPF">项目地址</a></p>
+<p>使用的是<code>spine-csharp</code>运行库编写</p>
+<p><img src="/img/spine_anime02_010.png" alt="img"></p>
+<p>经过Issue后，作者大佬添加了万象的对应版本可以下载使用</p>
+<p><img src="/img/spine_anime02_014.png" alt="img"></p>
+<h4 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h4><h5 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h5><p>将Assets Studio导出的文件重名为以下后缀的文件：<br>.skel<br>.atlas<br>.png</p>
+<h5 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h5><p>File -&gt; Open Spine -&gt; 选择文件路径 -&gt; Spine Version 3.2.xx -&gt; open</p>
+<h5 id="选择动作"><a href="#选择动作" class="headerlink" title="选择动作"></a>选择动作</h5><p>左侧栏-&gt; Attributes -&gt; Anime -&gt; 勾选IsLoop查看</p>
+<h5 id="导出PNG"><a href="#导出PNG" class="headerlink" title="导出PNG"></a>导出PNG</h5><p>等待想要的帧出现后，点击右上角暂停。然后再点击旁边的小相机<br>选择需要导出的目标路径</p>
+<h5 id="导出GIF"><a href="#导出GIF" class="headerlink" title="导出GIF"></a>导出GIF</h5><p>点击右上角录像机，等待一会，会弹出选择目标路径</p>
+<h5 id="万象默认选项"><a href="#万象默认选项" class="headerlink" title="万象默认选项"></a>万象默认选项</h5><p>Spine version: 3.2.xx</p>
+<h5 id="程序崩溃"><a href="#程序崩溃" class="headerlink" title="程序崩溃"></a>程序崩溃</h5><p>可能会造成崩溃的操作</p>
+<ul>
+<li>选择错误的版本</li>
+<li>导出动画</li>
+</ul>
+<h3 id="SkeletonExporter"><a href="#SkeletonExporter" class="headerlink" title="SkeletonExporter"></a>SkeletonExporter</h3><p><a target="_blank" rel="noopener" href="https://github.com/ssz66666/spine-skeleton-exporter">项目地址</a> 在release里下载jar包</p>
+<p>使用方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">java -jar skeletonexporter.jar -i [json配置文件] -d [输出文件夹] --ffmpeg [可执行文件地址(.exe)]<br></code></pre></td></tr></table></figure>
+
+<p>根据json文件将模型动画，导出为<code>.mp4</code>和<code>.png</code>(单帧)</p>
+<p><strong>不推荐</strong>使用，参数添加比较复杂，需要ffmpeg</p>
+<p>对万象角色导出的效果一般，角色有描边，剪裁不均，视频是灰底</p>
+<p><img src="/img/spine_anime02_011.png" alt="img"></p><div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2020/12/27/tutorial/sdorica/spine_anime03/">← Next Spine动画模型教程-Chibi在线工具使用(三)</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2020/12/25/tutorial/sdorica/spine_anime01/">Spine动画模型教程-工具详解(一) Prev →</a></div></div></div></div><div class="bottom-btn"><div><a id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧</a><a id="to-index" href="#toc-div" title="To Catalog">≡</a><a id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="img/index/logo.png" alt="Logo"></a><h1 id="Dr"><a href="/">Dr.Syaoran</a></h1><div id="description"><p>科技改变生活<br>Tech changes lives.</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/Syaoran33"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/276567009"><i class="fab fa-bilibili" alt="Bilibili"></i></a><a class="social" target="_blank" rel="noopener" href="https://www.reddit.com/user/Shaoran33"><i class="fab fa-reddit" alt="Reddit"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%B9%E7%90%86%E5%9B%BE%E5%A4%84%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">纹理图处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Spine"><span class="toc-number">2.1.</span> <span class="toc-text">使用Spine</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Python%E8%84%9A%E6%9C%AC"><span class="toc-number">2.2.</span> <span class="toc-text">使用Python脚本</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BC%E5%87%BA%E5%8A%A8%E5%9B%BE"><span class="toc-number">3.</span> <span class="toc-text">导出动图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Spine"><span class="toc-number">3.1.</span> <span class="toc-text">Spine</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#naganeko-github-io"><span class="toc-number">3.2.</span> <span class="toc-text">naganeko.github.io</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SpineViewerWPF"><span class="toc-number">3.3.</span> <span class="toc-text">SpineViewerWPF</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E"><span class="toc-number">3.3.1.</span> <span class="toc-text">使用说明</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%87%86%E5%A4%87"><span class="toc-number">3.3.1.1.</span> <span class="toc-text">准备</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5"><span class="toc-number">3.3.1.2.</span> <span class="toc-text">导入</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E5%8A%A8%E4%BD%9C"><span class="toc-number">3.3.1.3.</span> <span class="toc-text">选择动作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AF%BC%E5%87%BAPNG"><span class="toc-number">3.3.1.4.</span> <span class="toc-text">导出PNG</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AF%BC%E5%87%BAGIF"><span class="toc-number">3.3.1.5.</span> <span class="toc-text">导出GIF</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%87%E8%B1%A1%E9%BB%98%E8%AE%A4%E9%80%89%E9%A1%B9"><span class="toc-number">3.3.1.6.</span> <span class="toc-text">万象默认选项</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E5%B4%A9%E6%BA%83"><span class="toc-number">3.3.1.7.</span> <span class="toc-text">程序崩溃</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SkeletonExporter"><span class="toc-number">3.4.</span> <span class="toc-text">SkeletonExporter</span></a></li></ol></li></ol></div></div><footer><nobr><span class="text-title">🧑🏻‍💻</span><span class="text-content">小狼  Syaoran</span></nobr><br><nobr><span class="text-title">🌐</span><span class="text-content">2020-Present</span></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr>by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {code.findCode();
+document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>

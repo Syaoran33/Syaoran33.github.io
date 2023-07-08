@@ -1,0 +1,147 @@
+<!DOCTYPE html><html lang="en" theme-mode="auto"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>从零开始的手游解包教程-基础入门篇(一) | Blog Here</title><link rel="icon" type="image/x-icon" href="/favicon.ico"><script>var config = {"root":"/","search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy","copyFinish":"copied","expand":"expand"}}</script><script src="//unpkg.com/mermaid@9.2.2/dist/mermaid.min.js"></script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/brands.min.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/fontawesome.min.css"><link rel="stylesheet" href="/css/arknights.css"><script>if (window.localStorage.getItem('theme-mode') === 'light' || window.matchMedia('(prefers-color-scheme:light)').matches) document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark' || window.matchMedia('(prefers-color-scheme:dark)').matches) document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+@font-face {
+ font-family: 'Font Awesome 6 Brands';
+ src: local('Font Awesome 6 Brands'), url('/lib/fontawesome/fa-brands.woff2') format('woff2');
+}
+@font-face {
+ font-family: 'Font Awesome 6 Free';
+ src: local('Font Awesome 6 Free'), url('/lib/fontawesome/fa-regular.woff2') format('woff2');
+}</style><style>:root {
+  --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+  --light-background: url('/img/bk.jpg');
+}</style><meta name="generator" content="Hexo 6.3.0"></head><body><div class="loading" style="opacity: 0"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><nav><div class="navBtn hide"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">About</span></a></li><li class="navItem"><a class="navBlock" href="/music/"><span class="navItemTitle">Music</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>从零开始的手游解包教程-基础入门篇(一)</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2020-12-21T16:00:00.000Z" id="date"> 2020-12-22</time></div></span><br><span>Last Update: <div class="control"><time datetime="2021-03-09T16:00:00.000Z" id="updated"> 2021-03-10</time></div></span></div></div><hr><div id="post-content"><blockquote>
+<p>*<strong>申明：</strong></p>
+<p><strong>在此申明，仅作为非商业用途的学习交流和个人记录用途，请严格遵守游戏用户协定，勿将提取的游戏资源发布到任何第三方平台。</strong></p>
+<p><strong>否则将可能造成游戏公司切实的利益损失，与一些不必要的麻烦甚者需承担相应的法律责任</strong></p>
+<p><strong>本篇不授权并禁止任何目的的分享、转载和引用，望理解</strong></p>
+</blockquote>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>从零开始的拆包教程，主要介绍如何从游戏资源包(.ab文件)中提取想要的信息。</p>
+<p>例如：立绘，角色头像，剧情文本</p>
+<p>本篇将从较为简单的立绘图片入手，提供保姆级别的教程。</p>
+<p>上手难度几乎没有，据小狼说连普吉都能学会</p>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p><strong>PC电脑 （推荐Win10)</strong></p>
+<p><strong>游戏资源包</strong></p>
+<p>文件路径(安卓)：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs path">Android/data/com.ilongyuan.sdorica.longyuan/files/AssetBundles/<br></code></pre></td></tr></table></figure>
+
+<p>将文件夹用解压工具打包传输至电脑</p>
+<p>解包软件：AssetStudio</p>
+<h2 id="操作流程"><a href="#操作流程" class="headerlink" title="操作流程"></a>操作流程</h2><h3 id="一、准备工作"><a href="#一、准备工作" class="headerlink" title="一、准备工作"></a>一、准备工作</h3><p>不过多赘述了，没有操作难度</p>
+<p>确保你已经安装好了上述的软件，并且将资源包解压到你想要的工作目录</p>
+<h3 id="二、熟悉软件"><a href="#二、熟悉软件" class="headerlink" title="二、熟悉软件"></a>二、熟悉软件</h3><h4 id="解压后目录"><a href="#解压后目录" class="headerlink" title="解压后目录"></a>解压后目录</h4><p>找到<code>AssetStudioGUI.exe</code></p>
+<p><img src="/img/gamedata_reverse01_001.png" alt="img"></p>
+<h4 id="双击打开软件"><a href="#双击打开软件" class="headerlink" title="双击打开软件"></a>双击打开软件</h4><p>软件由C语言编写，官方版暂无中文支持。</p>
+<p>不过对于万象物语我们不需要任何配置，直接使用默认的配置即可</p>
+<p><img src="/img/gamedata_reverse01_002.png" alt="img"></p>
+<h4 id="导入资产文件夹"><a href="#导入资产文件夹" class="headerlink" title="导入资产文件夹"></a>导入资产文件夹</h4><p>左上角依次 File -&gt; Load folder -&gt; 选择界面</p>
+<p><img src="/img/gamedata_reverse01_003.png" alt="img"></p>
+<p>找到之前解压好的资产文件夹</p>
+<p><img src="/img/gamedata_reverse01_004.png" alt="img"></p>
+<p>1.使用右上角的搜索功能，输入角色的<a href="###%E8%B5%84%E4%BA%A7%E7%BC%96%E5%8F%B7">资产编号</a>，普吉：b0037</p>
+<p>2.单机标注<a href="###%E7%B1%BB%E5%9E%8B">类型</a>的文件夹</p>
+<p>3.然后点击按钮选择文件夹</p>
+<p>*<strong>注意: 请确保不要未选定就直接点击，这样会导入一整个资产文件夹，并导致软件卡死，电脑爆炸(并不)</strong></p>
+<p><img src="/img/gamedata_reverse01_005.png" alt="img"></p>
+<h3 id="三、使用软件预览"><a href="#三、使用软件预览" class="headerlink" title="三、使用软件预览"></a>三、使用软件预览</h3><p>出现下面这个读条和日志，就表示你已经成功导入了</p>
+<p><img src="/img/gamedata_reverse01_006.png" alt="img"></p>
+<p>点击子栏的 <code>Asset List</code>,会发现被封包的源文件</p>
+<p><img src="/img/gamedata_reverse01_007.png" alt="img"></p>
+<p>单击其中一个预览试试</p>
+<p>哇！鲜嫩的牛角面包出现了，快捕获它下锅！</p>
+<p><img src="/img/gamedata_reverse01_008.png" alt="img"></p>
+<h3 id="四、导出文件"><a href="#四、导出文件" class="headerlink" title="四、导出文件"></a>四、导出文件</h3><p><img src="/img/gamedata_reverse01_009.png" alt="img"></p>
+<p><strong>选择性导出</strong>：单选或者使用<code>Ctrl+鼠标左键</code>选择 -&gt; Export -&gt; Selected assets</p>
+<p><strong>导出全部</strong>：Export -&gt; All assets</p>
+<p>弹出目标文件夹的选择框，选择你想要存放的文件夹</p>
+<p>默认是源文件的文件夹，导出后会自动打开目标文件夹</p>
+<h3 id="五、查看成果"><a href="#五、查看成果" class="headerlink" title="五、查看成果"></a>五、查看成果</h3><p>至此我们已经成功地将普吉的所有立绘图片导出了(流口水</p>
+<p><img src="/img/gamedata_reverse01_010.png" alt="img"></p>
+<p><img src="/img/gamedata_reverse01_011.png" alt="img"></p>
+<h4 id="其他文件用法"><a href="#其他文件用法" class="headerlink" title="其他文件用法"></a>其他文件用法</h4><p>参考<a href="###%E8%B5%84%E4%BA%A7%E7%BC%96%E5%8F%B7">类型</a>，方法类似</p>
+<p>其他部分游戏也适用该教程，例如明日方舟，碧蓝航线，少女前线</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>总体来说没有什么难度，该软件上手简单，简洁实用</p>
+<p>美中不足的是不能批量导入，如果误将整个<code>AssetBundles</code>导入会使内存卡死</p>
+<p>并且导出自定的目标文件夹地址后，下次导入文件会是该位置，而非原资源文件夹，再次选择非常麻烦</p>
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><h3 id="资产编号"><a href="#资产编号" class="headerlink" title="资产编号"></a>资产编号</h3><p>资产编号(AssetsId)程序员为简便的区分角色名称使用了形如x0000的这种编号；</p>
+<p>琉：h0030 普吉：b0037</p>
+<p>这个后续会专门出文章介绍，这里你可以先自己尝试一下</p>
+<h3 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h3><p>介绍几个常用的类型</p>
+<table>
+<thead>
+<tr>
+<th>特征名称</th>
+<th>简介</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>character_image</td>
+<td>魂册图片</td>
+<td>简单,可预览</td>
+</tr>
+<tr>
+<td>character_largeimage</td>
+<td>角色立绘</td>
+<td>简单,可预览</td>
+</tr>
+<tr>
+<td>audioclip_sfx</td>
+<td>角色语音音效</td>
+<td>简单,可预览</td>
+</tr>
+<tr>
+<td>cutscene_char</td>
+<td>角色故事台词</td>
+<td>中等，需要编码处理</td>
+</tr>
+<tr>
+<td>character_model</td>
+<td>角色配置文件</td>
+<td>中等，需要编码处理, JSON格式，不易读</td>
+</tr>
+<tr>
+<td>character_spine_skeleton</td>
+<td>角色骨骼动画二进制文件</td>
+<td>较难，模型动画配置文件</td>
+</tr>
+<tr>
+<td>character_spine_texture</td>
+<td>角色骨骼动画图集</td>
+<td>较难，模型动画图集文件</td>
+</tr>
+<tr>
+<td>character_prefab</td>
+<td>角色模型预制文件</td>
+<td>较难，Unity生成的配置文件</td>
+</tr>
+<tr>
+<td>vfx_prefab</td>
+<td>特效预制文件</td>
+<td>较难，Unity生成的配置文件</td>
+</tr>
+</tbody></table><div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2020/12/23/tutorial/sdorica/gamedata_reverse02/">← Next 从零开始的手游解包教程-编码解码篇(二)</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2020/06/01/notes/hello-world/">Hello World Prev →</a></div></div></div></div><div class="bottom-btn"><div><a id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧</a><a id="to-index" href="#toc-div" title="To Catalog">≡</a><a id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="img/index/logo.png" alt="Logo"></a><h1 id="Dr"><a href="/">Dr.Syaoran</a></h1><div id="description"><p>科技改变生活<br>Tech changes lives.</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/Syaoran33"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/276567009"><i class="fab fa-bilibili" alt="Bilibili"></i></a><a class="social" target="_blank" rel="noopener" href="https://www.reddit.com/user/Shaoran33"><i class="fab fa-reddit" alt="Reddit"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">2.</span> <span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-number">3.</span> <span class="toc-text">操作流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">3.1.</span> <span class="toc-text">一、准备工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%86%9F%E6%82%89%E8%BD%AF%E4%BB%B6"><span class="toc-number">3.2.</span> <span class="toc-text">二、熟悉软件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E5%8E%8B%E5%90%8E%E7%9B%AE%E5%BD%95"><span class="toc-number">3.2.1.</span> <span class="toc-text">解压后目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8C%E5%87%BB%E6%89%93%E5%BC%80%E8%BD%AF%E4%BB%B6"><span class="toc-number">3.2.2.</span> <span class="toc-text">双击打开软件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5%E8%B5%84%E4%BA%A7%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-number">3.2.3.</span> <span class="toc-text">导入资产文件夹</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E4%BD%BF%E7%94%A8%E8%BD%AF%E4%BB%B6%E9%A2%84%E8%A7%88"><span class="toc-number">3.3.</span> <span class="toc-text">三、使用软件预览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%AF%BC%E5%87%BA%E6%96%87%E4%BB%B6"><span class="toc-number">3.4.</span> <span class="toc-text">四、导出文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%9F%A5%E7%9C%8B%E6%88%90%E6%9E%9C"><span class="toc-number">3.5.</span> <span class="toc-text">五、查看成果</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E6%96%87%E4%BB%B6%E7%94%A8%E6%B3%95"><span class="toc-number">3.5.1.</span> <span class="toc-text">其他文件用法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E9%87%8A"><span class="toc-number">5.</span> <span class="toc-text">注释</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%84%E4%BA%A7%E7%BC%96%E5%8F%B7"><span class="toc-number">5.1.</span> <span class="toc-text">资产编号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B"><span class="toc-number">5.2.</span> <span class="toc-text">类型</span></a></li></ol></li></ol></div></div><footer><nobr><span class="text-title">🧑🏻‍💻</span><span class="text-content">小狼  Syaoran</span></nobr><br><nobr><span class="text-title">🌐</span><span class="text-content">2020-Present</span></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr>by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas><script src="/js/search.js"></script><script src="/js/arknights.js"></script><script src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script src="/js/pjax.js"></script><script class="pjax-js">reset= () => {code.findCode();
+document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script></body></html>
