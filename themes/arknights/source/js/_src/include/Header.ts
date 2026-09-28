@@ -1,4 +1,4 @@
-/// <reference path="base.ts" />
+/// <reference path="common/base.ts" />
 
 'use strict'
 
@@ -10,9 +10,7 @@ class Header {
 
   private relabel = () => {
     let navs = this.header.querySelectorAll('.navItem'),
-      mayLen: number = 0,
-      may: Element = navs.item(0)
-    getElement('.navBtn').classList.add('hide')
+      mayLen = 0, may = navs.item(0)
     navs.forEach(item => {
       try { 
         let now = item as HTMLElement,
@@ -49,10 +47,9 @@ class Header {
   }
 
   public inHeader = (mouse: MouseEvent) => {
-    let item = mouse.target as HTMLElement
-    while (item !== this.header && item !== document.body)
-      item = getParent(item)
-    if (item !== this.header) {
+    let range = this.header.getBoundingClientRect()
+    if (mouse.clientX < range.x || mouse.clientY < range.y ||
+      mouse.clientX > range.right || mouse.clientY > range.bottom){
       this.close()
     }
   }
@@ -114,12 +111,8 @@ class Header {
     this.button.onclick = () => this.reverse(this.header)
     document.querySelectorAll('.navItemList').forEach((item) => {
       item = getParent(item)
-      if (item.classList.contains('navBlock')) {
-        item = getParent(item)
-      }
       item.addEventListener('click', (event) => {
-        if (getParent(event.target as Element) === item ||
-          getParent(event.target as Element, 2) === item) {
+        if (getParent(event.target as Element) === item) {
           this.reverse(item)
         }
       })

@@ -1,4 +1,4 @@
-window.addEventListener('DOMContentLoaded', () => {
+(() => {
   let fetched = false, fetching = false, waiting = false
   let datas
   const path = config.root + 'search.json'
@@ -246,8 +246,12 @@ window.addEventListener('DOMContentLoaded', () => {
       inputEventFunction()
     }
   })
+  let lastEvent = 0
   function StartSearch() {
     nav.classList.add('search')
+    nav.classList.add('search-moving')
+    clearTimeout(lastEvent)
+    lastEvent = setTimeout(() => nav.classList.remove('search-moving'), 600)
     header.closeAll()
     if (document.querySelector('.up')) {
       getElement('main').style.pointerEvents = 'none'
@@ -265,6 +269,9 @@ window.addEventListener('DOMContentLoaded', () => {
       return
     }
     nav.classList.remove('search')
+    nav.classList.add('search-moving')
+    clearTimeout(lastEvent)
+    lastEvent = setTimeout(() => nav.classList.remove('search-moving'), 600)
     onPopupClose()
     input.value = ''
     input.placeholder = blurHolder
@@ -312,4 +319,4 @@ window.addEventListener('DOMContentLoaded', () => {
       EscapeSearch()
     }
   })
-})
+})()

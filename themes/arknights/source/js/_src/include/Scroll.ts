@@ -1,4 +1,4 @@
-/// <reference path="base.ts" />
+/// <reference path="common/base.ts" />
 
 'use strict'
 
@@ -47,7 +47,7 @@ class Scroll {
     }
     const main = getElement('main').classList
     if (!document.querySelector('.expanded')) {
-      getElement('.navBtn').classList.add('hide')
+      getElement('.navBtn').classList.add('hide-btn')
     }
     main.remove('up')
     main.add('down')
@@ -65,11 +65,11 @@ class Scroll {
       return
     }
     if (!document.querySelector('#search-header')) {
-      getElement('.navBtn').classList.remove('hide')
+      getElement('.navBtn').classList.remove('hide-btn')
       return
     }
     const main = getElement('main').classList
-    getElement('.navBtn').classList.remove('hide')
+    getElement('.navBtn').classList.remove('hide-btn')
     main.remove('down')
     main.add('up')
     main.add('moving')
@@ -88,11 +88,11 @@ class Scroll {
           }
           if (!document.querySelector('.expanded')) {
             if (this.height - nowheight > 100) {
-              navBtn.classList.add('hide')
+              navBtn.classList.add('hide-btn')
               this.height = nowheight
             } else if (nowheight > this.height) {
               if (nowheight - this.height > 20) {
-                navBtn.classList.remove('hide')
+                navBtn.classList.remove('hide-btn')
               }
               this.height = nowheight
             }
@@ -112,6 +112,7 @@ class Scroll {
       this.height = 0
       this.visible = false
       this.totop = getElement('#to-top')
+      this.setListener()
     } catch (e) {}
   }
 
@@ -127,7 +128,7 @@ class Scroll {
       document.querySelector('.moving')) {
       return
     }
-    if (getElement('article').getBoundingClientRect().top >= 0) {
+    if (this.intop || getElement('article').getBoundingClientRect().top >= 0) {
       this.reallyUp = true
       if (event.changedTouches[0].screenY > this.touchY) {
         this.slideUp()
@@ -144,10 +145,46 @@ class Scroll {
     this.notMoveY = false
   }
 
+  private checkPos = () => {
+    if(getElement('article').getBoundingClientRect().top < 0 && this.intop) {
+        this.slideDown()
+    }
+  }
+
+  /**
+   * used for `supScroll` and `footNoteScroll` functions
+   */
+  private setListener = () => {
+    getElement('#post-content').addEventListener('click', this.supScroll)
+    getElement('#footnotes').addEventListener('click', this.footNoteScroll)
+  }
+
+  private supScroll = (event: Event) => {
+    const target = event.target as HTMLAnchorElement
+    const targetParent = getParent(target)
+
+    if (targetParent?.tagName === 'SUP') {
+      event.preventDefault()
+      const hash = target.href.split('/').pop()?.slice(1) || ''
+      document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth' })
+      return
+    }
+  }
+
+  private footNoteScroll = (event: Event) => {
+    const target = event.target as HTMLAnchorElement
+    if (target.tagName === 'A') {
+      event.preventDefault()
+      const hash = target.href.split('/').pop()?.slice(1) || ''
+      document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   constructor() {
     document.addEventListener('pjax:success', this.setHTML)
     document.addEventListener('touchstart', this.startTouch)
     document.addEventListener('touchmove', this.checkTouchMove)
+    document.addEventListener('touchend', this.checkPos)
     document.addEventListener('wheel', (event: WheelEvent) => {
       if (document.querySelector('.expanded') || window.innerWidth > 1024) {
         return

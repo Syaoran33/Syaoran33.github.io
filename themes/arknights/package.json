@@ -14,13 +14,13 @@
   "homepage": "https://github.com/Yue-plus/hexo-theme-arknights#readme",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc -p source/js"
+    "build": "tsc -p source/js/_src/tsconfig.json"
   },
   "keywords": [],
   "dependencies": {
     "hexo-browsersync": "^0.3.0",
-    "hexo-renderer-pug": "^2.0.0",
-    "hexo-renderer-stylus": "^2.1.0",
-    "hexo-server": "^2.0.0"
+    "hexo-renderer-pug": "^3.0.0",
+    "hexo-renderer-stylus": "^3.0.1",
+    "hexo-server": "^3.0.0"
   }
 }

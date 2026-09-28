@@ -5,6 +5,13 @@ page:
   readMore: READ MORE +
   noTag: empty
   noCategory: NO CATEGORY
+  sticky: TOP
+
+busuanzi:
+  loading: "loading..."
+  siteView: "Site View: "
+  siteVisitor: "Visitor: "
+  pageView: "Page View: "
 
 post:
   posted: "First Post: "
@@ -15,12 +22,15 @@ post:
   index: Catalog
   reward: reward
   noTitle: No Title
+  next: ← Next
+  prev: Prev →
+
+encrypt:
+  confirm: confirm
 
 code:
   codeInfo: $0 - $1 lines
   copy: copy
-  copyFinish: copied
-  expand: expand
 
 btn:
   index: To Catalog

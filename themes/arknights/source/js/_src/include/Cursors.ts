@@ -1,4 +1,4 @@
-/// <reference path="base.ts" />
+/// <reference path="common/base.ts" />
 
 'use strict'
 
@@ -13,9 +13,14 @@ class Cursor {
   private readonly outer: CSSStyleDeclaration
   private readonly effecter: CSSStyleDeclaration
   private readonly attention: string =
-    "a,input,button,textarea,\
-    .code-header,.gt-user-inner,.navBtnIcon,\
-    .wl-sort>li,.vicon,.clickable,#post-bg img,.lg-container img"
+    `a,input,button,textarea,
+    .navBtnIcon,
+    #post-content img,
+    .ex-header,
+    .gt-user-inner,
+    .wl-sort>li,
+    #valine .vicon,#valine .vat,
+    .lg-container img,.clickable`
 
   private set = (X: number = this.nowX, Y: number = this.nowY) => {
     this.outer.transform =
@@ -113,4 +118,4 @@ class Cursor {
     observer.observe(document, { childList: true, subtree: true })
   }
 }
-window.onload = () => new Cursor()
+new Cursor();

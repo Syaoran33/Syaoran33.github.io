@@ -1,7 +1,23 @@
+# OS
 .DS_Store
 Thumbs.db
+
+# Hexo
 db.json
 *.log
 node_modules/
 public/
 .deploy*/
+
+# Local
+.idea
+.vscode
+.reasonix
+.codegraph
+.obsidian
+*.swp
+*.swo
+
+# Environment
+.env
+.env.local

@@ -3,12 +3,12 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Blog Here
-subtitle: '博客'
-description: '科技改变生活<br>Tech changes lives.'
-keywords:
+title: Syaoran Lab
+subtitle: 'My Blog'
+description: '科技改变生活'
+keywords: Code, Reverse, Explore
 author: Dr.Syaoran
-language: en
+language: en-us
 timezone: ''
 
 # URL
@@ -40,7 +40,10 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
+marked:
+  prependRoot: true
+  postAsset: true
 relative_link: false
 future: true
 highlight:

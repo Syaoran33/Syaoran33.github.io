@@ -5,6 +5,13 @@ page:
   readMore: 阅读文章 +
   noTag: 无标签
   noCategory: 无分类
+  sticky: 置顶
+
+busuanzi:
+  loading: "加载中..."
+  siteView: "总访问量："
+  siteVisitor: "访客数："
+  pageView: "页面浏览: "
 
 post:
   posted: "文章发布时间: "
@@ -15,12 +22,15 @@ post:
   index: 目录
   reward: 打赏
   noTitle: 无标题
+  next: ← 下一篇
+  prev: 上一篇 →
+
+encrypt:
+  confirm: 确认
 
 code:
-  codeInfo: $0 - 共 $1 行
+  codeInfo: $0 - $1 行
   copy: 复制
-  copyFinish: 复制成功
-  expand: 展开
 
 btn:
   totop: 回到顶部

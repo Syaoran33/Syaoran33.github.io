@@ -26,13 +26,12 @@ menu:
 
 # 侧边栏
 aside:
-  in_left: true # 侧边栏在左 true / false
-  logo: img/index/logo.png #图片链接，建议 1:1 比例
+  in_left: false # 侧边栏在左 true / false
+  logo: /img/index/logo.png #图片链接，建议 1:1 比例
   dr: / # 侧边栏 Dr. 链接
   icp: # ICP 备案号，与版权声明相同，但会链接到 https://beian.miit.gov.cn/
   copyright: 
-    🧑🏻‍💻:  小狼  Syaoran 
-    🌐: 2020-Present
+    ©: 2020-Present
   # 版权声明、备案号等，可自定义键值，不想显示则留空
 
 # 社交链接
@@ -108,10 +107,25 @@ waline:
   enable: false
   server_url: #Server_Url
 
+# Artalk
+# 详见: https://artalk.js.org/
+artalk:
+  enable: false
+  server: # 你的 Artalk 服务地址
+  site_name: My Blog # 站点名称，用于区分多个站点（可选）
+
 # 图表支持
 mermaid:
   enable: true
-  version: "9.2.2"
+  version: "10.5.0"
+
+# 不蒜子站点统计
+# 详见: http://busuanzi.ibruce.info/
+busuanzi:
+  enable: false
+  sitePV: true
+  siteUV: true
+  pagePV: true
 
 # pjax 支持
 pjax:

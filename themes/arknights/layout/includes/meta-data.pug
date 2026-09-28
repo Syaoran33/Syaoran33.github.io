@@ -8,13 +8,33 @@ link(
   href=(url_for(theme.favicon.href ? theme.favicon.href : "favicon.ico"))
 )
 
+link(rel="preload", as="font", crossorigin="anonymous", href=url_for("font/Bender.ttf"))
+link(rel="preload", as="font", crossorigin="anonymous", href=url_for("font/BenderLight.woff2"))
+link(rel="preload", as="font", crossorigin="anonymous", href=url_for('font/JetBrainsMono-Regular.woff2'))
+link(rel="stylesheet", href=url_for("css/arknights.css"))
+style.
+  @font-face {
+    font-family: Bender;
+    src: local('Bender'), url("#{config.root}font/Bender.ttf"), url("#{config.root}font/Bender.otf");
+  }
+  @font-face {
+    font-family: BenderLight;
+    src: local('BenderLight'), url("#{config.root}font/BenderLight.woff2") format('woff2');
+  }
+  @font-face {
+    font-family: 'JetBrains Mono';
+    src: local('JetBrains Mono'), url('#{config.root}font/JetBrainsMono-Regular.woff2') format('woff2');
+  }
+
 script var config = !{configs}
-if theme.valine && theme.valine.enable === true
-  script(src='//unpkg.com/valine/dist/Valine.min.js')
 if theme.waline && theme.waline.enable === true
   link(rel="stylesheet", href= url_for('//unpkg.com/@waline/client@v2/dist/waline.css'))
+link(type="text/css" rel="stylesheet" href=url_for("/lib/encrypt/hbe.style.css"))
 if theme.gitalk && theme.gitalk.enable === true
   script(src=url_for("js/gitalk.js"))
+if theme.artalk && theme.artalk.enable === true
+  link(type="text/css" rel="stylesheet" href="//unpkg.com/artalk@2.8.4/dist/Artalk.css")
+  script(async src="//unpkg.com/artalk@2.8.4/dist/Artalk.js")
 if theme.mermaid && theme.mermaid.enable === true && theme.mermaid.version
   script(src= "//unpkg.com/mermaid@" + theme.mermaid.version + "/dist/mermaid.min.js")
 if theme.mathjax && theme.mathjax.enable === true
@@ -41,10 +61,8 @@ if theme.mathjax && theme.mathjax.enable === true
 link(type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css")
 link(type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css")
 link(type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css")
-link(type="text/css" rel="stylesheet" href=url_for('/lib/fontawesome/brands.min.css'))
-link(type="text/css" rel="stylesheet" href=url_for('/lib/fontawesome/fontawesome.min.css'))
+link(type="text/css" rel="stylesheet" href=url_for("/lib/fontawesome/css/all.min.css"))
 
-link(rel="stylesheet", href=url_for("css/arknights.css"))
 if theme.stylesheets && theme.stylesheets.length > 0
   //- stylesheets list from _config.yml
   each url in theme.stylesheets
@@ -52,32 +70,23 @@ if theme.stylesheets && theme.stylesheets.length > 0
 script
   |if (window.localStorage.getItem('theme-mode') === 'light'
   if theme.color === 'auto'
-    |  || window.matchMedia('(prefers-color-scheme:light)').matches)
-  else
-    |)
+    |  || window.matchMedia('(prefers-color-scheme:light)').matches
+  |)
   |  document.documentElement.setAttribute('theme-mode', 'light')
   |if (window.localStorage.getItem('theme-mode') === 'dark'
   if theme.color === 'auto'
-    |  || window.matchMedia('(prefers-color-scheme:dark)').matches)
-  else
-    |)
+    |  || window.matchMedia('(prefers-color-scheme:dark)').matches
+  |)
   |  document.documentElement.setAttribute('theme-mode', 'dark')
 style
   |@font-face {
   |  font-family: BenderLight;
-  |  src: local('Bender'), url("#{config.root}font/BenderLight.ttf");
+  |  src: local('Bender'), url("#{config.root}font/BenderLight.woff2") format('woff2');
   |}
   |@font-face {
   |  font-family: 'JetBrains Mono';
   |  src: local('JetBrains Mono'), url('#{config.root}font/JetBrainsMono-Regular.woff2') format('woff2');
   |}
-  |@font-face {
-  |  font-family: 'Font Awesome 6 Brands';
-  |  src: local('Font Awesome 6 Brands'), url('#{config.root}lib/fontawesome/fa-brands.woff2') format('woff2');
-  |}
-  |@font-face {
-  |  font-family: 'Font Awesome 6 Free';
-  |  src: local('Font Awesome 6 Free'), url('#{config.root}lib/fontawesome/fa-regular.woff2') format('woff2');
-  |}
 
 include ./generate-css.pug
+include ./js-data.pug
