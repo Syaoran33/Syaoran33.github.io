@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en-us" theme-mode="auto"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>基于Python的王国之泪神庙现实原型研究 | Syaoran Lab</title><meta name="keywords" content="Zelda,Zellogist,TOTK,Python"><meta name="description" content="通过Python数据分析王国之泪中神庙的现实原型">
+<!DOCTYPE html><html lang="en-us" theme-mode="auto"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>基于Python的王国之泪神庙现实原型研究 | Syaoran Lab</title><meta name="keywords" content="Python,Zelda,Zellogist,TOTK"><meta name="description" content="通过Python数据分析王国之泪中神庙的现实原型">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于Python的王国之泪神庙现实原型研究">
 <meta property="og:url" content="https://syaoran33.github.io/2023/06/24/tutorial/nintendo-switch/totk-shrine/index.html">
@@ -104,10 +104,10 @@ document.addEventListener("pjax:complete", reset);reset()})</script><meta name="
 <p>最后在搜索景点时，锁定了<a target="_blank" rel="noopener" href="https://www.its-mo.com/">いつもNAVI</a>这家导航网站, 以下简称<code>一导网</code></p>
 <h4 id="全量数据"><a href="#全量数据" class="headerlink" title="全量数据"></a>全量数据</h4><p>京都府全量数据高达<strong>130524件</strong></p>
 <p><a target="_blank" rel="noopener" href="https://www.its-mo.com/pois/26/">京都府の全ジャンル　1ページ目 | いつもNAVI (its-mo.com)</a></p>
-<p><img src="/2023/06/24/tutorial/nintendo-switch/totk-shrine/totk_shrine01.png"></p>
+<p class='item-img' data-src='/2023/06/24/tutorial/nintendo-switch/totk-shrine/totk_shrine01.png'><img src="/2023/06/24/tutorial/nintendo-switch/totk-shrine/totk_shrine01.png"></p>
 <h4 id="景点数据"><a href="#景点数据" class="headerlink" title="景点数据"></a>景点数据</h4><p>景点数据大概5000个，数量少很多了，就以此来爬取</p>
 <p><a target="_blank" rel="noopener" href="https://www.its-mo.com/pois/26/?genrecode=0200000000">京都府のレジャー・観光・スポーツ　1ページ目 | いつもNAVI (its-mo.com)</a></p>
-<p><img src="/2023/06/24/tutorial/nintendo-switch/totk-shrine/totk_shrine02.png"></p>
+<p class='item-img' data-src='/2023/06/24/tutorial/nintendo-switch/totk-shrine/totk_shrine02.png'><img src="/2023/06/24/tutorial/nintendo-switch/totk-shrine/totk_shrine02.png"></p>
 <h4 id="编写爬虫程序"><a href="#编写爬虫程序" class="headerlink" title="编写爬虫程序"></a>编写爬虫程序</h4><p>以景点为例，爬取所有页面上的数据</p>
 <p>选择这个网站的好处就是，它返回的数据为<code>JSON</code>格式，方便编程语言调用和数据处理</p>
 <p>这里分析数据包，标准的接口请求，直接照搬即可，不用设置<code>Cookies</code></p>
@@ -125,7 +125,7 @@ document.addEventListener("pjax:complete", reset);reset()})</script><meta name="
 <p>通过关键字检索，筛选条件文件格式设置为<code>JSON</code>或<code>CSV</code></p>
 <h4 id="关键字检索"><a href="#关键字检索" class="headerlink" title="关键字检索"></a>关键字检索</h4><p>通过将已破解出来的现实原型的名称进行搜索，可以找到比较多的数据文件</p>
 <p>当然这种方法比较偷懒，优点是拿来即用，缺点是很多数据不完整或者用不上</p>
-<p><img src="/2023/06/24/tutorial/nintendo-switch/totk-shrine/totk_shrine03.png"></p>
+<p class='item-img' data-src='/2023/06/24/tutorial/nintendo-switch/totk-shrine/totk_shrine03.png'><img src="/2023/06/24/tutorial/nintendo-switch/totk-shrine/totk_shrine03.png"></p>
 <h4 id="类型检索"><a href="#类型检索" class="headerlink" title="类型检索"></a>类型检索</h4><p>通过对关键字的检索，可以分析总结出具体会有哪些类型相关的数据</p>
 <p>例如：</p>
 <p>清水寺 -&gt; 寺庙 -&gt; temple</p>
@@ -160,7 +160,7 @@ document.addEventListener("pjax:complete", reset);reset()})</script><meta name="
 
 <p>但这种方法是比较文本的距离，对于顺序变化字符串的识别度会造成误差</p>
 <h4 id="Jaccard顺序相似度"><a href="#Jaccard顺序相似度" class="headerlink" title="Jaccard顺序相似度"></a>Jaccard顺序相似度</h4><p>尝试问下GPT，它给出了一个比较合适的匹配方案</p>
-<p><img src="/2023/06/24/tutorial/nintendo-switch/totk-shrine/totk_shrine04.png"></p>
+<p class='item-img' data-src='/2023/06/24/tutorial/nintendo-switch/totk-shrine/totk_shrine04.png'><img src="/2023/06/24/tutorial/nintendo-switch/totk-shrine/totk_shrine04.png"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">jaccard_similarity</span>(<span class="hljs-params">str1, str2</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;Jaccard算法顺序比较&quot;&quot;&quot;</span><br>    set1 = <span class="hljs-built_in">set</span>(str1)<br>    set2 = <span class="hljs-built_in">set</span>(str2)<br>    intersection = <span class="hljs-built_in">len</span>(set1.intersection(set2))<br>    union = <span class="hljs-built_in">len</span>(set1.union(set2))<br>    similarity = intersection / union<br>    <span class="hljs-keyword">return</span> similarity<br></code></pre></td></tr></table></figure>
 
 
