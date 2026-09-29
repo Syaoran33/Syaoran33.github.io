@@ -1,0 +1,106 @@
+<!DOCTYPE html><html lang="en-us" theme-mode="auto"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Docker: Alpine Linux | Syaoran Lab</title><meta name="keywords" content="Linux,Docker"><meta name="description" content="搭建基于 Alpine Linux 的 Docker 应用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker: Alpine Linux">
+<meta property="og:url" content="https://syaoran33.github.io/2022/08/19/tutorial/docker/docker-alpine/index.html">
+<meta property="og:site_name" content="Syaoran Lab">
+<meta property="og:description" content="搭建基于 Alpine Linux 的 Docker 应用">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-08-18T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-06-17T02:50:06.674Z">
+<meta property="article:author" content="Dr.Syaoran">
+<meta property="article:tag" content="Docker">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary"><link rel="canonical" href="https://syaoran33.github.io/2022/08/19/tutorial/docker/docker-alpine/"><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.woff2"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.woff2") format('woff2');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><meta name="page-config" content="{&quot;code_fold&quot;:null}"><script class="pjax-js">var config = {"root":"/","code_fold":15,"search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}};
+var page_config = {
+  code_fold: null
+};
+function updatePageConfig() {
+  var newPageConfig = document.querySelector('meta[name="page-config"]');
+  if (newPageConfig) {
+    page_config = JSON.parse(newPageConfig.content);
+  }
+}
+document.addEventListener('pjax:complete', function() { updatePageConfig(); });
+updatePageConfig();</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><script src="//unpkg.com/mermaid@11.12.2/dist/mermaid.min.js"></script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light' || window.matchMedia('(prefers-color-scheme:light)').matches)
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark' || window.matchMedia('(prefers-color-scheme:dark)').matches)
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.woff2") format('woff2');
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@11.12.2/dist/mermaid.esm.min.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.vercount','meta[name=page-config]'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+const postBg = document.querySelector('#post-bg');
+if (postBg) lightGallery(postBg, {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.vercount','meta[name=page-config]'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 8.1.2"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">About</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>Docker: Alpine Linux</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2022-08-18T16:00:00.000Z" id="date"> 2022-08-19</time></div></span><br><span>Last Update: <div class="control"><time datetime="2026-06-17T02:50:06.674Z" id="updated"> 2026-06-17</time></div></span></div></div><hr><div id="post-content"><h2 id="安装Docker-Alpine"><a href="#安装Docker-Alpine" class="headerlink" title="安装Docker Alpine"></a>安装Docker Alpine</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker pull alpine<br>docker run -it --name=pycloud --privileged=true -p 8000:8000 -p 27017:27017 -p 5200:5200 -d alpine /bin/sh<br>docker start pycloud<br>docker exec -it pycloud ash<br></code></pre></td></tr></table></figure>
+
+<h2 id="Alpine基础配置"><a href="#Alpine基础配置" class="headerlink" title="Alpine基础配置"></a>Alpine基础配置</h2><h3 id="设置apk国内镜像"><a href="#设置apk国内镜像" class="headerlink" title="设置apk国内镜像"></a>设置apk国内镜像</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ash">echo &quot;https://mirrors.aliyun.com/alpine/v3.16/main&quot; &gt;&gt; /etc/apk/repositories<br>echo &quot;https://mirror.tuna.tsinghua.edu.cn/alpine/v3.16/main&quot; &gt;&gt; /etc/apk/repositories<br>cat /etc/apk/repositories<br>apk update<br>apk upgrade<br></code></pre></td></tr></table></figure>
+
+<h3 id="安装常用包"><a href="#安装常用包" class="headerlink" title="安装常用包"></a>安装常用包</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ash">apk add vim curl git nmap util-linux build-base<br></code></pre></td></tr></table></figure>
+
+<h2 id="环境安装"><a href="#环境安装" class="headerlink" title="环境安装"></a>环境安装</h2><h3 id="安装Python3"><a href="#安装Python3" class="headerlink" title="安装Python3"></a>安装Python3</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ash">apk add python3 python3-dev<br>ln -s /usr/bin/python3 /usr/bin/python<br>python -V<br>python -m ensurepip --upgrade<br>ln -s /usr/bin/pip3 /usr/bin/pip<br></code></pre></td></tr></table></figure>
+
+<h3 id="安装NodeJs"><a href="#安装NodeJs" class="headerlink" title="安装NodeJs"></a>安装NodeJs</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ash">apk add nodejs<br>echo &quot;https://mirrors.aliyun.com/alpine/v3.15/main&quot; &gt;&gt; /etc/apk/repositories<br>apk add --no-cache npm<br>npm config set registry https://registry.npmmirror.com/<br>npm config get registry<br></code></pre></td></tr></table></figure>
+
+<h2 id="Web应用"><a href="#Web应用" class="headerlink" title="Web应用"></a>Web应用</h2><h3 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ash">apk add nginx<br>vim /etc/nginx/nginx.conf<br></code></pre></td></tr></table></figure>
+
+<h3 id="安装hexo博客"><a href="#安装hexo博客" class="headerlink" title="安装hexo博客"></a>安装hexo博客</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs ash">npm install hexo-cli -g<br>cd /opt<br>hexo init blog<br>cd blog<br>npm install -S hexo-theme-icarus hexo-renderer-inferno<br>hexo config theme icarus<br>hexo server<br></code></pre></td></tr></table></figure>
+
+<h3 id="CyberChef"><a href="#CyberChef" class="headerlink" title="CyberChef"></a>CyberChef</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs ash">cd /opt<br>git clone https://github.com/gchq/CyberChef.git<br>cd CyberChef<br>npm install -g grunt-cli<br>npm install<br>grunt prod<br>cd build/prod/<br>python -m http.server 8000<br></code></pre></td></tr></table></figure>
+
+<h3 id="JupyterLab"><a href="#JupyterLab" class="headerlink" title="JupyterLab"></a>JupyterLab</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs ash">apk add linux-headers --no-cache<br>pip install jupyterlab<br>pip install jupyterlab-language-pack-zh-CN<br>jupyter lab --generate-config<br>cd ~/.jupyter<br>vim jupyter_notebook_config.py<br>jupyter lab password<br></code></pre></td></tr></table></figure>
+
+<h3 id="Gitea"><a href="#Gitea" class="headerlink" title="Gitea"></a>Gitea</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ash">mkdir /opt/gitea/<br>apk add gitea<br></code></pre></td></tr></table></figure>
+
+<h3 id="Code-Server"><a href="#Code-Server" class="headerlink" title="Code-Server"></a>Code-Server</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">apk add alpine-sdk bash libstdc++ libc6-compat<br>npm config set python python3<br>yarn global add code-server<br>code-server<br></code></pre></td></tr></table></figure><div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2022/08/21/tutorial/diy/vscode-user-script/">← Next 实用教程-VSCode设置用户代码片段</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2021/03/19/tutorial/python-spider/python-spider01/">Python爬虫技巧-Pica接口签名加密分析 Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" onClick="tocControl.change()" title="To Catalog"><span class="tocBtnIconBar"></span><span class="tocBtnIconBar"></span><span class="tocBtnIconBar"></span></a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="/img/index/logo.png" alt="Syaoran Lab" style="margin:0;border-radius:0;"></a><h1 id="Dr"><a href="/">Dr.Syaoran</a></h1><div id="description"><p>科技改变生活</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/Syaoran33"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/276567009"><i class="fab fa-bilibili" alt="Bilibili"></i></a><a class="social" target="_blank" rel="noopener" href="https://www.reddit.com/user/Shaoran33"><i class="fab fa-reddit" alt="Reddit"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Docker-Alpine"><span class="toc-number">1.</span> <span class="toc-text">安装Docker Alpine</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Alpine%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text">Alpine基础配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AEapk%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F"><span class="toc-number">2.1.</span> <span class="toc-text">设置apk国内镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%B8%B8%E7%94%A8%E5%8C%85"><span class="toc-number">2.2.</span> <span class="toc-text">安装常用包</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85"><span class="toc-number">3.</span> <span class="toc-text">环境安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Python3"><span class="toc-number">3.1.</span> <span class="toc-text">安装Python3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85NodeJs"><span class="toc-number">3.2.</span> <span class="toc-text">安装NodeJs</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Web%E5%BA%94%E7%94%A8"><span class="toc-number">4.</span> <span class="toc-text">Web应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85nginx"><span class="toc-number">4.1.</span> <span class="toc-text">安装nginx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85hexo%E5%8D%9A%E5%AE%A2"><span class="toc-number">4.2.</span> <span class="toc-text">安装hexo博客</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CyberChef"><span class="toc-number">4.3.</span> <span class="toc-text">CyberChef</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JupyterLab"><span class="toc-number">4.4.</span> <span class="toc-text">JupyterLab</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Gitea"><span class="toc-number">4.5.</span> <span class="toc-text">Gitea</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Code-Server"><span class="toc-number">4.6.</span> <span class="toc-text">Code-Server</span></a></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">©</span><span class="icp-content">2020-Present</span></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>

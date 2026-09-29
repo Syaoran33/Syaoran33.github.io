@@ -1,0 +1,92 @@
+<!DOCTYPE html><html lang="en-us" theme-mode="auto"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>ASM入网小助手软件校验 | Syaoran Lab</title><meta name="keywords" content="Windows,Security"><meta name="description" content="注册表入网认证时会校验电脑是否安装指定软件和卸载指定软件，具体对应到注册表Uninstall中的DisplayName">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ASM入网小助手软件校验">
+<meta property="og:url" content="https://syaoran33.github.io/2025/03/24/tutorial/windows/asm-agent/index.html">
+<meta property="og:site_name" content="Syaoran Lab">
+<meta property="og:description" content="注册表入网认证时会校验电脑是否安装指定软件和卸载指定软件，具体对应到注册表Uninstall中的DisplayName">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-03-23T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-06-17T02:50:02.511Z">
+<meta property="article:author" content="Dr.Syaoran">
+<meta property="article:tag" content="Security">
+<meta property="article:tag" content="Windows">
+<meta name="twitter:card" content="summary"><link rel="canonical" href="https://syaoran33.github.io/2025/03/24/tutorial/windows/asm-agent/"><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.woff2"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.woff2") format('woff2');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><meta name="page-config" content="{&quot;code_fold&quot;:null}"><script class="pjax-js">var config = {"root":"/","code_fold":15,"search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}};
+var page_config = {
+  code_fold: null
+};
+function updatePageConfig() {
+  var newPageConfig = document.querySelector('meta[name="page-config"]');
+  if (newPageConfig) {
+    page_config = JSON.parse(newPageConfig.content);
+  }
+}
+document.addEventListener('pjax:complete', function() { updatePageConfig(); });
+updatePageConfig();</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><script src="//unpkg.com/mermaid@11.12.2/dist/mermaid.min.js"></script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light' || window.matchMedia('(prefers-color-scheme:light)').matches)
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark' || window.matchMedia('(prefers-color-scheme:dark)').matches)
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.woff2") format('woff2');
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@11.12.2/dist/mermaid.esm.min.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.vercount','meta[name=page-config]'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+const postBg = document.querySelector('#post-bg');
+if (postBg) lightGallery(postBg, {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.vercount','meta[name=page-config]'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 8.1.2"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">About</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>ASM入网小助手软件校验</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2025-03-23T16:00:00.000Z" id="date"> 2025-03-24</time></div></span><br><span>Last Update: <div class="control"><time datetime="2026-06-17T02:50:02.511Z" id="updated"> 2026-06-17</time></div></span></div></div><hr><div id="post-content"><h3 id="安装软件"><a href="#安装软件" class="headerlink" title="安装软件"></a>安装软件</h3><p>我们可以直接用注册表进行伪装,打开记事本复制对应内容,重命名为<code>asm.reg</code>,双击安装即可</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><code class="hljs reg">Windows Registry Editor Version 5.00<br><br>; 注册虚拟软件 WPS Office 和 腾讯御点 到 64 位和 32 位路径<br><br>[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\WPS Office]<br>&quot;DisplayName&quot;=&quot;WPS Office&quot;<br>&quot;DisplayVersion&quot;=&quot;11.8.2.8361&quot; <br>&quot;Publisher&quot;=&quot;Kingsoft&quot;<br>&quot;InstallLocation&quot;=&quot;C:\\Program Files\\Kingsoft\\WPS Office\\&quot;  <br>&quot;UninstallString&quot;=&quot;C:\\Program Files\\Kingsoft\\WPS Office\\uninstall.exe&quot;  <br>&quot;DisplayIcon&quot;=&quot;C:\\Program Files\\Kingsoft\\WPS Office\\WPS.exe&quot;  <br>&quot;QuietUninstallString&quot;=&quot;C:\\Program Files\\Kingsoft\\WPS Office\\uninstall.exe /quiet&quot; <br>&quot;InstallDate&quot;=&quot;20241213&quot;  <br>&quot;Publisher&quot;=&quot;Kingsoft&quot;<br><br><br>; 对应 32 位注册表路径<br>[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\WPS Office]<br>&quot;DisplayName&quot;=&quot;WPS Office&quot;<br>&quot;DisplayVersion&quot;=&quot;11.8.2.8361&quot; <br>&quot;Publisher&quot;=&quot;Kingsoft&quot;<br>&quot;InstallLocation&quot;=&quot;C:\\Program Files (x86)\\Kingsoft\\WPS Office\\&quot; <br>&quot;UninstallString&quot;=&quot;C:\\Program Files (x86)\\Kingsoft\\WPS Office\\uninstall.exe&quot; <br>&quot;DisplayIcon&quot;=&quot;C:\\Program Files (x86)\\Kingsoft\\WPS Office\\WPS.exe&quot;  <br>&quot;QuietUninstallString&quot;=&quot;C:\\Program Files (x86)\\Kingsoft\\WPS Office\\uninstall.exe /quiet&quot;<br>&quot;InstallDate&quot;=&quot;20241213&quot;  <br>&quot;Publisher&quot;=&quot;Kingsoft&quot;<br><br><br>[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\QQPCMgr]<br>&quot;DisplayName&quot;=&quot;Tencent EPM&quot;  ; 软件显示名称，这个是关键<br>&quot;DisplayVersion&quot;=&quot;15.5.0.1234&quot; <br>&quot;Publisher&quot;=&quot;Tencent&quot;  <br>&quot;InstallLocation&quot;=&quot;C:\\Program Files\\Tencent\\PC Manager\\&quot;  <br>&quot;UninstallString&quot;=&quot;C:\\Program Files\\Tencent\\PC Manager\\uninstall.exe&quot; <br>&quot;DisplayIcon&quot;=&quot;C:\\Program Files\\Tencent\\PC Manager\\PCMgr.exe&quot; <br>&quot;QuietUninstallString&quot;=&quot;C:\\Program Files\\Tencent\\PC Manager\\uninstall.exe /quiet&quot; <br>&quot;InstallDate&quot;=&quot;20231213&quot; <br>&quot;Publisher&quot;=&quot;Tencent&quot; <br><br>[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\QQPCMgr]]<br>&quot;DisplayName&quot;=&quot;Tencent EPM&quot;<br>&quot;DisplayVersion&quot;=&quot;15.5.0.1234&quot;<br>&quot;Publisher&quot;=&quot;Tencent&quot; <br>&quot;InstallLocation&quot;=&quot;C:\\Program Files (x86)\\Tencent\\PC Manager\\&quot; <br>&quot;UninstallString&quot;=&quot;C:\\Program Files (x86)\\Tencent\\PC Manager\\uninstall.exe&quot;<br>&quot;DisplayIcon&quot;=&quot;C:\\Program Files (x86)\\Tencent\\PC Manager\\PCMgr.exe&quot;  <br>&quot;QuietUninstallString&quot;=&quot;C:\\Program Files (x86)\\Tencent\\PC Manager\\uninstall.exe /quiet&quot;  <br>&quot;InstallDate&quot;=&quot;20231213&quot; <br>&quot;Publisher&quot;=&quot;Tencent&quot;  <br><br><br>[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\ThreatBook Agent]<br>&quot;DisplayName&quot;=&quot;ThreatBook Agent&quot;<br>&quot;DisplayVersion&quot;=&quot;3.7.5.2024&quot;<br>&quot;Publisher&quot;=&quot;ThreatBook Inc.&quot;<br>&quot;InstallLocation&quot;=&quot;C:\\Program Files\\ThreatBook\\Endpoint Agent\\&quot;<br>&quot;UninstallString&quot;=&quot;\&quot;C:\\Program Files\\ThreatBook\\Endpoint Agent\\uninstaller.exe\&quot; /mode unattended&quot;<br>&quot;DisplayIcon&quot;=&quot;C:\\Program Files\\ThreatBook\\Endpoint Agent\\TbAgentGUI.exe,0&quot;<br>&quot;QuietUninstallString&quot;=&quot;\&quot;C:\\Program Files\\ThreatBook\\Endpoint Agent\\uninstaller.exe\&quot; /silent&quot;<br>&quot;InstallDate&quot;=&quot;20231015&quot;<br>&quot;URLUpdateInfo&quot;=&quot;https://www.threatbook.com/support/updates&quot;<br>&quot;HelpLink&quot;=&quot;https://support.threatbook.com/endpoint&quot;<br>&quot;EstimatedSize&quot;=dword:00000200  ; 512MB<br>&quot;SystemComponent&quot;=dword:00000000<br>&quot;NoRepair&quot;=dword:00000001<br>&quot;RealTimeProtection&quot;=dword:00000001<br>&quot;FirewallIntegration&quot;=dword:00000001<br>&quot;LastVirusDefinitionUpdate&quot;=&quot;20231015153000&quot;<br><br><br></code></pre></td></tr></table></figure>
+
+
+<h3 id="卸载软件"><a href="#卸载软件" class="headerlink" title="卸载软件"></a>卸载软件</h3><p>卸载软件的修改也是找到指定的<code>DisplayName</code>,手动进行修改或删除<br>office软件推测识别的是否包含<code>Microsoft Office</code></p>
+<p>64位：HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\</p>
+<p>32位：HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall</p><div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2025/06/17/tutorial/website/domain-choice/">← Next 域名选择方案</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2024/10/09/tutorial/python/streamlit-async/">Streamlit, asyncio and MongoDB Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" onClick="tocControl.change()" title="To Catalog"><span class="tocBtnIconBar"></span><span class="tocBtnIconBar"></span><span class="tocBtnIconBar"></span></a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="/img/index/logo.png" alt="Syaoran Lab" style="margin:0;border-radius:0;"></a><h1 id="Dr"><a href="/">Dr.Syaoran</a></h1><div id="description"><p>科技改变生活</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/Syaoran33"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/276567009"><i class="fab fa-bilibili" alt="Bilibili"></i></a><a class="social" target="_blank" rel="noopener" href="https://www.reddit.com/user/Shaoran33"><i class="fab fa-reddit" alt="Reddit"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E5%86%8C%E8%A1%A8"><span class="toc-number">1.</span> <span class="toc-text">注册表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6"><span class="toc-number">1.1.</span> <span class="toc-text">安装软件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%B8%E8%BD%BD%E8%BD%AF%E4%BB%B6"><span class="toc-number">1.2.</span> <span class="toc-text">卸载软件</span></a></li></ol></li></ol></div></div><footer><nobr><span class="icp-title">©</span><span class="icp-content">2020-Present</span></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>

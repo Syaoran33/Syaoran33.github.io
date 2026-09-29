@@ -1,0 +1,174 @@
+<!DOCTYPE html><html lang="en-us" theme-mode="auto"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>MongoDB基础操作 | Syaoran Lab</title><meta name="keywords" content="MongoDB,Database"><meta name="description" content="最适合Python的数据库，再也不用担心写SQL语句了">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MongoDB基础操作">
+<meta property="og:url" content="https://syaoran33.github.io/2023/06/01/tutorial/database/mongodb-query/index.html">
+<meta property="og:site_name" content="Syaoran Lab">
+<meta property="og:description" content="最适合Python的数据库，再也不用担心写SQL语句了">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-05-31T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-06-17T02:50:02.502Z">
+<meta property="article:author" content="Dr.Syaoran">
+<meta property="article:tag" content="Database">
+<meta property="article:tag" content="MongoDB">
+<meta name="twitter:card" content="summary"><link rel="canonical" href="https://syaoran33.github.io/2023/06/01/tutorial/database/mongodb-query/"><link rel="icon" type="image/x-icon" href="/favicon.ico"><link rel="preload" as="font" crossorigin="anonymous" href="/font/Bender.ttf"><link rel="preload" as="font" crossorigin="anonymous" href="/font/BenderLight.woff2"><link rel="preload" as="font" crossorigin="anonymous" href="/font/JetBrainsMono-Regular.woff2"><link rel="stylesheet" href="/css/arknights.css"><style>@font-face {
+  font-family: Bender;
+  src: local('Bender'), url("/font/Bender.ttf"), url("/font/Bender.otf");
+}
+@font-face {
+  font-family: BenderLight;
+  src: local('BenderLight'), url("/font/BenderLight.woff2") format('woff2');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}
+</style><meta name="page-config" content="{&quot;code_fold&quot;:null}"><script class="pjax-js">var config = {"root":"/","code_fold":15,"search":{"preload":false,"activeHolder":"Enter here","blurHolder":"Search","noResult":"Data \"$0\" not found"},"code":{"codeInfo":"$0 - $1 lines","copy":"copy"}};
+var page_config = {
+  code_fold: null
+};
+function updatePageConfig() {
+  var newPageConfig = document.querySelector('meta[name="page-config"]');
+  if (newPageConfig) {
+    page_config = JSON.parse(newPageConfig.content);
+  }
+}
+document.addEventListener('pjax:complete', function() { updatePageConfig(); });
+updatePageConfig();</script><link type="text/css" rel="stylesheet" href="/lib/encrypt/hbe.style.css"><script src="//unpkg.com/mermaid@11.12.2/dist/mermaid.min.js"></script><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lightgallery.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-zoom.css"><link type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css"><link type="text/css" rel="stylesheet" href="/lib/fontawesome/css/all.min.css"><script>if (window.localStorage.getItem('theme-mode') === 'light' || window.matchMedia('(prefers-color-scheme:light)').matches)
+ document.documentElement.setAttribute('theme-mode', 'light')
+if (window.localStorage.getItem('theme-mode') === 'dark' || window.matchMedia('(prefers-color-scheme:dark)').matches)
+ document.documentElement.setAttribute('theme-mode', 'dark')</script><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.woff2") format('woff2');
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><style>:root {
+ --dark-background: url('https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg');
+ --light-background: url('/img/bk.jpg');
+ --theme-encrypt-confirm: 'confirm'
+}</style><script defer src="/js/arknights.js"></script><script defer src="/js/search.js"></script><script defer type="module">import mermaid from '//unpkg.com/mermaid@11.12.2/dist/mermaid.esm.min.mjs';
+window.mermaid = mermaid;
+code.paintMermaid();
+</script><script async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script><script async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script><script async src="/lib/encrypt/hbe.js"></script><script async src="/js/pjax.js"></script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+lightGallery(document.getElementById('post-bg'), {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.vercount','meta[name=page-config]'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><script class="pjax-js">reset= () => {document.querySelector('.lg-container')?.remove()
+const postBg = document.querySelector('#post-bg');
+if (postBg) lightGallery(postBg, {
+  plugins: [lgZoom,lgThumbnail],
+  selector: '.item-img'})}</script><script>window.addEventListener("load",() => {pjax = new Pjax({
+ cacheBust: false,
+ selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.vercount','meta[name=page-config]'],
+ switches: {'article': Pjax.switches.sideBySide},
+ switchesOptions: {
+   'article': {
+     classNames: {
+       remove: "pjax-out",
+       add: "pjax-in"
+     }
+   }
+ }
+});
+document.addEventListener("pjax:complete", reset);reset()})</script><meta name="generator" content="Hexo 8.1.2"></head><body><div class="loading" style="opacity: 0;"><div class="loadingBar left"></div><div class="loadingBar right"></div></div><main><header class="closed"><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><nav><div class="navItem" id="search-header"><span class="navItemTitle"><input autocomplete="off" autocorrect="off" autocapitalize="none" placeholder="Search" spellcheck="false" maxlength="50" type="text" id="search-input"></span></div><div class="navItem" id="search-holder"></div><div class="search-popup" tabindex="0"><div id="search-result"></div></div><ol class="navContent"><li class="navItem"><a class="navBlock" href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem" matchdata="categories,tags"><a class="navBlock" href="/archives/"><span class="navItemTitle">Archives</span></a></li><li class="navItem"><a class="navBlock" href="/about/"><span class="navItemTitle">About</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>MongoDB基础操作</h1><div id="post-info"><span>First Post: <div class="control"><time datetime="2023-05-31T16:00:00.000Z" id="date"> 2023-06-01</time></div></span><br><span>Last Update: <div class="control"><time datetime="2026-06-17T02:50:02.502Z" id="updated"> 2026-06-17</time></div></span></div></div><hr><div id="post-content"><h2 id="安装部署"><a href="#安装部署" class="headerlink" title="安装部署"></a>安装部署</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs plaintext"># MongoDB Community Server<br>mongod<br>ln -s mongod /usr/bin/mongod<br>mkdir -p /app/mongodb/data<br>mkdir -p /var/log/mongodb/<br>touch /var/log/mongodb/mongod.log<br># MongoDB Shell<br>mongosh<br># 设置初始密码<br>use admin<br>db.createUser(&#123; user: &#x27;admin&#x27;, pwd: &#x27;123456Aa?&#x27;, roles: [&#123; role: &#x27;root&#x27;, db: &#x27;admin&#x27;&#125;] &#125;)<br></code></pre></td></tr></table></figure>
+
+<p>配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs plaintext"># mongod.conf<br><br># for documentation of all options, see:<br>#   http://docs.mongodb.org/manual/reference/configuration-options/<br><br># Where and how to store data.<br>storage:<br>  dbPath: /app/mongodb/data<br>  # journal:<br>  #   enabled: true<br>#  engine:<br>#  mmapv1:<br>#  wiredTiger:<br><br># where to write logging data.<br>systemLog:<br>  destination: file<br>  logAppend: true<br>  path: /var/log/mongodb/mongod.log<br><br># network interfaces<br>net:<br>  port: 27017<br>  bindIp: 0.0.0.0<br><br><br># how the process runs<br>processManagement:<br>  timeZoneInfo: /usr/share/zoneinfo<br><br>security:<br>  authorization: enabled<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="基础操作"><a href="#基础操作" class="headerlink" title="基础操作"></a>基础操作</h2><h3 id="多级查询"><a href="#多级查询" class="headerlink" title="多级查询"></a>多级查询</h3><p>用点来分割，支持对象(dict)和数组(list)<br>例如查询组织编号</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">&#123;&quot;account_org.code&quot; : &quot;Z000000000000000001&quot;&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="查询参数等于与不等于"><a href="#查询参数等于与不等于" class="headerlink" title="查询参数等于与不等于"></a>查询参数等于与不等于</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">&#123;&quot;special_table.tax_liability&quot;: &#123;&quot;$eq&quot;: true&#125;&#125;<br>&#123;&quot;special_table.tax_liability&quot;: &#123;&quot;$ne&quot;: true&#125;&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="操作ObjectId"><a href="#操作ObjectId" class="headerlink" title="操作ObjectId"></a>操作ObjectId</h3><p>处理未指定id时自动生成的ObjectId</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">from bson.objectid import ObjectId<br><br>oid = ObjectId(oid_str)<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="角色和权限"><a href="#角色和权限" class="headerlink" title="角色和权限"></a>角色和权限</h2><h3 id="用户角色"><a href="#用户角色" class="headerlink" title="用户角色"></a>用户角色</h3><p>数据库默认角色</p>
+<table>
+<thead>
+<tr>
+<th>角色描述</th>
+<th>角色标识</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>数据库用户角色</td>
+<td>read、readWrite</td>
+</tr>
+<tr>
+<td>数据库管理角色</td>
+<td>dbAdmin、dbOwner、userAdmin</td>
+</tr>
+<tr>
+<td>集群管理角色</td>
+<td>clusterAdmin、clusterManager、clusterMonitor、hostManager</td>
+</tr>
+<tr>
+<td>备份恢复角色</td>
+<td>backup、restore</td>
+</tr>
+<tr>
+<td>所有数据库角色</td>
+<td>readAnyDatabase、readWriteAnyDatabase、userAdminAnyDatabase、  dbAdminAnyDatabase</td>
+</tr>
+<tr>
+<td>超级用户角色</td>
+<td>root</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">Mongo的授权采用了角色授权的方法，每个用户都有一组权限，Monog内建角色权限如下：<br><br>数据库用户角色<br>read：允许用户读取指定数据库<br>readWrite：允许用户读写指定数据库<br>数据库管理角色<br>dbOwner：包含readWrite、dbAdmin、userAdmin<br>dbAdmin：允许用户在指定数据库中对集合、文档等操作<br>userAdmin：允许用户向system.users集合写入，可以在指定数据库里创建、删除和管理用户<br>集群管理角色<br>clusterAdmin：只在admin数据库中可用，包含clusterManager、clusterMonitor、hostManager<br>clusterManager：<br>clusterMonitor：<br>hostManager<br>备份和恢复角色<br>backup<br>restore<br>所有数据库角色<br>readAnyDatabase：只在admin数据库中可用，赋予用户所有数据库的读权限<br>readWriteAnyDatabase：只在admin数据库中可用，赋予用户所有数据库的读写权限<br>dbAdminAnyDatabase：只在admin数据库中可用，赋予用户所有数据库的dbAdmin权限<br>userAdminAnyDatabase：只在admin数据库中可用，赋予用户所有数据库的userAdmin权限<br>超级用户角色<br>root：只在admin数据库中可用。超级账号，超级权限<br>内部角色<br>__system<br></code></pre></td></tr></table></figure>
+
+<h3 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">db.<span class="hljs-title function_">createUser</span>(&#123;<span class="hljs-attr">user</span>:<span class="hljs-string">&#x27;user&#x27;</span>,<span class="hljs-attr">pwd</span>:<span class="hljs-string">&#x27;pwd&#x27;</span>,<span class="hljs-attr">roles</span>:[&#123;<span class="hljs-attr">role</span>: <span class="hljs-string">&#x27;dbAdmin&#x27;</span>, <span class="hljs-attr">db</span>:<span class="hljs-string">&#x27;dbname&#x27;</span>&#125;]&#125;)<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="授权用户"><a href="#授权用户" class="headerlink" title="授权用户"></a>授权用户</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js">use admin<br>db.<span class="hljs-title function_">grantRolesToUser</span>(<span class="hljs-string">&quot;pycloud&quot;</span>,[&#123;<span class="hljs-string">&quot;role&quot;</span>:<span class="hljs-string">&quot;dbOwner&quot;</span>,<span class="hljs-string">&quot;db&quot;</span>:<span class="hljs-string">&quot;QuestionBank&quot;</span>&#125;])<br></code></pre></td></tr></table></figure>
+
+<h3 id="取消权限"><a href="#取消权限" class="headerlink" title="取消权限"></a>取消权限</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js">use admin<br>db.<span class="hljs-title function_">revokeRolesFromUser</span>(<span class="hljs-string">&quot;pycloud&quot;</span>,<br>[<br>      &#123;<br>        <span class="hljs-attr">role</span>: <span class="hljs-string">&#x27;readWrite&#x27;</span>,<br>        <span class="hljs-attr">db</span>: <span class="hljs-string">&#x27;PyCloud_Rules&#x27;</span><br>      &#125;,<br>      &#123;<br>        <span class="hljs-attr">role</span>: <span class="hljs-string">&#x27;readWrite&#x27;</span>,<br>        <span class="hljs-attr">db</span>: <span class="hljs-string">&#x27;PyCloud_Data&#x27;</span><br>      &#125;<br>])<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">db.grantRolesToUser(&quot;pycloud&quot;,<br>[<br>      &#123;<br>        role: &#x27;dbOwner&#x27;,<br>        db: &#x27;BankReconciliation&#x27;<br>      &#125;,<br>      &#123;<br>        role: &#x27;dbOwner&#x27;,<br>        db: &#x27;ClosingAlert&#x27;<br>      &#125;,<br>      &#123;<br>        role: &#x27;dbOwner&#x27;,<br>        db: &#x27;LedgerCheck&#x27;<br>      &#125;,<br>      &#123;<br>        role: &#x27;dbOwner&#x27;,<br>        db: &#x27;ReportCheck&#x27;<br>      &#125;,<br>      &#123;<br>        role: &#x27;dbOwner&#x27;,<br>        db: &#x27;VoucherInspect&#x27;<br>      &#125;<br>    ])<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="管理命令"><a href="#管理命令" class="headerlink" title="管理命令"></a>管理命令</h2><p>On mongo shell:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">db.adminCommand(&#123;getParameter: <span class="hljs-number">1</span>, logLevel: <span class="hljs-number">1</span>&#125;)<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>{ “logLevel” : 0, “ok” : 1 }</p>
+</blockquote>
+<p>On python:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">from</span> pymongo import MongoClient<br><br>server <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;localhost&#x27;</span><br><br>port <span class="hljs-operator">=</span> <span class="hljs-number">27017</span><br><br>client <span class="hljs-operator">=</span> MongoClient(server, port)<br><br>print(client.admin.command((&#123;<span class="hljs-string">&#x27;getParameter&#x27;</span>: <span class="hljs-number">1</span>, <span class="hljs-string">&#x27;logLevel&#x27;</span>: <span class="hljs-number">1</span>&#125;)))<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>{‘logLevel’: 0, ‘ok’: 1.0}</p>
+</blockquote>
+<h2 id="模糊查询"><a href="#模糊查询" class="headerlink" title="模糊查询"></a>模糊查询</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">collection.<span class="hljs-title function_">find</span>(&#123;<span class="hljs-attr">name</span>:<span class="hljs-regexp">/text/</span>&#125;)<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="移动集合"><a href="#移动集合" class="headerlink" title="移动集合"></a>移动集合</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js">use admin<br>db.<span class="hljs-title function_">adminCommand</span>(&#123;<span class="hljs-attr">renameCollection</span>:<span class="hljs-string">&quot;PyCloud_Output.ReportCheck_Final_20240301&quot;</span>,<span class="hljs-attr">to</span>:<span class="hljs-string">&quot;ReportCheck.ReportCheck_Final_20240301&quot;</span>&#125;)<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="移动数据库"><a href="#移动数据库" class="headerlink" title="移动数据库"></a>移动数据库</h2><p>mongodb没有修改db名称的接口，执行copydb操作太耗时，所以要实现源数据库重命名为目标数据库，需要遍历源数据库下所有的集合，重命名到目标数据库下，就实现了renameDatabase的功能，使用mongodb shell直接执行js脚本</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js">collection_list = db.<span class="hljs-title function_">getSiblingDB</span>(<span class="hljs-string">&quot;PyCloud_Data&quot;</span>).<span class="hljs-title function_">getCollectionNames</span>();<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i&lt; collection_list.<span class="hljs-property">length</span>; i++) &#123;<br>    <span class="hljs-keyword">let</span> original_db_name = <span class="hljs-string">&quot;PyCloud_Data&quot;</span> +<span class="hljs-string">&quot;.&quot;</span> + collection_list[i];<br>    <span class="hljs-keyword">let</span> target_db_name = <span class="hljs-string">&quot;VoucherInspect&quot;</span>+<span class="hljs-string">&quot;.&quot;</span>+ collection_list[i];<br>    db.<span class="hljs-title function_">adminCommand</span>(&#123;<span class="hljs-attr">renameCollection</span>: original_db_name, <span class="hljs-attr">to</span>: target_db_name&#125;);<br>&#125;<br></code></pre></td></tr></table></figure><div id="paginator"></div></div><div id="post-footer"><div id="pages"><div class="footer-link" style="width: 50%;text-align:right;border-right:1px #fe2 solid"><a href="/2023/06/11/tutorial/diy/cu-router/">← Next 实用教程-联通光猫桥接路由</a></div><div class="footer-link" style="width: 50%;right:1px;border-left:1px #fe2 solid"><a href="/2023/05/21/tutorial/nintendo-switch/video-enhance/">Switch串流视频超分补帧教程 Prev →</a></div></div></div></div><div class="bottom-btn"><div><a class="i-top" id="to-top" onClick="scrolls.scrolltop();" title="To Top" style="opacity: 0; display: none;">∧ </a><a class="i-index" id="to-index" onClick="tocControl.change()" title="To Catalog"><span class="tocBtnIconBar"></span><span class="tocBtnIconBar"></span><span class="tocBtnIconBar"></span></a><a class="i-color" id="color-mode" onClick="colorMode.change()" title="Change Theme"></a></div></div></article><aside><div id="about"><a href="/" id="logo"><img src="/img/index/logo.png" alt="Syaoran Lab" style="margin:0;border-radius:0;"></a><h1 id="Dr"><a href="/">Dr.Syaoran</a></h1><div id="description"><p>科技改变生活</p></div><div id="social-links"><a class="social" target="_blank" rel="noopener" href="https://github.com/Syaoran33"><i class="fab fa-github" alt="GitHub"></i></a><a class="social" target="_blank" rel="noopener" href="https://space.bilibili.com/276567009"><i class="fab fa-bilibili" alt="Bilibili"></i></a><a class="social" target="_blank" rel="noopener" href="https://www.reddit.com/user/Shaoran33"><i class="fab fa-reddit" alt="Reddit"></i></a></div></div><div id="aside-block"><div id="toc-div"><h1>Catalog</h1><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2"><span class="toc-number">1.</span> <span class="toc-text">安装部署</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C"><span class="toc-number">2.</span> <span class="toc-text">基础操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E7%BA%A7%E6%9F%A5%E8%AF%A2"><span class="toc-number">2.1.</span> <span class="toc-text">多级查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E5%8F%82%E6%95%B0%E7%AD%89%E4%BA%8E%E4%B8%8E%E4%B8%8D%E7%AD%89%E4%BA%8E"><span class="toc-number">2.2.</span> <span class="toc-text">查询参数等于与不等于</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%93%8D%E4%BD%9CObjectId"><span class="toc-number">2.3.</span> <span class="toc-text">操作ObjectId</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%92%E8%89%B2%E5%92%8C%E6%9D%83%E9%99%90"><span class="toc-number">3.</span> <span class="toc-text">角色和权限</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E8%A7%92%E8%89%B2"><span class="toc-number">3.1.</span> <span class="toc-text">用户角色</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7"><span class="toc-number">3.2.</span> <span class="toc-text">创建用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%88%E6%9D%83%E7%94%A8%E6%88%B7"><span class="toc-number">3.3.</span> <span class="toc-text">授权用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%96%E6%B6%88%E6%9D%83%E9%99%90"><span class="toc-number">3.4.</span> <span class="toc-text">取消权限</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4"><span class="toc-number">4.</span> <span class="toc-text">管理命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2"><span class="toc-number">5.</span> <span class="toc-text">模糊查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E9%9B%86%E5%90%88"><span class="toc-number">6.</span> <span class="toc-text">移动集合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">7.</span> <span class="toc-text">移动数据库</span></a></li></ol></div></div><footer><nobr><span class="icp-title">©</span><span class="icp-content">2020-Present</span></nobr><br><nobr>Published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></nobr><wbr><nobr> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknights</a></nobr><wbr><nobr> by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></nobr></footer></aside></main><canvas id="canvas-dust"></canvas></body></html>
