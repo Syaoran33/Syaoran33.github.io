@@ -14,6 +14,7 @@
   if (theme.search !== undefined && theme.search.enable === true) searchConfig = theme.search;
   const configs = JSON.stringify({
     root: config.root,
+    code_fold: config.theme_config.post.code_fold,
     search: {
       preload: searchConfig.preload,
       activeHolder: __('search.activeHolder'),
@@ -26,8 +27,15 @@
     }
   })
 
+  let htmlThemeMode = theme.color
+  if (theme.color === 'dark-only') {
+    htmlThemeMode = 'dark'
+  } else if (theme.color === 'light-only') {
+    htmlThemeMode = 'light'
+  }
+
 doctype html
-html(lang=config.language theme-mode=theme.color)
+html(lang=config.language theme-mode=htmlThemeMode)
   head
     include ./meta-data.pug
   body

@@ -1,5 +1,6 @@
 declare var config: {
   root: string
+  code_fold: number
   search: {
     preload: string
     activeHolder: string
@@ -10,6 +11,10 @@ declare var config: {
     copy: string
     codeInfo: string
   }
+}
+
+declare var page_config: {
+  code_fold: number | null
 }
 
 declare var mermaid: {

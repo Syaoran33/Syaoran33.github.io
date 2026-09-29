@@ -1,0 +1,8 @@
+// 隐藏侧边栏页脚的主题署名（Hexo / Arknights / Yue_plus）
+// 署名为上游 aside.pug 硬编码，无配置开关，故在此覆盖
+aside footer
+  nobr:has(a[href='http://hexo.io']),
+  nobr:has(a[href*='hexo-theme-arknights']),
+  nobr:has(a[href='https://github.com/Yue-plus']),
+  wbr
+    display none

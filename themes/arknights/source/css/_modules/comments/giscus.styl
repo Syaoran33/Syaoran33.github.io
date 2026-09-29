@@ -1,0 +1,123 @@
+#giscus
+  *
+    cursor var(--cursor-data) 3 3, default !important
+  
+  a, button, svg, .giscus-button, [role="button"]
+    cursor var(--cursor-data) 3 3, pointer !important
+  
+  input, textarea
+    cursor var(--cursor-data) 3 3, text !important
+
+.giscus-frame
+  color-scheme light
+  cursor var(--cursor-data) 3 3, default !important
+
+.giscus-loading-message
+  display flex
+  flex-direction column
+  align-items center
+  justify-content center
+  gap .625em
+  margin 20px auto
+  padding 1.25em 0
+  color var(--theme-text)
+  font-family 'JetBrains Mono', 'Microsoft YaHei', sans-serif
+  text-align center
+  animation giscus-fade-in .3s ease
+
+.giscus-loader
+  position relative
+  display inline-block
+  width 1.75em
+  height 1.75em
+  border 1px solid var(--theme-unimportant)
+  border-radius 50%
+  font-style normal
+  line-height 1.75em
+  animation ease giscus-kf-rotate 1.5s infinite
+  -webkit-animation ease giscus-kf-rotate 1.5s infinite
+  &:before
+    position absolute
+    top 0
+    left 50%
+    display block
+    margin-top -.1875em
+    margin-left -.1875em
+    width .375em
+    height .375em
+    border-radius 50%
+    background-color var(--theme-unimportant)
+    content ''
+
+.giscus-loading-text
+  margin 0
+  font-size 92%
+  color var(--theme-text-light)
+  letter-spacing .02em
+
+.giscus-error-message
+  display flex
+  flex-direction column
+  align-items center
+  justify-content center
+  gap .35em
+  margin 20px auto
+  padding .25em 0
+  color var(--theme-text-light)
+  text-align center
+  font-family 'JetBrains Mono', 'Microsoft YaHei', sans-serif
+  animation giscus-fade-in .3s ease
+
+.giscus-error-content
+  display flex
+  flex-direction column
+  align-items center
+  gap .25em
+
+.giscus-error-title
+  margin 0
+  font-weight 600
+  letter-spacing .02em
+  color var(--theme-highlight)
+
+.giscus-error-message-text
+  margin 0
+  color var(--theme-unimportant)
+  font-size 92%
+
+.giscus-error-retry
+  padding 0
+  outline none
+  border none
+  background none
+  color var(--theme-highlight)
+  font-size 92%
+  line-height 1.35
+  letter-spacing .02em
+  text-decoration none
+  border-bottom 1px dotted var(--theme-highlight)
+  transition .3s
+  cursor var(--cursor-data) 3 3, pointer !important
+  &:hover
+    color var(--theme-text-hover)
+    border-bottom-color var(--theme-text-hover)
+  &:disabled
+    opacity .5
+    border-bottom-color var(--theme-unimportant)
+    cursor not-allowed !important
+
+@keyframes giscus-kf-rotate
+  0%
+    transform rotate(0)
+    -webkit-transform rotate(0)
+  100%
+    transform rotate(360deg)
+    -webkit-transform rotate(360deg)
+
+@keyframes giscus-fade-in
+  0%
+    opacity 0
+    transform translateY(4px)
+  100%
+    opacity 1
+    transform translateY(0)

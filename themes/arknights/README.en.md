@@ -7,20 +7,34 @@
 
 ## Preview
 
+Here are all the friendship links of this theme<!--Previously used-->:
+
 - ### **Dr.Yue_plus: <http://arknights.theme.hexo.yue.zone/>**
-- ### **Dr.ToUNVRSe <https://tounvrse.github.io/>**
+- ### **Dr.Ocatator <https://ocatator.github.io/>**
 - **Dr.Ye: <https://laurenfrost.github.io/>**
-- **Dr.LingYun: <https://dr-lingyun.gitee.io/>**
-- **Dr.XIMU：<http://b.ligzs.cn/>**
 - **Dr.tyqtyq <https://tyq0712.github.io/>**
-- **Dr.TTsdzb <https://ark.ttsdzb.monster/>**
 - **Dr.Angine <https://angine.tech/>**
 - **Dr.sjfhsjfh <https://sjfh.top/>**
 - **Dr.Voilone <https://note.voiblog.top/>**
-- **Zhongye1 <https://zhongye1.github.io/>**
 - **Dr.yuanli-LFSW<https://blog.yuanli-lfsw.com/>**
+- **Dr.Laplacian: <https://rhinelab.kr>**
+- **Dr.Chen: <https://light-of-hers.github.io>**
+- **Dr.Linyee <https://linyee.world/>**
+- **Dr.Flacier <https://flacier.us.kg/>**
+- **Dr.LZW <https://lzwnb.github.io/blog/>** 
+- **Dr.GrandpaFox <https://grandpafox.online/>** 
+- **Dr.未雨屏 <https://weiyuping.top/>**
+- **飞龙project <https://schale.top/>**
+- **tomorinao-www <https://ghpage.wwnao.xyz>**
+- **Mornikar <https://mornikar.github.io/Mornikar/>**
 
-If you're using this theme, we will appreciate it if you could put your link here for a preview!  
+<!-- - **Dr.LingYun: <https://dr-lingyun.gitee.io/>** -->
+<!-- - **Dr.XIMU：<http://www.ligzs.com/>** -->
+<!-- - **Dr.TTsdzb <https://ark.ttsdzb.monster/>** -->
+<!-- - **Dr.Zhongye1 <https://zhongye1.github.io/>** -->
+<!-- - **Dr.Rimrose: <https://blog.rimrose.site>** -->
+
+If you're using this theme, we warmly welcome you to initiate [Pull Requests](https://github.com/Yue-plus/hexo-theme-arknights/compare) to post friends' links here.
 
 ![Preview image](./demo.jpg)
 
@@ -40,7 +54,7 @@ If you're using this theme, we will appreciate it if you could put your link her
 hexo init Hexo
 cd Hexo
 npm install
-git clone https://github.com/Yue-plus/hexo-theme-arknights.git themes/arknights
+git clone https://github.com/Yue-plus/hexo-theme-arknights.git themes/arknights --depth=1
 ```
 
 ### Install dependencies
@@ -127,7 +141,7 @@ per_page: 10
 pagination_dir: page
 ```
 
-Change `per_page:` to 0。
+Change `per_page:` to 0.
 
 ## Comment systems
 
@@ -142,6 +156,8 @@ valine:
   app_id: # APP ID
   app_key: # APP KEY
   server_url: # APP DOMAIN (LeanCloud international version requires this)
+  avatar: 'retro' # (''/mp/identicon/monsterid/wavatar/robohash/retro/hide)
+  avatar_cdn: 'https://dn-qiniu-avatar.qbox.me/avatar/' # Custom avatar cdn
 ```
 
 For notifications with email: [zhaojun1998 / Valine-Admin](https://github.com/zhaojun1998/Valine-Admin)
@@ -176,6 +192,91 @@ Please refer to [Waline docs](https://waline.js.org/) and edit `_config.arknight
 waline:
   enable: false 
   server_url: #Server_Url
+  locale:
+  placeholder: "Looking forward to your comments~"
+    # sofa: "Be the first to comment~"
+    # nick: "Nickname"
+    # mail: "Email"
+    # link: "Link"
+    # submit: "Submit"
+```
+
+Waline provides a `locale` option for customizing the interface language and displayed text. By default, Waline uses built-in multilingual texts. If the current language is not supported, it will automatically fall back to en-US (American English).  <br/>You can override the default displayed text by setting specific fields. In the `locale` option, all fields are optional, and unspecified fields will retain their default values
+
+```yaml
+Level Related:
+level${number}: Text for level number
+```
+```yaml
+Reaction Related:
+reactionTitle: Reaction Title
+reaction0: Reaction 1 Text
+reaction1: Reaction 2 Text
+reaction2: Reaction 3 Text
+reaction3: Reaction 4 Text
+reaction4: Reaction 5 Text
+reaction5: Reaction 6 Text
+reaction6: Reaction 7 Text
+reaction7: Reaction 8 Text
+reaction8: Reaction 9 Text
+```
+```yaml
+UI Related:
+nick: Nickname
+mail: Email
+link: Link
+placeholder: Default comment box text
+sofa: Text displayed when comment area is empty
+submit: Submit button text
+comment: Comment button text
+refresh: Refresh button text
+more: Load More button text
+uploading: Text displayed during upload
+login: Login button text
+admin: Admin label
+sticky: Pinned text
+word: Word
+anonymous: Default name for anonymous user
+optional: Text indicating an optional field
+gifSearchPlaceholder: GIF search placeholder text
+oldest: Oldest comments
+latest: Latest comments
+hottest: Hottest comments
+```
+> The text for the settings above will be displayed on the page.
+```yaml
+Notification Related:
+nickError: Error message for invalid nickname
+mailError: Error message for invalid email
+wordHint: Error message for comment word count. $0, $1, $2 will be automatically replaced with the minimum allowed words, maximum allowed words, and current word count respectively.
+```
+```yaml
+Comment Time Related:
+seconds: seconds ago
+minutes: minutes ago
+hours: hours ago
+days: days ago
+now: Just now
+```
+```yaml
+Moderation Related:
+approved: Approved
+waiting: Pending Review
+spam: Spam
+unsticky: Unpin
+```
+```yaml
+Accessibility Related (For enhancing accessibility services only, not displayed on the page):
+like: Like text
+cancelLike: Cancel Like text
+reply: Label text for reply button
+cancelReply: Label text for cancel reply button
+preview: Label text for preview button
+emoji: Label text for emoji button
+gif: Label text for GIF button
+uploadImage: Label text for upload image button
+profile: Label text for profile page
+logout: Label text for logout button
 ```
 
 ### Artalk
@@ -189,6 +290,143 @@ artalk:
   server: https://artalk.server.instance/ # 你的 Artalk 服务地址
   site_name: My Blog # 站点名称，用于区分多个站点（可选）
 ```
+
+### Utterances
+
+The theme supports [Utterances](https://utteranc.es/).  
+Please refer to Utterances docs and edit `_config.arknights.yml` in your Hexo directory:
+
+```yaml
+utterances:
+  enable: false
+  repo: # GitHub repository owner and name, format: owner/repo
+  issue_term: pathname # Options: pathname | url | title | og:title
+  theme: github-light # Options: github-light | github-dark | preferred-color-scheme | github-dark-orange | icy-dark | dark-blue | photon-dark | boxy-light
+```
+
+> Before using, you need to:
+> 1. Ensure the GitHub repository is public
+> 2. Install the [utterances app](https://github.com/apps/utterances) in your repository
+> 3. Ensure Issues are enabled for the repository
+
+### Giscus
+
+The theme supports [Giscus](https://giscus.app/) comment system.
+Please refer to Giscus official documentation and edit `_config.arknights.yml` in your Hexo directory:
+
+#### Basic Configuration
+
+```yaml
+giscus:
+  enable: false
+  repo: # GitHub repository owner and name, format: owner/repo
+  repo_id: # Repository ID, get it from giscus page
+  category: # Discussion category name
+  category_id: # Category ID, get it from giscus page
+  mapping: pathname # Page ↔️ discussion mapping
+  strict: 0 # Enable strict title matching: 0 | 1
+  reactions_enabled: 1 # Enable reactions on main post: 0 | 1
+  emit_metadata: 0 # Emit discussion metadata: 0 | 1
+  input_position: bottom # Comment input position: top | bottom
+  lang: en # Language
+  loading: lazy # Lazy loading: lazy | leave empty to disable
+  crossorigin: anonymous # CORS setting
+```
+
+#### Theme Configuration (Choose One)
+
+**Option 1: Single Theme (Fixed theme, doesn't follow site theme)**
+```yaml
+giscus:
+  theme: preferred_color_scheme # or other theme name
+```
+
+**Option 2: Separate Light/Dark Themes (Recommended, supports auto theme switching)**
+```yaml
+giscus:
+  theme_light: light # Light mode theme
+  theme_dark: dark # Dark mode theme
+```
+
+**Option 3: Custom CSS (Advanced usage)**
+```yaml
+giscus:
+  theme: https://your-domain.com/path/to/custom-giscus-theme.css
+```
+
+#### Available Theme Options
+
+- **GitHub Theme Series**: `light`, `dark`, `dark_dimmed`, `dark_high_contrast`, `dark_tritanopia`, `light_high_contrast`, `light_tritanopia`, `light_protanopia`, `dark_protanopia`
+- **Special Themes**: `preferred_color_scheme`, `transparent_dark`
+- **Borderless Themes**: `noborder_light`, `noborder_dark`, `noborder_gray`
+- **Third Party Themes**: `gruvbox`, `gruvbox_dark`, `gruvbox_light`, `purple_dark`, `cobalt`
+- **Catppuccin Themes**: `catppuccin_latte`, `catppuccin_frappe`, `catppuccin_macchiato`, `catppuccin_mocha`
+- **Others**: `fro`
+
+#### Mapping Options
+
+```yaml
+giscus:
+  mapping: pathname # Available options:
+    # pathname - Use page path
+    # url - Use full URL
+    # title - Use page title
+    # og:title - Use og:title meta tag
+    # specific - Use specific string (requires term)
+    # number - Use specific discussion number (requires discussion_number)
+  
+  # Used when mapping is specific
+  term: "your-specific-term"
+  
+  # Used when mapping is number
+  discussion_number: 123
+```
+
+#### Advanced Configuration Options
+
+```yaml
+giscus:
+  # Custom discussion description
+  description: "Comments"
+  
+  # Domain restriction
+  origin: "https://your-domain.com"
+  
+  # Custom backlink
+  backlink: "https://your-domain.com"
+```
+
+For better security control, create `source/giscus.json` file in your site root:
+
+```json
+{
+  "origins": ["https://your-domain.com"],
+  "originsRegex": ["http://localhost:[0-9]+"],
+  "defaultCommentOrder": "newest"
+}
+```
+
+Domain validation priority: YAML config > JSON exact match > JSON regex match > default allow
+
+#### Message Events API
+
+```javascript
+// Listen to message events
+giscusManager.addMessageHandler((data) => {
+  console.log('Giscus message:', data)
+})
+
+// Update configuration
+giscusManager.sendMessage({ setConfig: { theme: 'dark' } })
+
+// Sync theme
+giscusManager.syncTheme()
+```
+
+> **Before using, you need to:**
+> 1. Ensure the GitHub repository is public
+> 2. Install the [giscus app](https://github.com/apps/giscus) in your repository
+> 3. Ensure Discussions are enabled for the repository
 
 ## Mathematical formulas
 
@@ -368,11 +606,11 @@ post:
 
 ## Views statistics
 
-Use [不蒜子](http://busuanzi.ibruce.info/) for page view statistics.
+Use [Vercount](https://vercount.one/) for page view statistics. Due to instability of the original Busuanzi service, it has been replaced with the more reliable Vercount service.
 Modify the `_config.arknights.yml` file in the **Hexo directory** to enable this feature:
 
 ```yaml
-busuanzi:
+vercount:
   enable: false
   sitePV: true # Total Site Visits
   siteUV: true # Number of site visitors
@@ -381,8 +619,15 @@ busuanzi:
 
 ## Document encryption
 
-The modified [hexo-blog-encrypt](https://github.com/D0n9X1n/hexo-blog-encrypt) plugin has been adapted and integrated into this theme (currently only the default and up themes are supported).
+The modified [hexo-blog-encrypt](https://github.com/D0n9X1n/hexo-blog-encrypt) plugin has been adapted and integrated into this theme (currently only the `default` and `up` themes are supported).
 
+> If previously installed, please remove the `hexo-blog-encrypt` dependency in `package.json` under the hexo directory and execute the following command
+> 
+> ```shell
+> pnpm i
+> hexo clean
+> ```
+> 
 > For detailed configuration reference [hexo-blog-encrypt](https://github.com/D0n9X1n/hexo-blog-encrypt)
 
 Add the following to the `Hexo/_config.yml` file:
@@ -424,12 +669,29 @@ search:
   enable: false
 ```
 
+## Build time display
+
+You can choose to add a build time display in the sidebar. It is disabled by default. To enable it, add the following to `Hexo/_config.arknights.yml`:
+
+```yaml
+build_time: true
+```
+
 ## Front-matter
 
 In addition to [Front-matter supported by Hexo](https://hexo.io/docs/front-matter), the theme also supports:  
 
 ```yaml
-# Published/updated date in the top right corner of the article page
+# Article Published/updated date
+post-time: true/false
+
+# Article reading time/word count statistics
+post-count: true/false
+
+# Article vercount counter
+vercount: true/false
+
+# Turn on/off all of the above
 post-info: true/false
 
 # Sidebar table of contents
@@ -438,6 +700,104 @@ post-index: true/false
 # Rewards
 reward: true/false
 ```
+
+## extra label
+
+### admonition
+
+```text
+{% note/warning/success/failure/detail [title] [open/fold] [color] %}
+content
+{% end[note/warning/success/failure/detail] %}
+```
+
+Add block based content such as note, warning, error, etc. with icons for `note/warning/success/failure` and no icons for `detail`.
+
+### hide
+
+```
+{% hide content %}
+```
+
+Hidden content, supports markdown rendering, can have spaces, and does not require quotation marks.
+
+### link card/linkc
+
+```
+{% linkcard %}
+Title1:
+    avatar: https://someLink/someAvatar.png
+    src: https://someLink/
+    img: https://somelink/somePicture.png
+    descr: someDescr
+    style:
+    	color: someColor
+Title2:
+    avatar: https://someLink/someName.png
+    src: https://someLink/
+{% endlinkcard %}
+```
+
+A set of friendly links can be generated, with the title and link (src) as mandatory options. Style follows CSS format.
+
+### Monaco Editor
+
+In addition to Hexo's built-in [code blocks](https://hexo.io/docs/tag-plugins.html#Code-Block), this theme also supports the VS Code-style [Monaco Editor](https://github.com/microsoft/monaco-editor).
+
+```text
+{% editor javascript %}
+/* global hexo */
+
+'use strict';
+
+function render(data) {
+    return hexo.render.renderSync({ text: data, engine: 'markdown' });
+}
+
+hexo.extend.tag.register('hide', (args) => {
+    let content = ''
+    args.forEach((item) => {
+        content += ' ' + item
+    });
+    return `<span class="hide"><object>${render(content.slice(1)).trim()}</object></span>`;
+})
+{% endeditor %}
+```
+
+The `editor` tag supports the following parameters:
+
+```text
+[language, [theme, [readOnly, [height]]], [...extras(key:value)]]
+```
+
++ `language` defaults to `plaintext`;
++ `theme` defaults to `vs-dark`;
++ `readOnly` defaults to `true`;
++ `height` defaults to `300px`.
+
+Less commonly used options can be passed through the `extras` field. For example, the following example enables word wrapping when the line exceeds 40 columns:
+
+```
+{% editor javascript hc-black wordWrap:`wordWrapColumn` wordWrapColumn:40 wrappingIndent:`indent` %}
+/* global hexo */
+
+'use strict';
+
+function render(data) {
+    return hexo.render.renderSync({ text: data, engine: 'markdown' });
+}
+
+hexo.extend.tag.register('hide', (args) => {
+    let content = ''
+    args.forEach((item) => {
+        content += ' ' + item
+    });
+    return `<span class="hide"><object>${render(content.slice(1)).trim()}</object></span>`;
+})
+{% endeditor %}
+```
+
+For more construction options see the [Monaco Editor documentation](https://microsoft.github.io/monaco-editor/typedoc/interfaces/editor.IStandaloneEditorConstructionOptions.html); for concrete styling examples see [PR #215](https://github.com/Yue-plus/hexo-theme-arknights/pull/215).
 
 ## Import custom CSS/JS files
 
@@ -528,8 +888,12 @@ If you enjoy this theme:
 
 - give me a star `(/▽＼)`
   > - √ `ヾ(✿ﾟ▽ﾟ)ノ` 100star for a new theme~
-  > - new theme developing: [Yue-plus/vuepress-theme-rhinelab](https://github.com/Yue-plus/vuepress-theme-rhinelab)
+  > - New theme developing:
+  >   + [Yue-plus/astro-arknights](https://github.com/Yue-plus/astro-arknights)
+  >   + [Yue-plus/vuepress-theme-rhinelab](https://github.com/Yue-plus/vuepress-theme-rhinelab)
 - Arknights ID of the developer: `24444750` (Chinese Bilibili server)
-- join Tencent QQ discussion group:618221514
+- Join Tencent QQ discussion group: [618221514](https://qm.qq.com/q/QJ7NPWiWyK)
 - reward/sponsor:
   ![Reward QR code](./support.jpg)
+
+

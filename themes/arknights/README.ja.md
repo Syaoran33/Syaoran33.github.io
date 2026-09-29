@@ -7,20 +7,34 @@
 
 ## デモページ　　
 
+ここには、すべての本テーマの使用者<!-- かつて使用したことがある人 -->の相互リンクが記録されています。
+
 - ### **Dr.Yue_plus: <http://arknights.theme.hexo.yue.zone/>**
-- ### **Dr.ToUNVRSe <https://tounvrse.github.io/>**
+- ### **Dr.Ocatator <https://ocatator.github.io/>**
 - **Dr.Ye: <https://laurenfrost.github.io/>**
-- **Dr.LingYun: <https://dr-lingyun.gitee.io/>**
-- **Dr.XIMU：<http://b.ligzs.cn/>**
 - **Dr.tyqtyq <https://tyq0712.github.io/>**
-- **Dr.TTsdzb <https://ark.ttsdzb.monster/>**
 - **Dr.Angine <https://angine.tech/>**
 - **Dr.sjfhsjfh <https://sjfh.top/>**
 - **Dr.Voilone <https://note.voiblog.top/>**
-- **Zhongye1 <https://zhongye1.github.io/>**
 - **Dr.yuanli-LFSW<https://blog.yuanli-lfsw.com/>**
+- **Dr.Laplacian: <https://rhinelab.kr>**
+- **Dr.Chen: <https://light-of-hers.github.io>**
+- **Dr.Linyee <https://linyee.world/>**
+- **Dr.Flacier <https://flacier.us.kg/>**
+- **Dr.LZW <https://lzwnb.github.io/blog/>** 
+- **Dr.GrandpaFox <https://grandpafox.online/>** 
+- **Dr.未雨屏 <https://weiyuping.top/>**
+- **飞龙project <https://schale.top/>**
+- **tomorinao-www <https://ghpage.wwnao.xyz>**
+- **Mornikar <https://mornikar.github.io/Mornikar/>**
 
-このテーマを使ったあなたのブログリンク、ここに付けたいなら大歓迎~　　
+<!-- - **Dr.LingYun: <https://dr-lingyun.gitee.io/>** -->
+<!-- - **Dr.XIMU：<http://www.ligzs.com/>** -->
+<!-- - **Dr.TTsdzb <https://ark.ttsdzb.monster/>** -->
+<!-- - **Dr.Zhongye1 <https://zhongye1.github.io/>** -->
+<!-- - **Dr.Rimrose: <https://blog.rimrose.site>** -->
+　
+このテーマを使用した場合、[Pull Requests](https://github.com/Yue-plus/hexo-theme-arknights/compare) を発起してここに相互リンクを貼ることを大歓迎します。
 
 ![テーマのデモページ](./demo.jpg)
 
@@ -40,7 +54,7 @@
 hexo init Hexo
 cd Hexo
 npm install
-git clone https://github.com/Yue-plus/hexo-theme-arknights.git themes/arknights
+git clone https://github.com/Yue-plus/hexo-theme-arknights.git themes/arknights --depth=1
 ```
 
 ### 依存関係をインストールする
@@ -141,7 +155,9 @@ valine:
   enable: false
   app_id: # APP ID
   app_key: # APP KEY
-  server_url: # APP DOMAIN（LeanCloud 国际版）
+  server_url: # APP DOMAIN（LeanCloud 国際版）
+  avatar: 'retro' # (''/mp/identicon/monsterid/wavatar/robohash/retro/hide)
+  avatar_cdn: 'https://dn-qiniu-avatar.qbox.me/avatar/' # カスタム avatar CDN
 ```
 
 メール通知を有効にする：[zhaojun1998 / Valine-Admin](https://github.com/zhaojun1998/Valine-Admin)
@@ -176,6 +192,91 @@ Waline の公式ドキュメントを参考に、Hexo ディレクトリの `_co
 waline:
   enable: false
   server_url: # Server_Url
+  locale:
+    placeholder: "コメントをお待ちしています～"
+    # sofa: "コメントをお待ちしています～"
+    # nick: "ニックネーム"
+    # mail: "メールアドレス"
+    # link: "URL"
+    # submit: "送信"
+```
+
+Walineはロケールオプションを提供しており、インターフェースの言語と表示テキストをカスタマイズするために使用できます。デフォルトでは、Walineは組み込みの多言語テキストを使用します。現在の言語がサポートされていない場合、自動的にen-US（アメリカ英語）にフォールバックします。<br/>デフォルトで表示されるテキストを上書きするために、一部のフィールドを設定できます。ロケールオプションでは、すべてのフィールドはオプションであり、指定されていないフィールドはデフォルト値を保持します。<br/>
+```yaml
+レベル関連:
+level${number}: レベル${number}の表示テキスト
+```
+```yaml
+リアクション関連:
+reactionTitle: リアクションタイトル
+reaction0: リアクション1のテキスト
+reaction1: リアクション2のテキスト
+reaction2: リアクション3のテキスト
+reaction3: リアクション4のテキスト
+reaction4: リアクション5のテキスト
+reaction5: リアクション6のテキスト
+reaction6: リアクション7のテキスト
+reaction7: リアクション8のテキスト
+reaction8: リアクション9のテキスト
+```
+```yaml
+UI関連:
+nick: ニックネーム
+mail: メールアドレス
+link: ウェブサイト
+placeholder: コメント欄プレースホルダー
+sofa: コメントがまだない時の表示テキスト
+submit: 送信ボタンテキスト
+comment: コメントボタンテキスト
+refresh: 更新ボタンテキスト
+more: さらに読み込むボタンテキスト
+uploading: アップロード中表示テキスト
+login: ログインボタンテキスト
+admin: 管理者バッジ
+sticky: 固定表示
+word: 文字
+anonymous: 匿名ユーザー名
+optional: 任意項目表示テキスト
+gifSearchPlaceholder: GIF検索プレースホルダー
+oldest: 古い順
+latest: 新しい順
+hottest: 人気順
+```
+> 上記設定項目のテキストはページに表示されます。
+
+```yaml
+エラーメッセージ関連:
+nickError: ニックネームが条件を満たしていない場合のエラーメッセージ
+mailError: メールアドレスが条件を満たしていない場合のエラーメッセージ
+wordHint: コメント文字数に関するエラーメッセージ。$0、$1、$2は自動的に文字数の下限、上限、現在の文字数に置き換えられます。
+```
+```yaml
+コメント時間関連:
+seconds: 秒前
+minutes: 分前
+hours: 時間前
+days: 日前
+now: たった今
+```
+```yaml
+管理関連:
+approved: 承認済み
+waiting: 承認待ち
+spam: スパムコメント
+unsticky: 固定を解除
+```
+```yaml
+アクセシビリティ関連(アクセシビリティサービスのみで使用され、ページには表示されません):
+like: いいね
+cancelLike: いいね取消
+reply: 返信ボタンのラベル
+cancelReply: 返信取消ボタンのラベル
+preview: プレビューボタンのラベル
+emoji: 絵文字ボタンのラベル
+gif: GIFボタンのラベル
+uploadImage: 画像アップロードボタンのラベル
+profile: プロフィールページのラベル
+logout: ログアウトボタンのラベル
 ```
 
 ### Artalk
@@ -189,6 +290,143 @@ artalk:
   server: https://artalk.server.instance/ # あなたの Artalk サービスのアドレス
   site_name: My Blog # サイト名、複数のサイトを区別するために使用（オプション）
 ```
+
+### Utterances
+
+このテーマは [Utterances](https://utteranc.es/) をサポートしています。
+Utterances 公式ドキュメントを参考に、Hexo ディレクトリの `_config.arknights.yml` ファイルを変更してください:
+
+```yaml
+utterances:
+  enable: false
+  repo: # GitHub リポジトリの所有者と名前、形式：owner/repo
+  issue_term: pathname # 選択肢: pathname | url | title | og:title
+  theme: github-light # 選択肢: github-light | github-dark | preferred-color-scheme | github-dark-orange | icy-dark | dark-blue | photon-dark | boxy-light
+```
+
+> 使用前に必要な設定：
+> 1. GitHub リポジトリが公開されていることを確認
+> 2. リポジトリに [utterances app](https://github.com/apps/utterances) をインストール
+> 3. リポジトリで Issues が有効になっていることを確認
+
+### Giscus
+
+このテーマは [Giscus](https://giscus.app/) コメントシステムをサポートしています。
+Giscus 公式ドキュメントを参考に、Hexo ディレクトリの `_config.arknights.yml` ファイルを変更してください:
+
+#### 基本設定
+
+```yaml
+giscus:
+  enable: false
+  repo: # GitHub リポジトリの所有者と名前、形式：owner/repo
+  repo_id: # リポジトリ ID、giscus ページから取得
+  category: # discussion カテゴリ名
+  category_id: # カテゴリ ID、giscus ページから取得
+  mapping: pathname # ページ ↔️ discussion マッピング関係
+  strict: 0 # 厳密なタイトルマッチングを有効にする 0 | 1
+  reactions_enabled: 1 # メイン投稿でのリアクションを有効にする 0 | 1
+  emit_metadata: 0 # discussion のメタデータを出力する 0 | 1
+  input_position: bottom # コメント入力ボックスの位置: top | bottom
+  lang: ja # 言語
+  loading: lazy # 懒惰読み込み: lazy | 空で無効化
+  crossorigin: anonymous # CORS 設定
+```
+
+#### テーマ設定（3つの方法から1つを選択）
+
+**方法1：単一テーマ（固定テーマ、サイトテーマに追従しない）**
+```yaml
+giscus:
+  theme: preferred_color_scheme # または他のテーマ名
+```
+
+**方法2：明暗テーマ個別設定（推奨、自動テーマ切り替えサポート）**
+```yaml
+giscus:
+  theme_light: light # ライトモードテーマ
+  theme_dark: dark # ダークモードテーマ
+```
+
+**方法3：カスタムCSS（上級者向け）**
+```yaml
+giscus:
+  theme: https://your-domain.com/path/to/custom-giscus-theme.css
+```
+
+#### 利用可能なテーマオプション
+
+- **GitHub テーマシリーズ**: `light`, `dark`, `dark_dimmed`, `dark_high_contrast`, `dark_tritanopia`, `light_high_contrast`, `light_tritanopia`, `light_protanopia`, `dark_protanopia`
+- **特殊テーマ**: `preferred_color_scheme`, `transparent_dark`
+- **ボーダーレステーマ**: `noborder_light`, `noborder_dark`, `noborder_gray`
+- **サードパーティテーマ**: `gruvbox`, `gruvbox_dark`, `gruvbox_light`, `purple_dark`, `cobalt`
+- **Catppuccin テーマ**: `catppuccin_latte`, `catppuccin_frappe`, `catppuccin_macchiato`, `catppuccin_mocha`
+- **その他**: `fro`
+
+#### マッピングオプション
+
+```yaml
+giscus:
+  mapping: pathname # 選択肢：
+    # pathname - ページパスを使用
+    # url - 完全なURLを使用  
+    # title - ページタイトルを使用
+    # og:title - og:title メタタグを使用
+    # specific - 特定の文字列を使用（term と組み合わせ）
+    # number - 特定のdiscussion番号を使用（discussion_number と組み合わせ）
+  
+  # mapping が specific の場合に使用
+  term: "your-specific-term"
+  
+  # mapping が number の場合に使用
+  discussion_number: 123
+```
+
+#### 上級設定オプション
+
+```yaml
+giscus:
+  # カスタム discussion 説明
+  description: "コメント"
+  
+  # ドメイン制限
+  origin: "https://your-domain.com"
+  
+  # カスタムバックリンク
+  backlink: "https://your-domain.com"
+```
+
+より良いセキュリティ制御のため、サイトルートに `source/giscus.json` ファイルを作成できます：
+
+```json
+{
+  "origins": ["https://your-domain.com"],
+  "originsRegex": ["http://localhost:[0-9]+"],
+  "defaultCommentOrder": "newest"
+}
+```
+
+ドメイン検証優先順位：YAML設定 > JSON完全一致 > JSON正規表現 > デフォルト許可
+
+#### メッセージイベント API
+
+```javascript
+// メッセージイベントを監視
+giscusManager.addMessageHandler((data) => {
+  console.log('Giscus message:', data)
+})
+
+// 設定を更新
+giscusManager.sendMessage({ setConfig: { theme: 'dark' } })
+
+// テーマを同期
+giscusManager.syncTheme()
+```
+
+> **使用前に必要な設定：**
+> 1. GitHub リポジトリが公開されていることを確認
+> 2. リポジトリに [giscus app](https://github.com/apps/giscus) をインストール
+> 3. リポジトリで Discussions が有効になっていることを確認
 
 ## 数学公式
 
@@ -368,21 +606,28 @@ post:
 
 ## ブラウズ統計
 
-[不蒜子](http://busuanzi.ibruce.info/)  を使用してブラウズ統計を取得します。
+[Vercount](https://vercount.one/) を使用してブラウズ統計を取得します。元の不蒜子サービスの不安定性により、より信頼性の高いVercountサービスに置き換えられました。
 **Hexoディレクトリ** の下にある `_ config.arknights.yml` ファイルを変更して有効にするには：
 
 ```yaml
-busuanzi:
+vercount:
   enable: false
   sitePV: true # サイト総アクセス数
   siteUV: true # サイト訪問者数
   pagePV: true # ページアクセス数
 ```
 
-### ドキュメント暗号化
+## ドキュメント暗号化
 
-修正された [hexo-blog-encrypt](https://github.com/D0n9X1n/hexo-blog-encrypt) プラグインはこのトピックに適合して統合されています（現在は default と up トピックのみがサポートされています）。
+修正された [hexo-blog-encrypt](https://github.com/D0n9X1n/hexo-blog-encrypt) プラグインはこのトピックに適合して統合されています（現在は `default` と `up` トピックのみがサポートされています）。
 
+> もしこの前にインストールした場合は、Hexo ディレクトリの `package.json` から `hexo-blog-encrypt` 依存を削除し、次のコマンドを実行してください
+> 
+> ```shell
+> npm i
+> hexo clean
+> ```
+> 
 > 詳細構成リファレンス [hexo-blog-encrypt/ReadMe.zh.md](https://github.com/D0n9X1n/hexo-blog-encrypt/)
 
 `Hexo/_config.yml` ファイルに次の内容を追加します。
@@ -415,7 +660,7 @@ wrong_hash_message：Rhodes Islandと™ 有効パスワードが失敗しまし
 ---
 ```
 
-### 検索
+## 検索
 
 デフォルトでオンになっています。オフにするには、`Hexo/_config.arknights.yml` ファイルで次の手順に従います。
 
@@ -424,12 +669,29 @@ search:
   enable: false
 ```
 
+## ビルド時間の表示
+
+サイドバーにビルド時間の表示を追加できます。デフォルトでは無効になっています。有効にするには、`Hexo/_config.arknights.yml` ファイルで次のように設定してください：
+
+```yaml
+build_time: true
+```
+
 ## Front-matter
 
 [Hexo サポートの Front-matter](https://hexo.io/ja/docs/front-matter.html) もサポート：
 
 ```yaml
-# 記事ページ右上のパブリッシュ/更新日
+# 投稿/更新日
+post-time: true/false
+
+# 記事の読み込み時間/語数の統計
+post-count: true/false
+
+# 記事の読み取り回数
+vercount: true/false
+
+# 以上すべてオン/オフ
 post-info: true/false
 
 # サイドバーのディレクトリ
@@ -438,6 +700,104 @@ post-index: true/false
 # に報いる
 reward: true/false
 ```
+
+## 追加ラベル
+
+### admonition
+
+```text
+{% note/warning/success/failure/detail [title] [open/fold] [color] %}
+content
+{% end[note/warning/success/failure/detail] %}
+```
+
+ヒント、警告、エラーなどのブロックコンテンツを追加します。その中で、`note/warning/success/failure` はアイコンがあり、`detail` はアイコンがありません。
+
+### hide
+
+```
+{% hide content %}
+```
+
+コンテンツを非表示にし、content は markdown レンダリングをサポートし、引用符を使用する必要はありません。
+
+### link card/linkc
+
+```
+{% linkcard %}
+Title1:
+    avatar: https://someLink/someAvatar.png
+    src: https://someLink/
+    img: https://somelink/somePicture.png
+    descr: someDescr
+    style:
+    	color: someColor
+Title2:
+    avatar: https://someLink/someName.png
+    src: https://someLink/
+{% endlinkcard %}
+```
+
+友達チェーンのセットを生成できます。タイトル（title）、リンク（src）は必須です。スタイル（style）は CSS フォーマットに準拠しています。
+
+### Monaco Editor
+
+Hexo 標準の [コードブロック](https://hexo.io/ja/docs/tag-plugins.html#%E3%82%B3%E3%83%BC%E3%83%89%E3%83%96%E3%83%AD%E3%83%83%E3%82%AF) に加え、本テーマは VS Code スタイルの [Monaco Editor](https://github.com/microsoft/monaco-editor) をサポートしています。
+
+```text
+{% editor javascript %}
+/* global hexo */
+
+'use strict';
+
+function render(data) {
+    return hexo.render.renderSync({ text: data, engine: 'markdown' });
+}
+
+hexo.extend.tag.register('hide', (args) => {
+    let content = ''
+    args.forEach((item) => {
+        content += ' ' + item
+    });
+    return `<span class="hide"><object>${render(content.slice(1)).trim()}</object></span>`;
+})
+{% endeditor %}
+```
+
+`editor` タグは次のパラメータをサポートします：
+
+```text
+[language, [theme, [readOnly, [height]]], [...extras(key:value)]]
+```
+
++ `language` のデフォルトは `plaintext` です；
++ `theme` のデフォルトは `vs-dark` です；
++ `readOnly` のデフォルトは `true` です；
++ `height` のデフォルトは `300px` です。
+
+あまり使われないパラメータは `extras` で渡すことができます。例えば、下の例は列数が 40 を超えた時に折り返し（ワードラップ）を有効にします：
+
+```
+{% editor javascript hc-black wordWrap:`wordWrapColumn` wordWrapColumn:40 wrappingIndent:`indent` %}
+/* global hexo */
+
+'use strict';
+
+function render(data) {
+    return hexo.render.renderSync({ text: data, engine: 'markdown' });
+}
+
+hexo.extend.tag.register('hide', (args) => {
+    let content = ''
+    args.forEach((item) => {
+        content += ' ' + item
+    });
+    return `<span class="hide"><object>${render(content.slice(1)).trim()}</object></span>`;
+})
+{% endeditor %}
+```
+
+追加の拡張パラメータは [Monaco Editor ドキュメント](https://microsoft.github.io/monaco-editor/typedoc/interfaces/editor.IStandaloneEditorConstructionOptions.html) を参照してください。具体的なスタイルの反映例は [PR #215](https://github.com/Yue-plus/hexo-theme-arknights/pull/215) をご覧ください。
 
 ## カスタム CSS/JS ファイルの導入
 
@@ -536,8 +896,11 @@ hexo serve --debug
 このテーマはお気に入れば：
 
 - star 頂戴いたします `(/▽＼)`  
-  > star 100 達成したら、新しいテーマの開発をスケジュールに入れます。  
-- 開発者の arknight id：`24444750`（中国 Bilibili 鯖）  
-- Tencent QQ の交流グループ：618221514  
+  > - star 100 達成したら、新しいテーマの開発をスケジュールに入れます。
+  > - 新しいテーマ開発中：
+  >   + [Yue-plus/astro-arknights](https://github.com/Yue-plus/astro-arknights)
+  >   + [Yue-plus/vuepress-theme-rhinelab](https://github.com/Yue-plus/vuepress-theme-rhinelab)
+- 開発者の arknight id：`24444750`（中国 Bilibili 鯉）
+- Tencent QQ の交流グループ：[618221514](https://qm.qq.com/q/QJ7NPWiWyK)
 - Reward：
-  ![QRコード](./support.jpg)  
+  ![QRコード](./support.jpg)

@@ -7,20 +7,34 @@
 
 ## 预览
 
+这里记录了所有本主题使用者<!-- 曾经使用 -->的友链：
+
 - ### **Dr.Yue_plus: <http://arknights.theme.hexo.yue.zone/>**
-- ### **Dr.ToUNVRSe <https://tounvrse.github.io/>**
+- ### **Dr.Ocatator <https://ocatator.github.io/>**
 - **Dr.Ye: <https://laurenfrost.github.io/>**
-- **Dr.LingYun: <https://dr-lingyun.gitee.io/>**
-- **Dr.XIMU：<http://b.ligzs.cn/>**
 - **Dr.tyqtyq <https://tyq0712.github.io/>**
-- **Dr.TTsdzb <https://ark.ttsdzb.monster/>**
 - **Dr.Angine <https://angine.tech/>**
 - **Dr.sjfhsjfh <https://sjfh.top/>**
 - **Dr.Voilone <https://note.voiblog.top/>**
-- **Zhongye1 <https://zhongye1.github.io/>**
 - **Dr.yuanli-LFSW<https://blog.yuanli-lfsw.com/>**
+- **Dr.Laplacian: <https://rhinelab.kr>**
+- **Dr.Chen: <https://light-of-hers.github.io>**
+- **Dr.Linyee <https://linyee.world/>**
+- **Dr.Flacier <https://flacier.us.kg/>**
+- **Dr.LZW <https://lzwnb.github.io/blog/>** 
+- **Dr.GrandpaFox <https://grandpafox.online/>** 
+- **Dr.未雨屏 <https://weiyuping.top/>**
+- **飞龙project <https://schale.top/>**
+- **tomorinao-www <https://ghpage.wwnao.xyz>**
+- **Mornikar <https://mornikar.github.io/Mornikar/>**
 
-如果使用了这个主题，欢迎在这儿贴预览链接~
+<!-- - **Dr.LingYun: <https://dr-lingyun.gitee.io/>** -->
+<!-- - **Dr.XIMU：<http://www.ligzs.com/>** -->
+<!-- - **Dr.TTsdzb <https://ark.ttsdzb.monster/>** -->
+<!-- - **Dr.Zhongye1 <https://zhongye1.github.io/>** -->
+<!-- - **Dr.Rimrose: <https://blog.rimrose.site>** -->
+
+如果使用了这个主题，欢迎发起 [Pull Requests](https://github.com/Yue-plus/hexo-theme-arknights/compare) 在这儿贴友链~
 
 ![主题预览图片](./demo.jpg)
 
@@ -40,7 +54,7 @@
 hexo init Hexo
 cd Hexo
 cnpm install
-git clone https://github.com/Yue-plus/hexo-theme-arknights.git themes/arknights
+git clone https://github.com/Yue-plus/hexo-theme-arknights.git themes/arknights --depth=1
 ```
 
 ### 安装依赖
@@ -142,6 +156,8 @@ valine:
   app_id: # APP ID
   app_key: # APP KEY
   server_url: # APP DOMAIN（LeanCloud 国际版）
+  avatar: 'retro' # (''/mp/identicon/monsterid/wavatar/robohash/retro/hide)
+  avatar_cdn: 'https://dn-qiniu-avatar.qbox.me/avatar/' # 自定义 avatar cdn
 ```
 
 开启邮件提醒：[zhaojun1998 / Valine-Admin](https://github.com/zhaojun1998/Valine-Admin)
@@ -176,6 +192,92 @@ gitalk:
 waline:
   enable: false 
   server_url: # Server_Url
+  locale:
+    placeholder: "期待您的评论~"
+    # sofa: "来发评论吧~"
+    # nick: "昵称"
+    # mail: "邮箱"
+    # link: "网址"
+    # submit: "提交"
+```
+
+Waline 提供了 locale 选项，可用于自定义界面语言与显示文本。默认情况下，Waline 会使用内置的多语言文本。若当前语言不受支持，则自动回退到 en-US（英语美国）。<br/>你可以设置部分字段以覆盖默认显示的文本。在 locale 选项中，所有字段均为可选，未指定的字段将保留其默认值。<br/>
+
+```yaml
+等级相关:
+level${number}: number 等级的文字
+```
+```yaml
+反应相关：
+reactionTitle: 反应标题
+reaction0: 反应 1 文字
+reaction1: 反应 2 文字
+reaction2: 反应 3 文字
+reaction3: 反应 4 文字
+reaction4: 反应 5 文字
+reaction5: 反应 6 文字
+reaction6: 反应 7 文字
+reaction7: 反应 8 文字
+reaction8: 反应 9 文字
+```
+```yaml
+UI相关：
+nick: 昵称
+mail: 邮箱
+link: 网址
+placeholder: 评论框默认文字
+sofa: 评论区为空时的显示文字
+submit: 提交按钮文字
+comment: 评论按钮文字
+refresh: 刷新按钮文字
+more: 加载更多按钮文字
+uploading: 上传时显示文字
+login: 登录按钮文字
+admin: 管理员的标签
+sticky: 置顶文字
+word: 字
+anonymous: 匿名用户默认名称
+optional: 标明可选项的文字
+gifSearchPlaceholder: 表情包搜索占位文字
+oldest: 最早的评论
+latest: 最新的评论
+hottest: 最热的评论
+```
+> 上述设置项的文字会显示在页面上。
+
+```yaml
+提示信息相关:
+nickError: 昵称不满足条件的错误信息
+mailError: 邮箱不满足条件的错误信息
+wordHint: 评论字数的错误提示，其中 $0 $1 $2 会被自动替换为字数允许下限、字数允许上限、当前字数。
+```
+```yaml
+评论时间相关:
+seconds: 秒前
+minutes: 分钟前
+hours: 小时前
+days: 天前
+now: 刚刚
+```
+```yaml
+管理相关:
+approved: 审核通过
+waiting: 等待审核
+spam: 垃圾评论
+unsticky: 取消置顶
+```
+```yaml
+无障碍相关(只用于无障碍服务增强，不会显示在页面中):
+like: 喜欢文字
+cancelLike: 取消喜欢文字
+reply: 回复按钮的标签文字
+cancelReply: 取消回复按钮的标签文字
+preview: 预览按钮的标签文字
+emoji: 表情按钮的标签文字
+gif: 表情包按钮的标签文字
+uploadImage: 上传图片按钮的标签文字
+profile: 档案页标签文字
+logout: 退出登录按钮的标签文字
 ```
 
 ### Artalk
@@ -189,6 +291,143 @@ artalk:
   server: https://artalk.server.instance/ # 你的 Artalk 服务地址
   site_name: My Blog # 站点名称，用于区分多个站点（可选）
 ```
+
+### Utterances
+
+本主题支持 [Utterances](https://utteranc.es/) 。
+请参考 Utterances 官方文档修改 Hexo 目录下的 `_config.arknights.yml` 文件：
+
+```yaml
+utterances:
+  enable: false
+  repo: # Github 仓库所有者和名称，格式：owner/repo
+  issue_term: pathname # 可选值: pathname | url | title | og:title
+  theme: github-light # 可选值: github-light | github-dark | preferred-color-scheme | github-dark-orange | icy-dark | dark-blue | photon-dark | boxy-light
+```
+
+> 使用前需要：
+> 1. 确保 GitHub 仓库是公开的
+> 2. 在仓库中安装 [utterances app](https://github.com/apps/utterances)
+> 3. 确保仓库启用了 Issues 功能
+
+### Giscus
+
+本主题支持 [Giscus](https://giscus.app/) 评论系统。
+请参考 Giscus 官方文档修改 Hexo 目录下的 `_config.arknights.yml` 文件：
+
+#### 基础配置
+
+```yaml
+giscus:
+  enable: false
+  repo: # Github 仓库所有者和名称，格式：owner/repo
+  repo_id: # 仓库 ID，可在 giscus 页面获取
+  category: # discussion 分类名称
+  category_id: # 分类 ID，可在 giscus 页面获取
+  mapping: pathname # 页面 ↔️ discussion 映射关系
+  strict: 0 # 是否启用严格标题匹配 0 | 1
+  reactions_enabled: 1 # 是否启用主帖子上的反应 0 | 1
+  emit_metadata: 0 # 是否输出 discussion 的元数据 0 | 1
+  input_position: bottom # 评论输入框位置，可选值: top | bottom
+  lang: zh-CN # 语言
+  loading: lazy # 懒加载，可选值: lazy | 留空表示不使用懒加载
+  crossorigin: anonymous # CORS 设置
+```
+
+#### 主题配置（三种方式任选其一）
+
+**方式一：使用单一主题（固定主题，不随网站主题切换）**
+```yaml
+giscus:
+  theme: preferred_color_scheme # 或其他主题名称
+```
+
+**方式二：分别设置明暗主题（推荐，支持主题自动切换）**
+```yaml
+giscus:
+  theme_light: light # 亮色模式主题
+  theme_dark: dark # 暗色模式主题
+```
+
+**方式三：使用自定义 CSS（高级用法）**
+```yaml
+giscus:
+  theme: https://your-domain.com/path/to/custom-giscus-theme.css
+```
+
+#### 可用主题选项
+
+- **GitHub 主题系列**: `light`, `dark`, `dark_dimmed`, `dark_high_contrast`, `dark_tritanopia`, `light_high_contrast`, `light_tritanopia`, `light_protanopia`, `dark_protanopia`
+- **特殊主题**: `preferred_color_scheme`, `transparent_dark`
+- **无边框主题**: `noborder_light`, `noborder_dark`, `noborder_gray`
+- **第三方主题**: `gruvbox`, `gruvbox_dark`, `gruvbox_light`, `purple_dark`, `cobalt`
+- **Catppuccin 主题**: `catppuccin_latte`, `catppuccin_frappe`, `catppuccin_macchiato`, `catppuccin_mocha`
+- **其他**: `fro`
+
+#### 映射关系选项
+
+```yaml
+giscus:
+  mapping: pathname # 可选值：
+    # pathname - 使用页面路径
+    # url - 使用完整 URL
+    # title - 使用页面标题
+    # og:title - 使用 og:title meta 标签
+    # specific - 使用特定字符串（需配合 term）
+    # number - 使用特定 discussion 号码（需配合 discussion_number）
+  
+  # 当 mapping 为 specific 时使用
+  term: "your-specific-term"
+  
+  # 当 mapping 为 number 时使用
+  discussion_number: 123
+```
+
+#### 高级配置选项
+
+```yaml
+giscus:
+  # 自定义 discussion 描述
+  description: "评论区"
+  
+  # 限制域名
+  origin: "https://your-domain.com"
+  
+  # 自定义返回链接
+  backlink: "https://your-domain.com"
+```
+
+为了更好的安全控制，可在站点根目录创建 `source/giscus.json` 文件：
+
+```json
+{
+  "origins": ["https://your-domain.com"],
+  "originsRegex": ["http://localhost:[0-9]+"],
+  "defaultCommentOrder": "newest"
+}
+```
+
+域名验证优先级：YAML配置 > JSON精确匹配 > JSON正则匹配 > 默认允许
+
+#### 消息事件 API
+
+```javascript
+// 监听消息事件
+giscusManager.addMessageHandler((data) => {
+  console.log('Giscus message:', data)
+})
+
+// 更新配置
+giscusManager.sendMessage({ setConfig: { theme: 'dark' } })
+
+// 同步主题
+giscusManager.syncTheme()
+```
+
+> **使用前需要：**
+> 1. 确保 GitHub 仓库是公开的
+> 2. 在仓库中安装 [giscus app](https://github.com/apps/giscus)
+> 3. 确保仓库启用了 Discussions 功能
 
 ## 数学公式
 
@@ -368,11 +607,11 @@ post:
 
 ## 浏览量统计
 
-使用 [不蒜子](http://busuanzi.ibruce.info/) 进行浏览量统计。
+使用 [Vercount](https://vercount.one/) 进行浏览量统计。由于原不蒜子服务不稳定，已替换为更可靠的 Vercount 服务。
 修改 **Hexo 目录** 下的 `_config.arknights.yml` 文件启用该功能：
 
 ```yaml
-busuanzi:
+vercount:
   enable: false
   sitePV: true # 站点总访问量
   siteUV: true # 站点访客数
@@ -381,8 +620,15 @@ busuanzi:
 
 ## 文档加密
 
-经过修改的 [hexo-blog-encrypt](https://github.com/D0n9X1n/hexo-blog-encrypt) 插件已适配并集成在本主题中（目前仅支持 default 与 up 主题）。
+经过修改的 [hexo-blog-encrypt](https://github.com/D0n9X1n/hexo-blog-encrypt) 插件已适配并集成在本主题中（目前仅支持 `default` 与 `up` 主题）。
 
+> 如果之前安装了，请删除 Hexo 目录下 `package.json` 中的 `hexo-blog-encrypt` 依赖，并且执行以下命令
+> 
+> ```shell
+> pnpm i
+> hexo clean
+> ```
+> 
 > 详细配置参考 [hexo-blog-encrypt/ReadMe.zh.md](https://github.com/D0n9X1n/hexo-blog-encrypt/blob/master/ReadMe.zh.md)
 
 在 `Hexo/_config.yml` 文件中添加以下内容：
@@ -395,6 +641,7 @@ encrypt: # hexo-blog-encrypt
   tags:
   - {name: tagName, password: 密码A}
   - {name: tagName, password: 密码B}
+  theme: default # default / up
   wrong_pass_message: 与 Rhodes Island™ 效验口令失败，请重试。
   wrong_hash_message: 与 Rhodes Island™ 效验口令失败，当前使用临时权限查看。
 ```
@@ -424,12 +671,29 @@ search:
   enable: false
 ```
 
+## 构建时间显示
+
+可选择在边栏添加构建时间显示，默认关闭，若要开启，可以在 `Hexo/_config.arknights.yml` 文件中：
+
+```yaml
+build_time: true
+```
+
 ## Front-matter
 
 除了 [Hexo 支持的 Front-matter](https://hexo.io/zh-cn/docs/front-matter) 还支持：
 
 ```yaml
-# 文章页右上角发布/更新日期
+# 文章发布/更新日期
+post-time: true/false
+
+# 文章阅读时间/词数统计
+post-count: true/false
+
+# 文章 Vercount 统计
+vercount: true/false
+
+# 开启/关闭以上全部
 post-info: true/false
 
 # 侧边栏的目录
@@ -438,6 +702,104 @@ post-index: true/false
 # 打赏框
 reward: true/false
 ```
+
+## 额外标签
+
+### admonition
+
+```text
+{% note/warning/success/failure/detail [title] [open/fold] [color] %}
+content
+{% end[note/warning/success/failure/detail] %}
+```
+
+添加提示、警告、错误等块式内容，其中 `note/warning/success/failure` 有图标，`detail` 无图标。
+
+### hide
+
+```
+{% hide content %}
+```
+
+隐藏内容，content 支持 markdown 渲染、可以有空格，无须使用引号。
+
+### link card/linkc
+
+```
+{% linkcard %}
+Title1:
+    avatar: https://someLink/someAvatar.png
+    src: https://someLink/
+    img: https://somelink/somePicture.png
+    descr: someDescr
+    style:
+    	color: someColor
+Title2:
+    avatar: https://someLink/someName.png
+    src: https://someLink/
+{% endlinkcard %}
+```
+
+可生成一组友链，标题（title）、与链接（src）为必选项。样式（style）遵循 CSS 格式。
+
+### Monaco Editor
+
+除了 Hexo 自带的 [代码块](https://hexo.io/zh-cn/docs/tag-plugins#%E4%BB%A3%E7%A0%81%E5%9D%97) 外，本主题还支持 VS Code 风格的 [Monaco Editor](https://github.com/microsoft/monaco-editor)。
+
+```text
+{% editor javascript %}
+/* global hexo */
+
+'use strict';
+
+function render(data) {
+    return hexo.render.renderSync({ text: data, engine: 'markdown' });
+}
+
+hexo.extend.tag.register('hide', (args) => {
+    let content = ''
+    args.forEach((item) => {
+        content += ' ' + item
+    });
+    return `<span class="hide"><object>${render(content.slice(1)).trim()}</object></span>`;
+})
+{% endeditor %}
+```
+
+`editor` 标签支持以下参数：
+
+```text
+[language, [theme, [readOnly, [height]]], [...extras(key:value)]]
+```
+
++ `language` 默认为 `plaintext`；
++ `theme` 默认为 `vs-dark`；
++ `readOnly` 默认为 `true`；
++ `height` 默认为 `300px`。
+
+较少使用的参数可通过 `extras` 项传入。例如，下面示例在超过 40 列时启用折行：
+
+```
+{% editor javascript hc-black wordWrap:`wordWrapColumn` wordWrapColumn:40 wrappingIndent:`indent` %}
+/* global hexo */
+
+'use strict';
+
+function render(data) {
+    return hexo.render.renderSync({ text: data, engine: 'markdown' });
+}
+
+hexo.extend.tag.register('hide', (args) => {
+    let content = ''
+    args.forEach((item) => {
+        content += ' ' + item
+    });
+    return `<span class="hide"><object>${render(content.slice(1)).trim()}</object></span>`;
+})
+{% endeditor %}
+```
+
+更多扩展参数请参阅 [Monaco Editor 文档](https://microsoft.github.io/monaco-editor/typedoc/interfaces/editor.IStandaloneEditorConstructionOptions.html)；具体样式效果见 [PR #215](https://github.com/Yue-plus/hexo-theme-arknights/pull/215)。
 
 ## 引入自定义 CSS/JS 文件
 
@@ -526,9 +888,11 @@ TypeScript 需要手动编译，请全局安装 `typescript` 后在 `arknights\s
 
 - 给颗小星星吧 `(/▽＼)`
   > - √ `ヾ(✿ﾟ▽ﾟ)ノ` 100star 做个新主题哦~
-  > - 新主题开发中 [Yue-plus/vuepress-theme-rhinelab](https://github.com/Yue-plus/vuepress-theme-rhinelab)
+  > - 新主题开发中：
+  >   + [Yue-plus/astro-arknights](https://github.com/Yue-plus/astro-arknights)
+  >   + [Yue-plus/vuepress-theme-rhinelab](https://github.com/Yue-plus/vuepress-theme-rhinelab)
 - 开发者的B服ID：`24444750`
-- 加入 QQ 群：618221514
+- 加入 QQ 群：[618221514](https://qm.qq.com/q/QJ7NPWiWyK)
   > 群内开发为主，吹水晒卡，分享线索7也都欢迎哦~ `d=====(￣▽￣*)b`
 - 打赏、赞助:
   ![收款二维码](./support.jpg)

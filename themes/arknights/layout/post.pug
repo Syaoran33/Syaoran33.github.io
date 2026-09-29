@@ -4,20 +4,20 @@ block content
   -
     const prev = page.prev
     const next = page.next
-    const dateConf = theme.post.date
-    const updatedConf = theme.post.updated
+    const dateConf = page['post-time'] !== false && theme.post.date
+    const updatedConf = page['post-time' ] !== false && theme.post.updated
     const excerptConf = theme.post.excerpt
     const reward = theme.post.reward
     const encrypted = page.encrypt || page.password
     const content = encrypted === undefined ? page.content : page.origin
     const tocContent = toc(content, theme.toc)
-    const countWord = theme.post.count === true && wordcount !== undefined ? wordcount(content) : null
-    const countTime = theme.post.time === true && min2read !== undefined ? min2read(content) : null
-    const busuanzi = theme.busuanzi.enable
+    const countWord = page['post-count'] !== false && theme.post.count === true && wordcount !== undefined ? wordcount(content) : null
+    const countTime = page['post-count'] !== false && theme.post.time === true && min2read !== undefined ? min2read(content) : null
+    const vercount = page.vercount !== false && theme.vercount.enable
   #post-bg
     #post-title
       h1= page.title
-      if (dateConf || updatedConf) && page.title
+      if (dateConf || updatedConf || countWord || countTime || vercount) && page.title && page['post-info'] !== false
         #post-info
           - var first = true
           if dateConf
@@ -46,11 +46,11 @@ block content
             span #{__('post.timeTotal')}
               div.control #{countTime} #{__('post.timeUnit')}
             - first = false
-          if busuanzi
+          if vercount
             if !first
               br
-            span#busuanzi_container_page_pv #{__('busuanzi.pageView')}
-              span#busuanzi_value_page_pv(class='control') #{__('busuanzi.loading')}
+            span#vercount_container_page_pv #{__('vercount.pageView')}
+              span#vercount_value_page_pv(class='control') #{__('vercount.loading')}
             - first = false
     hr
     #post-content
@@ -89,19 +89,25 @@ block content
       let count = (theme.valine.enable === true) +
                   (theme.gitalk.enable === true) +
                   (theme.waline.enable === true) +
-                  (theme.artalk.enable === true)
+                  (theme.artalk.enable === true) +
+                  (theme.utterances.enable === true) +
+                  (theme.giscus.enable === true)
     if page.comments && count
       #comments
         if count > 1
           .selector
             if theme.valine.enable === true
-              button.valine-sel
+              button.valine-sel='Valine'
             if theme.gitalk.enable === true
-              button.gitalk-sel
+              button.gitalk-sel='Gitalk'
             if theme.waline.enable === true
-              button.waline-sel
+              button.waline-sel='Waline'
             if theme.artalk.enable === true
-              button.artalk-sel
+              button.artalk-sel='Artalk'
+            if theme.utterances.enable === true
+              button.utterances-sel='Utterances'
+            if theme.giscus.enable === true
+              button.giscus-sel='Giscus'
         if theme.valine.enable === true
           #valine
         if theme.gitalk.enable === true
@@ -109,7 +115,11 @@ block content
         if theme.waline.enable === true
           #waline
         if theme.artalk.enable === true
-          #artalk 
+          #artalk
+        if theme.utterances.enable === true
+          #utterances
+        if theme.giscus.enable === true
+          #giscus
 
 block aside-block
   - 

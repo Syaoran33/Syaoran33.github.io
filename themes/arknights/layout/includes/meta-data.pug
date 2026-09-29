@@ -1,7 +1,17 @@
 meta(charset='UTF-8')
 meta(name='viewport' content='width=device-width, initial-scale=1.0')
 title= pageTitle
-
+- var keywords = page.keywords || page.tags && page.tags.map(function(t){return t.name}).join(',') || config.keywords || ''
+- var canonical = (typeof url !== 'undefined' && url) || (typeof full_url_for === 'function' ? full_url_for(page.path || '/') : '')
+- canonical = canonical ? canonical.replace(/index\.html$/, '') : canonical
+- if (!String(config.permalink || '').endsWith('.html')) canonical = canonical ? canonical.replace(/\.html$/, '') : canonical
+if keywords
+  meta(name="keywords" content=typeof keywords === 'string' ? keywords : keywords.join(','))
+!= open_graph({twitter_id: theme.twitter, google_plus: theme.google_plus, fb_admins: theme.fb_admins, fb_app_id: theme.fb_app_id})
+if canonical
+  link(rel="canonical" href=canonical)
+if page.noindex
+  meta(name="robots" content="noindex")
 link(
   rel="icon"
   type=(theme.favicon.type ? theme.favicon.type : "image/x-icon")
@@ -26,7 +36,24 @@ style.
     src: local('JetBrains Mono'), url('#{config.root}font/JetBrainsMono-Regular.woff2') format('woff2');
   }
 
-script var config = !{configs}
+meta(name="page-config" content=JSON.stringify({ code_fold: page.code_fold || null }))
+
+if theme.giscus && theme.giscus.enable === true && theme.giscus.backlink
+  meta(name="giscus:backlink" content=theme.giscus.backlink)
+
+script(class="pjax-js").
+  var config = !{configs};
+  var page_config = {
+    code_fold: !{JSON.stringify(page.code_fold || null)}
+  };
+  function updatePageConfig() {
+    var newPageConfig = document.querySelector('meta[name="page-config"]');
+    if (newPageConfig) {
+      page_config = JSON.parse(newPageConfig.content);
+    }
+  }
+  document.addEventListener('pjax:complete', function() { updatePageConfig(); });
+  updatePageConfig();
 if theme.waline && theme.waline.enable === true
   link(rel="stylesheet", href= url_for('//unpkg.com/@waline/client@v2/dist/waline.css'))
 link(type="text/css" rel="stylesheet" href=url_for("/lib/encrypt/hbe.style.css"))
@@ -63,9 +90,15 @@ link(type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/l
 link(type="text/css" rel="stylesheet" href="//unpkg.com/lightgallery@2.7.1/css/lg-thumbnail.css")
 link(type="text/css" rel="stylesheet" href=url_for("/lib/fontawesome/css/all.min.css"))
 
+
 if theme.stylesheets && theme.stylesheets.length > 0
   //- stylesheets list from _config.yml
   each url in theme.stylesheets
+    if url
+      if url[0] === '{' && url[url.length - 1] === '}'
+        style!=url.substr(1, url.length - 2)
+      else
+        style(defer src=url)
     link(rel='stylesheet', href=url)
 script
   |if (window.localStorage.getItem('theme-mode') === 'light'

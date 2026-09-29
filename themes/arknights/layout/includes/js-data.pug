@@ -3,8 +3,8 @@ script(defer src=url_for("js/arknights.js"))
 if searchConfig !== null
   script(defer src=url_for("js/search.js"))
 
-if theme.busuanzi && theme.busuanzi.enable === true
-  script(async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js")
+if theme.vercount && theme.vercount.enable === true
+  script(defer src="https://vercount.one/js")
 
 if theme.valine && theme.valine.enable === true
   script(async src='//unpkg.com/valine/dist/Valine.min.js')
@@ -14,7 +14,7 @@ if theme.gitalk && theme.gitalk.enable === true
 
 if theme.mermaid && theme.mermaid.enable === true && theme.mermaid.version
   script(defer type='module').
-    import mermaid from '#{"//unpkg.com/mermaid@" + theme.mermaid.version + "/dist/mermaid.esm.mjs"}';
+    import mermaid from '#{"//unpkg.com/mermaid@" + theme.mermaid.version + "/dist/mermaid.esm.min.mjs"}';
     window.mermaid = mermaid;
     code.paintMermaid();
 
@@ -45,11 +45,6 @@ if theme.mathjax && theme.mathjax.enable === true
       }
     });
 
-if theme.scripts && theme.scripts.length > 0
-  //- scripts list from config.yml
-  each url in theme.scripts
-    script(defer src=url)
-
 script(async src="//unpkg.com/lightgallery@2.7.1/lightgallery.min.js")
 script(async src="//unpkg.com/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js")
 script(async src="//unpkg.com/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js")
@@ -65,6 +60,8 @@ script.pjax-js reset= () => {
       | , serverURLs: '#{theme.valine.server_url}'
     |  , placeholder: '#{__('valine.placeHolder')}'
     |  , path: !{'window.location.pathname'}
+    |  , avatar: '#{theme.valine.avatar}'
+    |  , avatar_cdn: '#{theme.valine.avatar_cdn}'
     |});
   if theme.artalk && theme.artalk.enable === true
     |Artalk.init({
@@ -92,15 +89,65 @@ script.pjax-js reset= () => {
     |});
     |if (document.querySelector("#gitalk")) gitalk.render("gitalk");
   if theme.waline && theme.waline.enable === true
-    |if (document.querySelector('#waline'))
-    |  waline({
+    |if (document.querySelector('#waline')) {
+    |  const walineOptions = {
     |    el: '#waline',
     |    dark: ':root[theme-mode="dark"]',
     |    serverURL: '#{theme.waline.server_url}',
-    |    path: !{'window.location.pathname'},
-    |  });
+    |    path: window.location.pathname,
+    |  };
+    |  
+    if theme.waline.locale
+    |  walineOptions.locale = !{JSON.stringify(theme.waline.locale)};
+    |  
+    |  waline(walineOptions);
+    |}
+  if theme.utterances && theme.utterances.enable === true
+    |if (document.querySelector('#utterances')) {
+    |  const container = document.querySelector('#utterances');
+    |  container.innerHTML = '';
+    |  const script = document.createElement('script');
+    |  script.src = 'https://utteranc.es/client.js';
+    |  script.setAttribute('repo', '#{theme.utterances.repo}');
+    |  script.setAttribute('issue-term', '#{theme.utterances.issue_term}');
+    |  script.setAttribute('theme', '#{theme.utterances.theme}');
+    |  script.setAttribute('crossorigin', 'anonymous');
+    |  script.async = true;
+    |  container.appendChild(script);
+    |}
+  if theme.giscus && theme.giscus.enable === true
+    |window.giscusSettings = {
+    |  repo: '#{theme.giscus.repo}',
+    |  repoId: '#{theme.giscus.repo_id}',
+    |  category: '#{theme.giscus.category}',
+    |  categoryId: '#{theme.giscus.category_id}',
+    |  mapping: '#{theme.giscus.mapping}',
+    |  strict: '#{theme.giscus.strict}',
+    |  reactionsEnabled: '#{theme.giscus.reactions_enabled}',
+    |  emitMetadata: '#{theme.giscus.emit_metadata}',
+    |  inputPosition: '#{theme.giscus.input_position}',
+    |  lang: '#{theme.giscus.lang}',
+    |  crossorigin: '#{theme.giscus.crossorigin || "anonymous"}'
+    if theme.giscus.term
+      |  , term: '#{theme.giscus.term}'
+    if theme.giscus.discussion_number
+      |  , discussionNumber: '#{theme.giscus.discussion_number}'
+    if theme.giscus.description
+      |  , description: '#{theme.giscus.description}'
+    if theme.giscus.origin
+      |  , origin: '#{theme.giscus.origin}'
+    if theme.giscus.loading
+      |  , loading: '#{theme.giscus.loading}'
+    |};
+    if theme.giscus.theme_light && theme.giscus.theme_dark
+      |window.giscusThemeConfig = { light: '#{theme.giscus.theme_light}', dark: '#{theme.giscus.theme_dark}' };
+    else if theme.giscus.theme
+      |window.giscusThemeConfig = { theme: '#{theme.giscus.theme}' };
+  if theme.mathjax && theme.mathjax.enable === true
+    |MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
   | document.querySelector('.lg-container')?.remove()
-  | lightGallery(document.getElementById('post-bg'), {
+  | const postBg = document.querySelector('#post-bg');
+  | if (postBg) lightGallery(postBg, {
   |   plugins: [lgZoom,lgThumbnail],
   |   selector: '.item-img'})}
 
@@ -108,7 +155,7 @@ script window.addEventListener("load",() => {
   if pjax
     |pjax = new Pjax({
     |  cacheBust: false,
-    |  selectors: ['title','article','#aside-block','.pjax-js'],
+    |  selectors: ['title','article','#aside-block','.pjax-js','data-pjax','.vercount','meta[name=page-config]'],
     |  switches: {'article': Pjax.switches.sideBySide},
     |  switchesOptions: {
     |    'article': {
@@ -120,4 +167,10 @@ script window.addEventListener("load",() => {
     |  }
     |});
     |document.addEventListener("pjax:complete", reset);
+    if theme.vercount.enable
+      |document.addEventListener('pjax:success', _ => {
+      |  const script = document.createElement('script');
+      |  script.src = 'https://vercount.one/js';
+      |  document.head.appendChild(script);
+      |});
   | reset()})

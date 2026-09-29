@@ -22,7 +22,6 @@ menu:
   Home: ""
   Archives: archives/
   About: about/
-  Music: music/
 
 # 侧边栏
 aside:
@@ -53,9 +52,10 @@ post:
   reward:
     # 支付宝 | Alipay: img/Alipay.png
     # 微信 | Wechat: img/WeChat.png
-  # 以下两项依赖 hexo-wordcount，请参阅 README 开启
-  count: true # 是否显示字数统计
-  time: true # 是否显示预计阅读时长
+  # 以下两项依赖 hexo-wordcount，未安装则保持 false
+  count: false # 是否显示字数统计
+  time: false # 是否显示预计阅读时长
+  code_fold: 15 # 行数小于等于此值的代码块默认展开，-1 为全部展开
 
 # 文章内目录
 toc:
@@ -117,15 +117,19 @@ artalk:
 # 图表支持
 mermaid:
   enable: true
-  version: "10.5.0"
+  version: "11.12.2"
 
-# 不蒜子站点统计
-# 详见: http://busuanzi.ibruce.info/
-busuanzi:
+# 站点访问统计
+# 详见: https://vercount.one/
+vercount:
   enable: false
   sitePV: true
   siteUV: true
   pagePV: true
+
+# 背景音乐；需要自行准备音频文件放到 source/audio/ 下
+bgm:
+  enable: false
 
 # pjax 支持
 pjax:
